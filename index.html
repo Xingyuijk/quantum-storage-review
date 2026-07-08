@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rare-earth Quantum Memories for Light</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="control-panel" aria-label="Filters">
+      <div class="brand-block">
+        <p class="eyebrow">Quantum storage survey</p>
+        <h1>Rare-earth quantum memories</h1>
+        <p class="meta-line"><span id="visibleCount">0</span> of <span id="totalCount">0</span> plotted results</p>
+      </div>
+
+      <label class="search-box">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="paper, author, ion, host, protocol, year">
+      </label>
+
+      <section class="filter-group">
+        <div class="filter-title">Protocol</div>
+        <div class="chip-grid" id="protocolFilters"></div>
+      </section>
+
+      <section class="filter-group">
+        <div class="filter-title">Ion</div>
+        <div class="chip-grid" id="ionFilters"></div>
+      </section>
+
+      <section class="filter-group">
+        <div class="filter-title">Implementation</div>
+        <div class="chip-grid" id="architectureFilters"></div>
+      </section>
+
+      <section class="filter-group">
+        <div class="filter-title">Cavity</div>
+        <div class="chip-grid" id="cavityFilters"></div>
+      </section>
+
+      <section class="action-group">
+        <div class="filter-title">Actions</div>
+        <div class="button-row">
+          <button id="resetFilters" type="button">Reset</button>
+          <button id="recentOnly" type="button">2024-2026</button>
+        </div>
+      </section>
+
+      <section class="notes-block">
+        <div class="filter-title">Reading map</div>
+        <p>Color encodes ion species. Marker shape encodes cavity and chip implementation. Non-AFC points are labeled directly on the chart.</p>
+      </section>
+
+      <section class="notes-block">
+        <div class="filter-title">Review trail</div>
+        <div class="review-list" id="reviewList"></div>
+      </section>
+    </aside>
+
+    <section class="chart-panel" aria-label="Interactive memory map">
+      <div class="chart-toolbar">
+        <div>
+          <h2>Storage time vs efficiency</h2>
+          <p>Click any point or table row to open the paper details and source note.</p>
+        </div>
+        <div class="mini-legend" id="miniLegend"></div>
+      </div>
+
+      <div class="chart-wrap">
+        <svg id="memorySvg" role="img" aria-label="Log-log map of storage time and efficiency"></svg>
+        <div id="tooltip" class="tooltip" hidden></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Ion / host</th>
+              <th>Protocol</th>
+              <th>Time</th>
+              <th>Efficiency</th>
+              <th>Cavity</th>
+              <th>Reference</th>
+            </tr>
+          </thead>
+          <tbody id="resultsTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="detail-panel" aria-label="Paper details">
+      <div class="detail-empty" id="emptyDetail">
+        <p class="eyebrow">Selected result</p>
+        <h2>Pick a point</h2>
+        <p>The panel will show storage time, efficiency, protocol, ion, host, DOI, Zotero key, and the extraction note.</p>
+      </div>
+      <article id="detailContent" class="detail-content" hidden></article>
+    </aside>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="author-index.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
