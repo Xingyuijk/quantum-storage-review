@@ -12,6 +12,15 @@ const ION_COLORS = {
   "Nd3+": "#6d7378"
 };
 
+const ION_MARKERS = {
+  "Eu3+": "circle",
+  "Pr3+": "square",
+  "Er3+": "diamond",
+  "Yb3+": "triangle-up",
+  "Tm3+": "triangle-down",
+  "Nd3+": "hexagon"
+};
+
 const PROTOCOL_COLORS = {
   AFC: "#1b6d77",
   NLPE: "#b34a6f",
@@ -184,8 +193,16 @@ function authorSearchText(d) {
   return normalizeSearch([d.authors, d.authorsFull, d.searchTerms, meta.authorsFull, meta.searchTerms].join(" "));
 }
 
+function hostAliases(d) {
+  const text = normalizeSearch([d.host, d.title, d.note].join(" "));
+  const aliases = [];
+  if (text.includes("y2sio5")) aliases.push("YSO yttrium orthosilicate Y2SiO5");
+  if (text.includes("linbo3") || text.includes("lithium niobate")) aliases.push("LN LiNbO3 lithium niobate");
+  return aliases.join(" ");
+}
+
 function generalSearchText(d) {
-  return normalizeSearch([d.title, d.year, d.venue, d.ion, d.isotope, d.host, protocolGroup(d), d.protocol, implementationGroup(d), d.architecture, cavityGroup(d), d.cavity, d.inputState, d.note].join(" "));
+  return normalizeSearch([d.title, d.year, d.venue, d.ion, d.isotope, d.host, hostAliases(d), protocolGroup(d), d.protocol, implementationGroup(d), d.architecture, cavityGroup(d), d.cavity, d.inputState, d.note].join(" "));
 }
 
 function hasToken(text, token) {
@@ -201,14 +218,25 @@ function hasCompactToken(text, token) {
   return token.length >= 4 && text.replace(/\s+/g, "").includes(token);
 }
 
-function markerPath(d, x, y) {
-  const r = 7;
-  const cavity = cavityGroup(d);
-  if (cavity !== "no cavity" && cavity !== "multi-pass") {
+function markerShape(d) {
+  return ION_MARKERS[d.ion] || "circle";
+}
+
+function markerPath(shape, x, y, r = 7) {
+  if (shape === "square") {
+    return `M ${x - r} ${y - r} H ${x + r} V ${y + r} H ${x - r} Z`;
+  }
+  if (shape === "diamond") {
     return `M ${x} ${y - r} L ${x + r} ${y} L ${x} ${y + r} L ${x - r} ${y} Z`;
   }
-  if (implementationGroup(d) === "chip") {
-    return `M ${x - r} ${y - r} H ${x + r} V ${y + r} H ${x - r} Z`;
+  if (shape === "triangle-up") {
+    return `M ${x} ${y - r} L ${x + r * 0.95} ${y + r * 0.72} L ${x - r * 0.95} ${y + r * 0.72} Z`;
+  }
+  if (shape === "triangle-down") {
+    return `M ${x} ${y + r} L ${x + r * 0.95} ${y - r * 0.72} L ${x - r * 0.95} ${y - r * 0.72} Z`;
+  }
+  if (shape === "hexagon") {
+    return `M ${x - r * 0.86} ${y - r * 0.5} L ${x} ${y - r} L ${x + r * 0.86} ${y - r * 0.5} L ${x + r * 0.86} ${y + r * 0.5} L ${x} ${y + r} L ${x - r * 0.86} ${y + r * 0.5} Z`;
   }
   return "";
 }
@@ -391,7 +419,7 @@ function drawPoint(d) {
   const y = sy(d.efficiencyPct);
   const fill = colorFor(d);
   let el;
-  const path = markerPath(d, x, y);
+  const path = markerPath(markerShape(d), x, y);
   if (path) {
     el = h("path", { d: path, fill, stroke: "#fff", "stroke-width": 1.4, class: "point", "data-id": d.id });
   } else {
@@ -404,6 +432,14 @@ function drawPoint(d) {
   el.addEventListener("click", () => selectResult(d.id));
 }
 
+function legendMarkerSvg(ion) {
+  const fill = ION_COLORS[ion];
+  const shape = markerShape({ ion });
+  const path = markerPath(shape, 8, 8, 5.4);
+  if (path) return `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${path}" fill="${fill}"></path></svg>`;
+  return `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.4" fill="${fill}"></circle></svg>`;
+}
+
 function renderLegend() {
   const container = document.getElementById("miniLegend");
   container.innerHTML = "";
@@ -411,7 +447,7 @@ function renderLegend() {
     if (!allResults.some((d) => d.ion === ion)) return;
     const pill = document.createElement("span");
     pill.className = "legend-pill";
-    pill.innerHTML = `<span class="legend-dot" style="background:${ION_COLORS[ion]}"></span>${escapeHtml(ion)}`;
+    pill.innerHTML = `<span class="legend-marker">${legendMarkerSvg(ion)}</span>${escapeHtml(ion)}`;
     container.appendChild(pill);
   });
 }

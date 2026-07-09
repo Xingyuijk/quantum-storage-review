@@ -2,7 +2,7 @@
 
 Static first version of an interactive quantum-storage survey page.
 
-Current local snapshot: 74 result entries, 69 plotted points, 3 review seeds.
+Current local snapshot: 102 result entries, 94 plotted points, 4 review seeds.
 
 ## Open locally
 
@@ -14,7 +14,7 @@ Then open `http://127.0.0.1:8765/` from this directory.
 
 ## Data model
 
-Edit `data.js`. Each `results` item is one plotted experimental result, not necessarily one paper. This lets a single paper contribute multiple points when it reports, for example, both two-level AFC and spin-wave AFC storage.
+Edit `data.js`. Each `results` item is one experimental result or literature record, not necessarily one paper or plotted point. A single paper may contribute multiple points when it reports distinct storage conditions. Important papers without a directly paired storage time and total efficiency remain searchable and visible in the table, but are not plotted.
 
 Core plotted metrics:
 

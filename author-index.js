@@ -35,6 +35,18 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Zongfeng Li, Yisheng Lei, Trevor Kling, Mahdi Hosseini",
     "searchTerms": "Zongfeng Li Yisheng Lei Trevor Kling Mahdi Hosseini"
   },
+  "li-2026-er-spinwave": {
+    "authorsFull": "Zongfeng Li, Mahdi Hosseini",
+    "searchTerms": "Zongfeng Li Mahdi Hosseini on-demand coherent mapping erbium hyperfine spin-wave telecom"
+  },
+  "lei-2024-tm-yag-optimized": {
+    "authorsFull": "Yisheng Lei, Haechan An, Zongfeng Li, Mahdi Hosseini",
+    "searchTerms": "Yisheng Lei Haechan An Zongfeng Li Mahdi Hosseini algorithmic optimization quantum optical storage Tm YAG"
+  },
+  "lei-2025-tm-yag-efficient": {
+    "authorsFull": "Yisheng Lei, Zongfeng Li, Mahdi Hosseini",
+    "searchTerms": "Yisheng Lei Zongfeng Li Mahdi Hosseini efficient pumping atomic frequency comb Tm YAG broadband storage"
+  },
   "businger-2022-yb": {
     "authorsFull": "M. Businger, L. Nicolas, T. Sanchez Mejia, A. Ferrier, P. Goldner, Mikael Afzelius",
     "searchTerms": "M. Businger L. Nicolas T. Sanchez Mejia A. Ferrier P. Goldner Mikael Afzelius"
@@ -54,6 +66,10 @@ window.QM_AUTHOR_INDEX = {
   "an-2025-er-teleportation": {
     "authorsFull": "Yu-Yang An, Qian He, Wenyi Xue, Ming-Hao Jiang, Chengdong Yang, Yan-Qing Lu, Shining Zhu, Xiao-Song Ma",
     "searchTerms": "Yu-Yang An, Qian He, Wenyi Xue, Ming-Hao Jiang, Chengdong Yang, Yan-Qing Lu, Shining Zhu, Xiao-Song Ma Xiaosong Ma Xiao Song Ma Xiao-Song Ma Yu-Yang An Qian He Wenyi Xue Chengdong Yang Yan-Qing Lu Shining Zhu erbium-ion ensembles quantum teleportation telecom time-bin"
+  },
+  "jiang-2023-er-entanglement": {
+    "authorsFull": "Ming-Hao Jiang, Wenyi Xue, Qian He, Yu-Yang An, Xiaodong Zheng, Wen-Jie Xu, Yu-Bo Xie, Yanqing Lu, Shining Zhu, Xiao-Song Ma",
+    "searchTerms": "Ming-Hao Jiang Wenyi Xue Qian He Yu-Yang An Xiaodong Zheng Wen-Jie Xu Yu-Bo Xie Yanqing Lu Shining Zhu Xiao-Song Ma Xiaosong Ma"
   },
   "zhong-2017-nanophotonic-nd": {
     "authorsFull": "Tian Zhong, Jonathan M. Kindem, John G. Bartholomew, Jake Rochman, Ioana Craiciu, Evan Miyazono, Marco Bettinelli, Enrico Cavalli, Varun Verma, Sae Woo Nam, Francesco Marsili, Matthew D. Shaw, Andrew D. Beyer, Andrei Faraon",
@@ -207,6 +223,14 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Xueying Zhang, Bin Zhang, Shihai Wei, Hao Li, Jinyu Liao, Cheng Li, Guangwei Deng, You Wang, Haizhi Song, Lixing You, Bo Jing, Feng Chen, Guang-Can Guo, Qiang Zhou",
     "searchTerms": "Xueying Zhang Bin Zhang Shihai Wei Hao Li Jinyu Liao Cheng Li Guangwei Deng You Wang Haizhi Song Lixing You Bo Jing Feng Chen Guang-Can Guo Guang Can Guo GuangCan Guo Qiang Zhou"
   },
+  "wei-2024-er-fiber-1650-modes": {
+    "authorsFull": "Shi-Hai Wei, Bo Jing, Xue-Ying Zhang, Jin-Yu Liao, Hao Li, Li-Xing You, Zhen Wang, You Wang, Guang-Wei Deng, Hai-Zhi Song, Daniel Oblak, Guang-Can Guo, Qiang Zhou",
+    "searchTerms": "Shi-Hai Wei Bo Jing Xue-Ying Zhang Jin-Yu Liao Hao Li Li-Xing You Zhen Wang You Wang Guang-Wei Deng Hai-Zhi Song Daniel Oblak Guang-Can Guo Qiang Zhou"
+  },
+  "zhang-2024-er-spectral-interface": {
+    "authorsFull": "Xueying Zhang, Bin Zhang, Shihai Wei, Hao Li, Jinyu Liao, Tao Zhou, Guangwei Deng, You Wang, Haizhi Song, Lixing You, Boyu Fan, Yunru Fan, Feng Chen, Guangcan Guo, Qiang Zhou",
+    "searchTerms": "Xueying Zhang Bin Zhang Shihai Wei Hao Li Jinyu Liao Tao Zhou Guangwei Deng You Wang Haizhi Song Lixing You Boyu Fan Yunru Fan Feng Chen Guangcan Guo Qiang Zhou"
+  },
   "yang-2026-tfln-er": {
     "authorsFull": "Chengdong Yang, Hanwen Guo, Yu-Yang An, Qian He, Chi Lu, Ziheng Jiang, Yan-Qing Lu, Shining Zhu, Xiao-Song Ma",
     "searchTerms": "Chengdong Yang Hanwen Guo Yu-Yang An Yu Yang An YuYang An Qian He Chi Lu Ziheng Jiang Yan-Qing Lu Yan Qing Lu YanQing Lu Shining Zhu Xiao-Song Ma Xiao Song Ma XiaoSong Ma Xiaosong Ma Xiao Song Ma Xiao-Song Ma XS Ma 南京大学 Nanjing University"
@@ -285,7 +309,7 @@ window.QM_AUTHOR_INDEX = {
   },
   "ma-2021-one-hour-afc-5min": {
     "authorsFull": "Yu Ma, You-Zhi Ma, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
-    "searchTerms": "Yu Ma You-Zhi Ma You Zhi Ma YouZhi Ma Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Chuan-Feng Li Chuan Feng Li ChuanFeng Li Guang-Can Guo Guang Can Guo GuangCan Guo Zhong-Qiang Zhou Chuan-Feng Li Guang-Can Guo USTC one hour coherent optical storage AFC ZEFOZ"
+    "searchTerms": "Yu Ma You-Zhi Ma You Zhi Ma YouZhi Ma Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Chuan-Feng Li Chuan Feng Li ChuanFeng Li Guang-Can Guo Guang Can Guo GuangCan Guo USTC one hour coherent optical storage AFC ZEFOZ"
   },
   "hain-2022-pr-eit-10s": {
     "authorsFull": "Marcel Hain, Markus Stabel, Thomas Halfmann",
@@ -294,5 +318,93 @@ window.QM_AUTHOR_INDEX = {
   "holzaepfel-2021-long-afc": {
     "authorsFull": "Adrian Holzäpfel, Jean Etesse, Krzysztof T. Kaczmarek, Alexey Tiranov, Nicolas Gisin, Mikael Afzelius",
     "searchTerms": "Adrian Holzäpfel Jean Etesse Krzysztof T. Kaczmarek Alexey Tiranov Nicolas Gisin Mikael Afzelius"
+  },
+  "longdell-2005-pr-eit-one-second": {
+    "authorsFull": "Jevon J. Longdell, Emmanuel Fraval, Matthew J. Sellars, Neil B. Manson",
+    "searchTerms": "Jevon J. Longdell Emmanuel Fraval Matthew J. Sellars Neil B. Manson"
+  },
+  "hetet-2008-pr-gem": {
+    "authorsFull": "Gabriel Hetet, Jevon J. Longdell, Annabel L. Alexander, Ping Koy Lam, Matthew J. Sellars",
+    "searchTerms": "Gabriel Hetet Jevon J. Longdell Annabel L. Alexander Ping Koy Lam Matthew J. Sellars"
+  },
+  "deriedmatten-2008-nd-single-photon": {
+    "authorsFull": "Hugues de Riedmatten, Mikael Afzelius, Matthias Staudt, Christoph Simon, Nicolas Gisin",
+    "searchTerms": "Hugues de Riedmatten Mikael Afzelius Matthias Staudt Christoph Simon Nicolas Gisin"
+  },
+  "chaneliere-2010-tm-afc": {
+    "authorsFull": "Thierry Chaneliere, Julien Ruggiero, Matthieu Bonarota, Mikael Afzelius, Jean-Louis Le Gouet",
+    "searchTerms": "Thierry Chaneliere Julien Ruggiero Matthieu Bonarota Mikael Afzelius Jean-Louis Le Gouet"
+  },
+  "timoney-2012-eu-spinwave-paper": {
+    "authorsFull": "Nuala Timoney, Bjorn Lauritzen, Imam Usmani, Mikael Afzelius, Nicolas Gisin",
+    "searchTerms": "Nuala Timoney Bjorn Lauritzen Imam Usmani Mikael Afzelius Nicolas Gisin"
+  },
+  "gundogan-2013-pr-multimode-spinwave": {
+    "authorsFull": "Mustafa Gundogan, Margherita Mazzera, Patrick M. Ledingham, Matteo Cristiani, Hugues de Riedmatten",
+    "searchTerms": "Mustafa Gundogan Margherita Mazzera Patrick M. Ledingham Matteo Cristiani Hugues de Riedmatten"
+  },
+  "timoney-2013-eu-spinwave-bright": {
+    "authorsFull": "Nuala Timoney, Imam Usmani, Pierre Jobez, Mikael Afzelius, Nicolas Gisin",
+    "searchTerms": "Nuala Timoney Imam Usmani Pierre Jobez Mikael Afzelius Nicolas Gisin"
+  },
+  "timoney-2013-eu-spinwave-single-photon": {
+    "authorsFull": "Nuala Timoney, Imam Usmani, Pierre Jobez, Mikael Afzelius, Nicolas Gisin",
+    "searchTerms": "Nuala Timoney Imam Usmani Pierre Jobez Mikael Afzelius Nicolas Gisin"
+  },
+  "zhou-2013-nd-ylif4-afc": {
+    "authorsFull": "Zong-Quan Zhou, Jian Wang, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Jian Wang Chuan-Feng Li Chuan Feng Li Guang-Can Guo Guang Can Guo"
+  },
+  "jin-2015-er-fiber-polarization": {
+    "authorsFull": "Jeongwan Jin, Erhan Saglamyurek, Marcelli Grimau Puigibert, Varun B. Verma, Francesco Marsili, Sae Woo Nam, Daniel Oblak, Wolfgang Tittel",
+    "searchTerms": "Jeongwan Jin Erhan Saglamyurek Marcelli Grimau Puigibert Varun B. Verma Francesco Marsili Sae Woo Nam Daniel Oblak Wolfgang Tittel"
+  },
+  "tiranov-2016-nd-temporal-entanglement": {
+    "authorsFull": "Alexey Tiranov, Peter C. Strassmann, Jonathan Lavoie, Nicolas Brunner, Marcus Huber, Varun B. Verma, Sae Woo Nam, Richard P. Mirin, Adriana E. Lita, Francesco Marsili, Mikael Afzelius, Felix Bussieres, Nicolas Gisin",
+    "searchTerms": "Alexey Tiranov Peter C. Strassmann Jonathan Lavoie Nicolas Brunner Marcus Huber Varun B. Verma Sae Woo Nam Richard P. Mirin Adriana E. Lita Francesco Marsili Mikael Afzelius Felix Bussieres Nicolas Gisin"
+  },
+  "laplane-2016-eu-polarization-spinwave": {
+    "authorsFull": "Cyril Laplane, Pierre Jobez, Jean Etesse, Nuala Timoney, Nicolas Gisin, Mikael Afzelius",
+    "searchTerms": "Cyril Laplane Pierre Jobez Jean Etesse Nuala Timoney Nicolas Gisin Mikael Afzelius"
+  },
+  "ferguson-2016-pr-rase": {
+    "authorsFull": "Kate R. Ferguson, Sarah E. Beavan, Jevon J. Longdell, Matthew J. Sellars",
+    "searchTerms": "Kate R. Ferguson Sarah E. Beavan Jevon J. Longdell Matthew J. Sellars"
+  },
+  "yang-2018-pr-multidof": {
+    "authorsFull": "Tian-Shu Yang, Zong-Quan Zhou, Yi-Lin Hua, Xiao Liu, Zong-Feng Li, Pei-Yun Li, Yu Ma, Chao Liu, Peng-Jun Liang, Xue Li, Yi-Xin Xiao, Jun Hu, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Tian-Shu Yang Zong-Quan Zhou Yi-Lin Hua Xiao Liu Zong-Feng Li Pei-Yun Li Yu Ma Chao Liu Peng-Jun Liang Xue Li Yi-Xin Xiao Jun Hu Chuan-Feng Li Guang-Can Guo"
+  },
+  "hua-2019-pr-telecom-oam": {
+    "authorsFull": "Yi-Lin Hua, Tian-Shu Yang, Zong-Quan Zhou, Jian Wang, Xiao Liu, Zong-Feng Li, Pei-Yun Li, Yu Ma, Chao Liu, Peng-Jun Liang, Jun Hu, Xue Li, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Yi-Lin Hua Tian-Shu Yang Zong-Quan Zhou Jian Wang Xiao Liu Zong-Feng Li Pei-Yun Li Yu Ma Chao Liu Peng-Jun Liang Jun Hu Xue Li Chuan-Feng Li Guang-Can Guo"
+  },
+  "kutluer-2019-pr-time-entanglement": {
+    "authorsFull": "Kutlu Kutluer, Emanuele Distante, Bernardo Casabone, Stefano Duranti, Margherita Mazzera, Hugues de Riedmatten",
+    "searchTerms": "Kutlu Kutluer Emanuele Distante Bernardo Casabone Stefano Duranti Margherita Mazzera Hugues de Riedmatten"
+  },
+  "liu-2021-nd-absorptive-node-a": {
+    "authorsFull": "Xiao Liu, Jun Hu, Zong-Feng Li, Xue Li, Pei-Yun Li, Peng-Jun Liang, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Xiao Liu Jun Hu Zong-Feng Li Xue Li Pei-Yun Li Peng-Jun Liang Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo"
+  },
+  "liu-2021-nd-absorptive-node-b": {
+    "authorsFull": "Xiao Liu, Jun Hu, Zong-Feng Li, Xue Li, Pei-Yun Li, Peng-Jun Liang, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Xiao Liu Jun Hu Zong-Feng Li Xue Li Pei-Yun Li Peng-Jun Liang Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo"
+  },
+  "chen-2025-eu-optical-spin-conversion": {
+    "authorsFull": "Jingjing Chen, Mikael Afzelius",
+    "searchTerms": "Jingjing Chen Mikael Afzelius"
+  },
+  "hanni-2025-pr-entanglement-node-a": {
+    "authorsFull": "Jonathan Hanni, Alberto E. Rodriguez-Moldes, Felicien Appas, Soeren Wengerowsky, Dario Lago-Rivera, Markus Teller, Samuele Grandi, Hugues de Riedmatten",
+    "searchTerms": "Jonathan Hanni Alberto E. Rodriguez-Moldes Felicien Appas Soeren Wengerowsky Dario Lago-Rivera Markus Teller Samuele Grandi Hugues de Riedmatten"
+  },
+  "hanni-2025-pr-entanglement-node-b": {
+    "authorsFull": "Jonathan Hanni, Alberto E. Rodriguez-Moldes, Felicien Appas, Soeren Wengerowsky, Dario Lago-Rivera, Markus Teller, Samuele Grandi, Hugues de Riedmatten",
+    "searchTerms": "Jonathan Hanni Alberto E. Rodriguez-Moldes Felicien Appas Soeren Wengerowsky Dario Lago-Rivera Markus Teller Samuele Grandi Hugues de Riedmatten"
+  },
+  "sanchezmejia-2026-yb-long-afc": {
+    "authorsFull": "Theo Sanchez Mejia, Leo Nicolas, A. Gelmini Rodriguez, Philippe Goldner, Mikael Afzelius",
+    "searchTerms": "Theo Sanchez Mejia Leo Nicolas A. Gelmini Rodriguez Philippe Goldner Mikael Afzelius"
   }
 };
