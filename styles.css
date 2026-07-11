@@ -146,6 +146,34 @@ h3 { font-size: 16px; line-height: 1.25; }
   border-bottom: 1px solid var(--line);
 }
 
+.toolbar-side {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.view-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border: 1px solid #1d2a2d;
+  border-radius: 6px;
+  padding: 5px 9px;
+  background: #e1eee9;
+  color: #102326;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.view-link:hover,
+.view-link:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(27, 109, 119, .15);
+  outline: none;
+}
+
 .mini-legend {
   display: flex;
   flex-wrap: wrap;
@@ -406,6 +434,7 @@ tr:hover, tr.selected { background: #eef6f2; }
     grid-template-rows: auto 420px 260px;
   }
   .chart-toolbar { flex-direction: column; }
+  .toolbar-side { justify-items: start; }
   .mini-legend { justify-content: flex-start; }
   th, td { white-space: normal; }
 }

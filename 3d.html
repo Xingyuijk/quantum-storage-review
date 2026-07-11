@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Literature Map | Rare-earth Quantum Memories</title>
+  <link rel="stylesheet" href="3d.css">
+</head>
+<body>
+  <main class="three-d-shell">
+    <header class="three-d-header">
+      <div>
+        <p class="eyebrow">Quantum storage survey</p>
+        <h1>Three-dimensional literature map</h1>
+        <p class="subtitle">Publication year × storage efficiency × storage time</p>
+      </div>
+      <a class="back-link" href="index.html">Back to 2D review</a>
+    </header>
+
+    <section class="control-strip" aria-label="Three-dimensional map filters">
+      <label class="search-control">
+        <span>Search</span>
+        <input id="search3d" type="search" placeholder="paper, author, ion, host, protocol, year">
+      </label>
+      <div class="control-group">
+        <span class="control-label">Ion</span>
+        <div class="chip-row" id="ionFilters3d"></div>
+      </div>
+      <div class="control-group">
+        <span class="control-label">Protocol</span>
+        <div class="chip-row" id="protocolFilters3d"></div>
+      </div>
+      <div class="action-row">
+        <button id="focusEr3d" type="button" aria-pressed="false">Focus 167Er:YSO</button>
+        <button id="reset3d" type="button">Reset filters</button>
+        <button id="resetCamera3d" type="button">Reset view</button>
+      </div>
+    </section>
+
+    <section class="map-layout">
+      <div class="plot-card">
+        <div class="plot-toolbar">
+          <p><strong id="visible3d">0</strong> of <span id="total3d">0</span> plotted results</p>
+          <div class="axis-key" aria-label="Axis mapping">
+            <span><b>X</b> year (new → old)</span>
+            <span><b>Y</b> efficiency (log)</span>
+            <span><b>Z</b> storage time (log)</span>
+          </div>
+        </div>
+        <div class="canvas-wrap" id="canvasWrap3d">
+          <canvas id="plot3d" role="img" aria-label="Interactive three-dimensional scatter plot of publication year, storage efficiency, and storage time"></canvas>
+          <div id="tooltip3d" class="plot-tooltip" hidden></div>
+          <div class="camera-pad" aria-label="Rotate the three-dimensional view">
+            <button type="button" data-camera="up" aria-label="Rotate view upward">↑</button>
+            <button type="button" data-camera="left" aria-label="Rotate view left">←</button>
+            <button type="button" data-camera="down" aria-label="Rotate view downward">↓</button>
+            <button type="button" data-camera="right" aria-label="Rotate view right">→</button>
+          </div>
+        </div>
+        <p class="interaction-hint">Drag to rotate · scroll to zoom · hover for values · click a point for evidence details</p>
+        <div class="legend-row" id="legend3d"></div>
+      </div>
+
+      <aside class="detail-card" aria-label="Selected result details">
+        <article id="detail3d"></article>
+      </aside>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="author-index.js"></script>
+  <script src="source-locations.js"></script>
+  <script src="3d.js"></script>
+</body>
+</html>

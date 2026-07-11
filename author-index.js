@@ -39,6 +39,18 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Zongfeng Li, Mahdi Hosseini",
     "searchTerms": "Zongfeng Li Mahdi Hosseini on-demand coherent mapping erbium hyperfine spin-wave telecom"
   },
+  "yasui-2022-er-afc": {
+    "authorsFull": "Shoichiro Yasui, Masaya Hiraishi, Atsushi Ishizawa, Hiroo Omi, Tomohiro Inaba, Xuejun Xu, Reina Kaji, Satoru Adachi, Takehiko Tawara",
+    "searchTerms": "Shoichiro Yasui Masaya Hiraishi Atsushi Ishizawa Hiroo Omi Tomohiro Inaba Xuejun Xu Reina Kaji Satoru Adachi Takehiko Tawara 167Er YSO high-resolution AFC zero magnetic field"
+  },
+  "yasui-2024-er-afc-ofc": {
+    "authorsFull": "Shoichiro Yasui, Tomohiro Inaba, Atsushi Ishizawa, Kenichi Hitachi, Hiroo Omi, Kyuma Matsuura, Reina Kaji, Takehiko Tawara, Satoru Adachi, Xuejun Xu, Haruki Sanada",
+    "searchTerms": "Shoichiro Yasui Tomohiro Inaba Atsushi Ishizawa Kenichi Hitachi Hiroo Omi Kyuma Matsuura Reina Kaji Takehiko Tawara Satoru Adachi Xuejun Xu Haruki Sanada 167Er YSO optical frequency comb comb transfer AFC zero magnetic field"
+  },
+  "matsuura-2026-er-spinwave-zefoz": {
+    "authorsFull": "Kyuma Matsuura, Shoichiro Yasui, Reina Kaji, Hirotaka Sasakura, Takehiko Tawara, Satoru Adachi",
+    "searchTerms": "Kyuma Matsuura Shoichiro Yasui Reina Kaji Hirotaka Sasakura Takehiko Tawara Satoru Adachi 167Er YSO spin-wave storage ZEFOZ hyperfine transition"
+  },
   "lei-2024-tm-yag-optimized": {
     "authorsFull": "Yisheng Lei, Haechan An, Zongfeng Li, Mahdi Hosseini",
     "searchTerms": "Yisheng Lei Haechan An Zongfeng Li Mahdi Hosseini algorithmic optimization quantum optical storage Tm YAG"
@@ -315,7 +327,7 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Marcel Hain, Markus Stabel, Thomas Halfmann",
     "searchTerms": "Marcel Hain Markus Stabel Thomas Halfmann"
   },
-  "holzaepfel-2021-long-afc": {
+  "holzaepfel-2020-long-afc": {
     "authorsFull": "Adrian Holzäpfel, Jean Etesse, Krzysztof T. Kaczmarek, Alexey Tiranov, Nicolas Gisin, Mikael Afzelius",
     "searchTerms": "Adrian Holzäpfel Jean Etesse Krzysztof T. Kaczmarek Alexey Tiranov Nicolas Gisin Mikael Afzelius"
   },

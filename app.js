@@ -2,6 +2,7 @@ const payload = window.QM_DATA;
 const allResults = payload.results;
 const plottedResults = allResults.filter((d) => Number.isFinite(d.storageTimeS) && Number.isFinite(d.efficiencyPct) && d.efficiencyPct > 0);
 const authorIndex = window.QM_AUTHOR_INDEX || {};
+const sourceIndex = window.QM_SOURCE_LOCATIONS || {};
 
 const ION_COLORS = {
   "Eu3+": "#1b6d77",
@@ -186,6 +187,10 @@ function protocolColor(protocol) {
 
 function authorMeta(d) {
   return authorIndex[d.id] || {};
+}
+
+function sourceMeta(d) {
+  return sourceIndex[d.id] || {};
 }
 
 function authorSearchText(d) {
@@ -486,6 +491,7 @@ function renderDetail() {
   const d = allResults.find((item) => item.id === state.selectedId) || allResults[0];
   if (!d) return;
   const meta = authorMeta(d);
+  const source = sourceMeta(d);
   const fullAuthors = meta.authorsFull || d.authorsFull || d.authors;
   const tags = [
     implementationGroup(d),
@@ -520,6 +526,9 @@ function renderDetail() {
       <span>DOI: ${escapeHtml(d.doi || "n/a")}</span>
       <span>Zotero key: ${escapeHtml(d.zoteroKey || "not in local library yet")}</span>
       <span>Efficiency definition: ${escapeHtml(d.efficiencyType)}</span>
+      ${source.locator ? `<span><strong>Source location:</strong> ${escapeHtml(source.locator)}</span>` : ""}
+      ${source.extractionMethod ? `<span><strong>Extraction:</strong> ${escapeHtml(source.extractionMethod)}</span>` : ""}
+      ${source.verifiedDate ? `<span><strong>Verified:</strong> ${escapeHtml(source.verifiedDate)}</span>` : ""}
     </div>
   `;
 }

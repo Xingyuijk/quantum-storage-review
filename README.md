@@ -2,7 +2,7 @@
 
 Static first version of an interactive quantum-storage survey page.
 
-Current local snapshot: 102 result entries, 94 plotted points, 4 review seeds.
+Current local snapshot: 105 result entries, 96 plotted points, 85 distinct paper titles, and 4 review seeds.
 
 ## Open locally
 
@@ -12,9 +12,13 @@ python3 -m http.server 8765
 
 Then open `http://127.0.0.1:8765/` from this directory.
 
+The interactive three-dimensional map is available at `http://127.0.0.1:8765/3d.html`. It reuses `data.js`, `author-index.js`, and `source-locations.js`; no literature data are duplicated.
+
 ## Data model
 
 Edit `data.js`. Each `results` item is one experimental result or literature record, not necessarily one paper or plotted point. A single paper may contribute multiple points when it reports distinct storage conditions. Important papers without a directly paired storage time and total efficiency remain searchable and visible in the table, but are not plotted.
+
+Verified evidence locators are stored separately in `source-locations.js`, keyed by result ID. Each entry records the original PDF or publisher-full-text location, extraction method, and verification date. The current local snapshot covers all 105 result records; multiple results from one paper retain result-specific locations when the reported conditions differ.
 
 Core plotted metrics:
 
