@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rare-earth Quantum Memories for Light</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260715a">
 </head>
 <body>
   <main class="app-shell">
@@ -19,6 +19,17 @@
         <span>Search</span>
         <input id="searchInput" type="search" placeholder="paper, author, ion, host, YSO/LN, protocol, year">
       </label>
+
+      <section class="action-group">
+        <div class="filter-title">Actions</div>
+        <div class="button-row">
+          <button id="resetFilters" type="button">Reset</button>
+          <button id="recentOnly" type="button">2024-2026</button>
+          <button id="focusEr" type="button" aria-pressed="false">Focus on Er3+</button>
+        </div>
+        <a class="action-link" href="3d.html" aria-label="Open the interactive three-dimensional literature map">Explore 3D map</a>
+        <div class="focus-legend" id="focusLegend" hidden></div>
+      </section>
 
       <section class="filter-group">
         <div class="filter-title">Protocol</div>
@@ -40,17 +51,9 @@
         <div class="chip-grid" id="cavityFilters"></div>
       </section>
 
-      <section class="action-group">
-        <div class="filter-title">Actions</div>
-        <div class="button-row">
-          <button id="resetFilters" type="button">Reset</button>
-          <button id="recentOnly" type="button">2024-2026</button>
-        </div>
-      </section>
-
       <section class="notes-block">
         <div class="filter-title">Reading map</div>
-        <p>Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.</p>
+        <p id="readingMapText">Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.</p>
       </section>
 
       <section class="notes-block">
@@ -62,13 +65,10 @@
     <section class="chart-panel" aria-label="Interactive memory map">
       <div class="chart-toolbar">
         <div>
-          <h2>Storage time vs efficiency</h2>
-          <p>Click any point or table row to open the paper details and source note.</p>
+          <h2 id="chartTitle">Storage time vs efficiency</h2>
+          <p id="chartDescription">Click any point or table row to open the paper details and source note.</p>
         </div>
-        <div class="toolbar-side">
-          <a class="view-link" href="3d.html" aria-label="Open the interactive three-dimensional literature map">Explore 3D map</a>
-          <div class="mini-legend" id="miniLegend"></div>
-        </div>
+        <div class="mini-legend" id="miniLegend"></div>
       </div>
 
       <div class="chart-wrap">
@@ -98,15 +98,16 @@
       <div class="detail-empty" id="emptyDetail">
         <p class="eyebrow">Selected result</p>
         <h2>Pick a point</h2>
-        <p>The panel will show storage time, efficiency, protocol, ion, host, DOI, Zotero key, and the extraction note.</p>
+        <p>The panel will show storage time, efficiency, working temperature, magnetic field, protocol, ion, host, and separate source locations for performance and experimental conditions.</p>
       </div>
       <article id="detailContent" class="detail-content" hidden></article>
     </aside>
   </main>
 
-  <script src="data.js"></script>
-  <script src="author-index.js"></script>
-  <script src="source-locations.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=20260715a"></script>
+  <script src="author-index.js?v=20260715a"></script>
+  <script src="source-locations.js?v=20260715a"></script>
+  <script src="experimental-conditions.js?v=20260715a"></script>
+  <script src="app.js?v=20260715a"></script>
 </body>
 </html>

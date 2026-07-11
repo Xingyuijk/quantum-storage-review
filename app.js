@@ -3,6 +3,7 @@ const allResults = payload.results;
 const plottedResults = allResults.filter((d) => Number.isFinite(d.storageTimeS) && Number.isFinite(d.efficiencyPct) && d.efficiencyPct > 0);
 const authorIndex = window.QM_AUTHOR_INDEX || {};
 const sourceIndex = window.QM_SOURCE_LOCATIONS || {};
+const conditionIndex = window.QM_EXPERIMENTAL_CONDITIONS || {};
 
 const ION_COLORS = {
   "Eu3+": "#1b6d77",
@@ -32,6 +33,24 @@ const PROTOCOL_COLORS = {
   "material coherence": "#6d7378"
 };
 
+const ER_PROTOCOL_COLORS = {
+  "Two-level AFC": "#1b6d77",
+  "Spin-wave AFC": "#a85f2a",
+  "Stark/on-demand AFC": "#6d5aa8",
+  CRIB: "#2f6f8f",
+  "4-level RASE": "#7a5b2e",
+  "Material coherence": "#6d7378"
+};
+
+const ER_PROTOCOL_ORDER = ["Two-level AFC", "Spin-wave AFC", "Stark/on-demand AFC", "CRIB", "4-level RASE", "Material coherence"];
+const ER_HOST_ORDER = ["Y2SiO5", "LiNbO3", "Silica fiber", "TiO2 / SiN"];
+const ER_HOST_MARKERS = {
+  Y2SiO5: "diamond",
+  LiNbO3: "square",
+  "Silica fiber": "circle",
+  "TiO2 / SiN": "triangle-up"
+};
+
 const PROTOCOL_ORDER = ["AFC", "NLPE", "GEM", "EIT", "CRIB", "4-level RASE", "material coherence"];
 const IMPLEMENTATION_ORDER = ["bulk", "chip"];
 const CAVITY_ORDER = ["fiber microcavity", "bulk cavity", "multi-pass", "nanobeam cavity", "on-chip resonator", "waveguide cavity", "no cavity"];
@@ -41,6 +60,7 @@ const state = {
   search: "",
   yScale: "log",
   recentOnly: false,
+  erFocus: false,
   filters: {
     protocol: new Set(),
     ion: new Set(),
@@ -56,6 +76,9 @@ const detailContent = document.getElementById("detailContent");
 const emptyDetail = document.getElementById("emptyDetail");
 const visibleCount = document.getElementById("visibleCount");
 const totalCount = document.getElementById("totalCount");
+const chartTitle = document.getElementById("chartTitle");
+const chartDescription = document.getElementById("chartDescription");
+const readingMapText = document.getElementById("readingMapText");
 
 const W = 1020;
 const H = 600;
@@ -125,6 +148,27 @@ function protocolGroup(d) {
   return d.protocol || "other";
 }
 
+function erProtocolClass(d) {
+  const protocol = String(d.protocol || "");
+  const normalized = protocol.toLowerCase();
+  if (normalized.includes("spin-wave") || normalized.includes("zefoz")) return "Spin-wave AFC";
+  if (normalized.includes("stark") || normalized.includes("on-demand") || normalized.includes("feed-forward")) return "Stark/on-demand AFC";
+  if (protocol === "AFC" || protocol === "SMAFC") return "Two-level AFC";
+  if (protocol === "CRIB") return "CRIB";
+  if (protocol === "4-level RASE") return "4-level RASE";
+  if (protocol === "material coherence") return "Material coherence";
+  return protocol || "Other";
+}
+
+function erHostGroup(d) {
+  const value = String(d.host || "").toLowerCase();
+  if (value.includes("y2sio5")) return "Y2SiO5";
+  if (value.includes("linbo3")) return "LiNbO3";
+  if (value.includes("fiber") || value.includes("fibre") || value.includes("silica")) return "Silica fiber";
+  if (value.includes("tio2") || value.includes("sin")) return "TiO2 / SiN";
+  return d.host || "Other host";
+}
+
 function implementationGroup(d) {
   return ["integrated chip", "integrated membrane", "integrated waveguide", "nanophotonic resonator", "nanophotonic waveguide"].includes(d.architecture) ? "chip" : "bulk";
 }
@@ -158,6 +202,12 @@ function protocolLabel(d) {
   return group === d.protocol ? group : `${group} (${d.protocol})`;
 }
 
+function chartProtocolLabel(d) {
+  if (!state.erFocus) return protocolLabel(d);
+  const group = erProtocolClass(d);
+  return group === d.protocol ? group : `${group} (${d.protocol})`;
+}
+
 function normalizeSearch(value) {
   return String(value ?? "")
     .toLowerCase()
@@ -178,6 +228,7 @@ function timeLabel(value) {
 }
 
 function colorFor(d) {
+  if (state.erFocus) return ER_PROTOCOL_COLORS[erProtocolClass(d)] || "#596067";
   return ION_COLORS[d.ion] || "#596067";
 }
 
@@ -191,6 +242,10 @@ function authorMeta(d) {
 
 function sourceMeta(d) {
   return sourceIndex[d.id] || {};
+}
+
+function conditionMeta(d) {
+  return conditionIndex[d.id] || {};
 }
 
 function authorSearchText(d) {
@@ -224,6 +279,7 @@ function hasCompactToken(text, token) {
 }
 
 function markerShape(d) {
+  if (state.erFocus) return ER_HOST_MARKERS[erHostGroup(d)] || "hexagon";
   return ION_MARKERS[d.ion] || "circle";
 }
 
@@ -267,6 +323,7 @@ function matchesSearch(d, query) {
 }
 
 function passesFilters(d) {
+  if (state.erFocus && d.ion !== "Er3+") return false;
   if (state.recentOnly && d.year < 2024) return false;
   if (!matchesSearch(d, state.search)) return false;
   return Object.entries(state.filters).every(([key, values]) => {
@@ -308,15 +365,30 @@ function initFilters() {
   document.getElementById("resetFilters").addEventListener("click", () => {
     state.search = "";
     state.recentOnly = false;
+    state.erFocus = false;
     Object.values(state.filters).forEach((set) => set.clear());
     document.getElementById("searchInput").value = "";
     document.querySelectorAll(".chip, .button-row button").forEach((b) => b.classList.remove("active"));
+    document.getElementById("focusEr").setAttribute("aria-pressed", "false");
     render();
   });
 
   document.getElementById("recentOnly").addEventListener("click", (event) => {
     state.recentOnly = !state.recentOnly;
     event.currentTarget.classList.toggle("active", state.recentOnly);
+    render();
+  });
+
+  document.getElementById("focusEr").addEventListener("click", (event) => {
+    state.erFocus = !state.erFocus;
+    state.search = "";
+    state.recentOnly = false;
+    Object.values(state.filters).forEach((set) => set.clear());
+    document.getElementById("searchInput").value = "";
+    document.querySelectorAll(".chip, #recentOnly").forEach((b) => b.classList.remove("active"));
+    event.currentTarget.classList.toggle("active", state.erFocus);
+    event.currentTarget.setAttribute("aria-pressed", String(state.erFocus));
+    state.selectedId = (state.erFocus ? plottedResults.find((d) => d.ion === "Er3+") : plottedResults[0])?.id || "";
     render();
   });
 }
@@ -362,12 +434,12 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function drawNonAfcAnnotations(data) {
+function drawCategoryAnnotations(data) {
   data
-    .filter((d) => protocolGroup(d) !== "AFC")
+    .filter((d) => state.erFocus ? erProtocolClass(d) !== "Two-level AFC" : protocolGroup(d) !== "AFC")
     .forEach((d) => {
-      const label = protocolGroup(d);
-      const color = protocolColor(label);
+      const label = state.erFocus ? erProtocolClass(d) : protocolGroup(d);
+      const color = state.erFocus ? colorFor(d) : protocolColor(label);
       const x = sx(d.storageTimeS);
       const y = sy(d.efficiencyPct);
       const offset = NON_AFC_LABEL_OFFSETS[d.id] || { dx: 14, dy: -24 };
@@ -386,7 +458,7 @@ function drawNonAfcAnnotations(data) {
 }
 
 function showTooltip(event, d) {
-  tooltip.innerHTML = `<strong>${escapeHtml(d.authors)} ${d.year}</strong><br>${escapeHtml(protocolLabel(d))} | ${escapeHtml(d.ion)}:${escapeHtml(d.host)}<br>${escapeHtml(d.storageTimeLabel)} / ${escapeHtml(d.efficiencyLabel)}`;
+  tooltip.innerHTML = `<strong>${escapeHtml(d.authors)} ${d.year}</strong><br>${escapeHtml(chartProtocolLabel(d))} | ${escapeHtml(d.ion)}:${escapeHtml(d.host)}<br>${escapeHtml(d.storageTimeLabel)} / ${escapeHtml(d.efficiencyLabel)}`;
   const box = svg.parentElement.getBoundingClientRect();
   tooltip.hidden = false;
   tooltip.style.left = "0px";
@@ -445,15 +517,55 @@ function legendMarkerSvg(ion) {
   return `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.4" fill="${fill}"></circle></svg>`;
 }
 
+function legendShapeSvg(shape, fill) {
+  const path = markerPath(shape, 8, 8, 5.4);
+  if (path) return `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="${path}" fill="${fill}"></path></svg>`;
+  return `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.4" fill="${fill}"></circle></svg>`;
+}
+
+function appendLegendPill(container, label, shape, fill) {
+  const pill = document.createElement("span");
+  pill.className = "legend-pill";
+  pill.innerHTML = `<span class="legend-marker">${legendShapeSvg(shape, fill)}</span>${escapeHtml(label)}`;
+  container.appendChild(pill);
+}
+
 function renderLegend() {
   const container = document.getElementById("miniLegend");
+  const focusContainer = document.getElementById("focusLegend");
   container.innerHTML = "";
+  focusContainer.innerHTML = "";
+  if (state.erFocus) {
+    container.hidden = true;
+    focusContainer.hidden = false;
+    const erResults = allResults.filter((d) => d.ion === "Er3+");
+    const plottedEr = plottedResults.filter((d) => d.ion === "Er3+");
+    const protocolClasses = new Set(erResults.map(erProtocolClass));
+    const hostGroups = new Set(plottedEr.map(erHostGroup));
+    const protocolLabelEl = document.createElement("span");
+    protocolLabelEl.className = "legend-label";
+    protocolLabelEl.textContent = "Protocol";
+    focusContainer.appendChild(protocolLabelEl);
+    ER_PROTOCOL_ORDER.filter((value) => protocolClasses.has(value)).forEach((value) => {
+      appendLegendPill(focusContainer, value, "circle", ER_PROTOCOL_COLORS[value] || "#596067");
+    });
+    const lineBreak = document.createElement("span");
+    lineBreak.className = "legend-break";
+    focusContainer.appendChild(lineBreak);
+    const hostLabelEl = document.createElement("span");
+    hostLabelEl.className = "legend-label";
+    hostLabelEl.textContent = "Host";
+    focusContainer.appendChild(hostLabelEl);
+    ER_HOST_ORDER.filter((value) => hostGroups.has(value)).forEach((value) => {
+      appendLegendPill(focusContainer, value, ER_HOST_MARKERS[value] || "hexagon", "#596067");
+    });
+    return;
+  }
+  container.hidden = false;
+  focusContainer.hidden = true;
   Object.keys(ION_COLORS).forEach((ion) => {
     if (!allResults.some((d) => d.ion === ion)) return;
-    const pill = document.createElement("span");
-    pill.className = "legend-pill";
-    pill.innerHTML = `<span class="legend-marker">${legendMarkerSvg(ion)}</span>${escapeHtml(ion)}`;
-    container.appendChild(pill);
+    appendLegendPill(container, ion, markerShape({ ion }), ION_COLORS[ion]);
   });
 }
 
@@ -476,7 +588,7 @@ function renderTable(data) {
     tr.innerHTML = `
       <td>${escapeHtml(d.year)}</td>
       <td>${escapeHtml(d.isotope || d.ion)} / ${escapeHtml(d.host)}</td>
-      <td>${escapeHtml(protocolGroup(d))}</td>
+      <td>${escapeHtml(state.erFocus ? erProtocolClass(d) : protocolGroup(d))}</td>
       <td>${escapeHtml(d.storageTimeLabel)}</td>
       <td>${escapeHtml(d.efficiencyLabel)}</td>
       <td>${escapeHtml(cavityGroup(d))}</td>
@@ -492,13 +604,15 @@ function renderDetail() {
   if (!d) return;
   const meta = authorMeta(d);
   const source = sourceMeta(d);
+  const conditions = conditionMeta(d);
   const fullAuthors = meta.authorsFull || d.authorsFull || d.authors;
   const tags = [
+    state.erFocus ? `host platform: ${erHostGroup(d)}` : "",
     implementationGroup(d),
     implementationGroup(d) !== d.architecture ? `implementation detail: ${d.architecture}` : "",
     cavityGroup(d),
     cavityGroup(d) !== d.cavity ? `cavity detail: ${d.cavity}` : "",
-    protocolGroup(d) !== d.protocol ? `protocol detail: ${d.protocol}` : "",
+    (state.erFocus ? erProtocolClass(d) : protocolGroup(d)) !== d.protocol ? `protocol detail: ${d.protocol}` : "",
     d.inputState ? `input: ${d.inputState}` : "",
     `${d.confidence} confidence`
   ].filter(Boolean);
@@ -513,22 +627,28 @@ function renderDetail() {
     <div class="detail-grid">
       <div class="metric"><span>Storage time</span><strong>${escapeHtml(d.storageTimeLabel)}</strong></div>
       <div class="metric"><span>Efficiency</span><strong>${escapeHtml(d.efficiencyLabel)}</strong></div>
+      <div class="metric"><span>Working temperature</span><strong>${escapeHtml(conditions.temperature || "Not verified")}</strong></div>
+      <div class="metric"><span>Magnetic field</span><strong>${escapeHtml(conditions.magneticField || "Not verified")}</strong></div>
       <div class="metric"><span>Ion / host</span><strong>${escapeHtml(d.isotope || d.ion)} / ${escapeHtml(d.host)}</strong></div>
-      <div class="metric"><span>Protocol</span><strong>${escapeHtml(protocolGroup(d))}</strong></div>
+      <div class="metric"><span>Protocol</span><strong>${escapeHtml(state.erFocus ? erProtocolClass(d) : protocolGroup(d))}</strong></div>
     </div>
     <div class="tag-row">
       ${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
     </div>
     <p class="detail-note">${escapeHtml(d.note)}</p>
+    ${conditions.conditionNote ? `<p class="detail-note"><strong>Condition pairing:</strong> ${escapeHtml(conditions.conditionNote)}</p>` : ""}
     <div class="link-list">
       <span>Authors: ${escapeHtml(fullAuthors)}</span>
       <a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">Open DOI / source page</a>
       <span>DOI: ${escapeHtml(d.doi || "n/a")}</span>
       <span>Zotero key: ${escapeHtml(d.zoteroKey || "not in local library yet")}</span>
       <span>Efficiency definition: ${escapeHtml(d.efficiencyType)}</span>
-      ${source.locator ? `<span><strong>Source location:</strong> ${escapeHtml(source.locator)}</span>` : ""}
-      ${source.extractionMethod ? `<span><strong>Extraction:</strong> ${escapeHtml(source.extractionMethod)}</span>` : ""}
-      ${source.verifiedDate ? `<span><strong>Verified:</strong> ${escapeHtml(source.verifiedDate)}</span>` : ""}
+      ${source.locator ? `<span><strong>Storage time / efficiency source:</strong> ${escapeHtml(source.locator)}</span>` : ""}
+      ${source.extractionMethod ? `<span><strong>Performance extraction:</strong> ${escapeHtml(source.extractionMethod)}</span>` : ""}
+      ${source.verifiedDate ? `<span><strong>Performance verified:</strong> ${escapeHtml(source.verifiedDate)}</span>` : ""}
+      ${conditions.locator ? `<span><strong>Experimental-condition source:</strong> ${escapeHtml(conditions.locator)}</span>` : ""}
+      ${conditions.extractionMethod ? `<span><strong>Condition extraction:</strong> ${escapeHtml(conditions.extractionMethod)}</span>` : ""}
+      ${conditions.verifiedDate ? `<span><strong>Conditions verified:</strong> ${escapeHtml(conditions.verifiedDate)}</span>` : ""}
     </div>
   `;
 }
@@ -540,19 +660,31 @@ function render() {
   if (filteredAll.length && !filteredAll.some((d) => d.id === state.selectedId)) {
     state.selectedId = visible[0]?.id || filteredAll[0].id;
   }
-  totalCount.textContent = plottedResults.length;
+  const focusTotal = state.erFocus ? plottedResults.filter((d) => d.ion === "Er3+").length : plottedResults.length;
+  totalCount.textContent = focusTotal;
   visibleCount.textContent = visible.length;
+
+  chartTitle.textContent = state.erFocus ? "Er3+ quantum-memory subview" : "Storage time vs efficiency";
+  chartDescription.textContent = state.erFocus
+    ? "All erbium hosts and protocols in the dataset. Color encodes protocol class; marker shape encodes host platform."
+    : "Click any point or table row to open the paper details and source note.";
+  readingMapText.textContent = state.erFocus
+    ? "Er3+ focus: color separates two-level AFC, spin-wave AFC, Stark/on-demand control, photon-echo variants, and material coherence; marker shape separates host platforms."
+    : "Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.";
+  svg.setAttribute("aria-label", state.erFocus
+    ? "Erbium quantum-memory map with protocol-class colors and host-platform marker shapes"
+    : "Log-log map of storage time and efficiency");
 
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   drawAxes();
   visible.forEach(drawPoint);
-  drawNonAfcAnnotations(visible.filter((d) => d.confidence !== "low"));
+  drawCategoryAnnotations(visible.filter((d) => d.confidence !== "low"));
+  renderLegend();
   renderTable(visible);
   renderDetail();
 }
 
 initFilters();
-renderLegend();
 renderReviews();
 render();

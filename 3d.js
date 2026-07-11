@@ -2,6 +2,7 @@ const payload3d = window.QM_DATA;
 const all3d = payload3d.results;
 const author3d = window.QM_AUTHOR_INDEX || {};
 const sources3d = window.QM_SOURCE_LOCATIONS || {};
+const conditions3d = window.QM_EXPERIMENTAL_CONDITIONS || {};
 const plotted3d = all3d.filter((d) => Number.isFinite(d.year) && Number.isFinite(d.storageTimeS) && d.storageTimeS > 0 && Number.isFinite(d.efficiencyPct) && d.efficiencyPct > 0);
 
 const COLORS3D = {
@@ -307,6 +308,7 @@ function renderDetail3d() {
   if (!d) return;
   const meta = author3d[d.id] || {};
   const source = sources3d[d.id] || {};
+  const conditions = conditions3d[d.id] || {};
   const tags = [d.isotope || d.ion, d.host, d.protocol, d.architecture, d.cavity, d.inputState, `${d.confidence} confidence`].filter(Boolean);
   detail3d.innerHTML = `
     <div class="detail-heading">
@@ -318,16 +320,22 @@ function renderDetail3d() {
       <div class="metric"><span>Publication year</span><strong>${escape3d(d.year)}</strong></div>
       <div class="metric"><span>Storage time</span><strong>${escape3d(d.storageTimeLabel)}</strong></div>
       <div class="metric"><span>Efficiency</span><strong>${escape3d(d.efficiencyLabel)}</strong></div>
+      <div class="metric"><span>Working temperature</span><strong>${escape3d(conditions.temperature || "Not verified")}</strong></div>
+      <div class="metric"><span>Magnetic field</span><strong>${escape3d(conditions.magneticField || "Not verified")}</strong></div>
       <div class="metric"><span>Protocol family</span><strong>${escape3d(protocolGroup3d(d))}</strong></div>
     </div>
     <div class="tag-row">${tags.map((tag) => `<span class="tag">${escape3d(tag)}</span>`).join("")}</div>
     <p class="detail-note">${escape3d(d.note)}</p>
+    ${conditions.conditionNote ? `<p class="detail-note"><strong>Condition pairing:</strong> ${escape3d(conditions.conditionNote)}</p>` : ""}
     <div class="detail-meta">
       <span><strong>Authors:</strong> ${escape3d(meta.authorsFull || d.authorsFull || d.authors)}</span>
       <span><strong>Efficiency definition:</strong> ${escape3d(d.efficiencyType)}</span>
-      ${source.locator ? `<span><strong>Source location:</strong> ${escape3d(source.locator)}</span>` : ""}
-      ${source.extractionMethod ? `<span><strong>Extraction:</strong> ${escape3d(source.extractionMethod)}</span>` : ""}
-      ${source.verifiedDate ? `<span><strong>Verified:</strong> ${escape3d(source.verifiedDate)}</span>` : ""}
+      ${source.locator ? `<span><strong>Storage time / efficiency source:</strong> ${escape3d(source.locator)}</span>` : ""}
+      ${source.extractionMethod ? `<span><strong>Performance extraction:</strong> ${escape3d(source.extractionMethod)}</span>` : ""}
+      ${source.verifiedDate ? `<span><strong>Performance verified:</strong> ${escape3d(source.verifiedDate)}</span>` : ""}
+      ${conditions.locator ? `<span><strong>Experimental-condition source:</strong> ${escape3d(conditions.locator)}</span>` : ""}
+      ${conditions.extractionMethod ? `<span><strong>Condition extraction:</strong> ${escape3d(conditions.extractionMethod)}</span>` : ""}
+      ${conditions.verifiedDate ? `<span><strong>Conditions verified:</strong> ${escape3d(conditions.verifiedDate)}</span>` : ""}
       <a class="detail-link" href="${escape3d(d.url)}" target="_blank" rel="noreferrer">Open DOI / source page</a>
     </div>
   `;

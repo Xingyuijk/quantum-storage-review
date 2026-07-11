@@ -226,7 +226,7 @@ window.QM_DATA = {
       isotope: "167Er3+",
       host: "Y2SiO5",
       wavelengthNm: 1536,
-      protocol: "AFC",
+      protocol: "AFC / Stark control",
       architecture: "integrated waveguide",
       cavity: "no cavity",
       inputState: "time-bin qubit",
@@ -236,7 +236,7 @@ window.QM_DATA = {
       efficiencyLabel: "10.9 +/- 0.2%",
       efficiencyType: "integrated AFC qubit storage",
       confidence: "high",
-      note: "Telecom-band Er waveguide memory; arXiv text reports 10.9% at 65 ns and 98.3% fidelity."
+      note: "Telecom-band 167Er waveguide memory using Stark-modulated AFC for on-demand retrieval; the original text reports 10.9% at 65 ns and 98.3% fidelity."
     },
     {
       id: "li-2024-er-multidim",
