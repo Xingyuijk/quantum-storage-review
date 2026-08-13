@@ -59,6 +59,14 @@ h1 { font-size: 25px; line-height: 1.12; }
 h2 { font-size: 19px; line-height: 1.25; }
 .subtitle { margin-top: 7px; color: var(--muted); font-size: 13px; }
 
+.updated-line {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: .02em;
+}
+
 .back-link,
 .detail-link {
   color: var(--accent);

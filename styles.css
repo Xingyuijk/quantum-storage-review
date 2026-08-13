@@ -78,6 +78,14 @@ h3 { font-size: 16px; line-height: 1.25; }
 
 .meta-line { margin-top: 9px; }
 
+.updated-line {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: .02em;
+}
+
 .search-box {
   display: grid;
   gap: 6px;
