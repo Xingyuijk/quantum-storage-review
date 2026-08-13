@@ -523,5 +523,20 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv PDF, p. 1 abstract; p. 16, Fig. 8 and adjacent paragraph",
     "extractionMethod": "direct text + figure cross-check",
     "verifiedDate": "2026-07-11"
+  },
+  "li-2026-eucl3-afc-classical": {
+    "locator": "arXiv:2607.28060v1 PDF, p. 2, Fig. 2(b) and adjacent paragraph",
+    "extractionMethod": "direct text + figure cross-check",
+    "verifiedDate": "2026-08-13"
+  },
+  "li-2026-eucl3-afc-weak-coherent": {
+    "locator": "arXiv:2607.28060v1 PDF, p. 2, Fig. 2(b) and adjacent paragraph; Appendix A, p. 9",
+    "extractionMethod": "direct text + figure cross-check",
+    "verifiedDate": "2026-08-13"
+  },
+  "wo-2026-er-cawo4-integrated": {
+    "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
+    "extractionMethod": "direct text + figure cross-check",
+    "verifiedDate": "2026-08-13"
   }
 };

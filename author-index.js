@@ -418,5 +418,17 @@ window.QM_AUTHOR_INDEX = {
   "sanchezmejia-2026-yb-long-afc": {
     "authorsFull": "Theo Sanchez Mejia, Leo Nicolas, A. Gelmini Rodriguez, Philippe Goldner, Mikael Afzelius",
     "searchTerms": "Theo Sanchez Mejia Leo Nicolas A. Gelmini Rodriguez Philippe Goldner Mikael Afzelius"
+  },
+  "li-2026-eucl3-afc-classical": {
+    "authorsFull": "Zongfeng Li, Wanting Xiao, Mucheng Guo, Shuping Liu, Fudong Wang, Manjin Zhong",
+    "searchTerms": "Zongfeng Li Wanting Xiao Mucheng Guo Shuping Liu Fudong Wang Manjin Zhong"
+  },
+  "li-2026-eucl3-afc-weak-coherent": {
+    "authorsFull": "Zongfeng Li, Wanting Xiao, Mucheng Guo, Shuping Liu, Fudong Wang, Manjin Zhong",
+    "searchTerms": "Zongfeng Li Wanting Xiao Mucheng Guo Shuping Liu Fudong Wang Manjin Zhong"
+  },
+  "wo-2026-er-cawo4-integrated": {
+    "authorsFull": "Kah Jen Wo, Pavel A. Dmitriev, Karthik Dasigi, Fumiya Hanamura, Steven Touzard",
+    "searchTerms": "Kah Jen Wo Pavel A. Dmitriev Karthik Dasigi Fumiya Hanamura Steven Touzard"
   }
 };

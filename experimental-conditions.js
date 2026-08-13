@@ -838,5 +838,29 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Original PDF, p. 11, experimental setup",
     "extractionMethod": "direct text",
     "verifiedDate": "2026-07-15"
+  },
+  "li-2026-eucl3-afc-classical": {
+    "temperature": "100 mK",
+    "magneticField": "Not reported",
+    "conditionNote": "The zero-field and 0.11-T values reported in Appendix C belong to separate coherence measurements, not to the paired AFC-efficiency point.",
+    "locator": "arXiv:2607.28060v1 PDF, p. 2, setup and Fig. 2; Appendix A, p. 9",
+    "extractionMethod": "direct text; explicit Not reported after primary-PDF review",
+    "verifiedDate": "2026-08-13"
+  },
+  "li-2026-eucl3-afc-weak-coherent": {
+    "temperature": "100 mK",
+    "magneticField": "Not reported",
+    "conditionNote": "The zero-field and 0.11-T values reported in Appendix C belong to separate coherence measurements, not to the paired AFC-efficiency point.",
+    "locator": "arXiv:2607.28060v1 PDF, p. 2, setup and Fig. 2; Appendix A, p. 9",
+    "extractionMethod": "direct text; explicit Not reported after primary-PDF review",
+    "verifiedDate": "2026-08-13"
+  },
+  "wo-2026-er-cawo4-integrated": {
+    "temperature": "75 mK effective spin temperature",
+    "magneticField": "0.2 T",
+    "conditionNote": "These conditions are paired to the 1.10-ms optical-coherence measurement. The collective cooperativity is reported at zero field, and the 5-s grating-visibility measurement is a separate observable.",
+    "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
+    "extractionMethod": "direct text + figure cross-check",
+    "verifiedDate": "2026-08-13"
   }
 };
