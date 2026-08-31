@@ -91,7 +91,6 @@ report_final="$STATE_DIR/reports/${TODAY}.md"
 if ! "$CODEX_BIN" exec \
     --cd "$SITE_DIR" \
     --sandbox read-only \
-    --search \
     --ephemeral \
     --add-dir "$STATE_DIR" \
     - < "$PROMPT_FILE" > "$report_tmp"; then
@@ -124,4 +123,3 @@ date_tmp="$STATE_DIR/.last-research-date.$$"
 print -r -- "$TODAY" > "$date_tmp"
 /bin/mv -f "$date_tmp" "$LAST_RESEARCH_DATE"
 print -r -- "[$TODAY] research-only updater completed; review $report_final before publishing"
-
