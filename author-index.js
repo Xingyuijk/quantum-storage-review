@@ -430,5 +430,49 @@ window.QM_AUTHOR_INDEX = {
   "wo-2026-er-cawo4-integrated": {
     "authorsFull": "Kah Jen Wo, Pavel A. Dmitriev, Karthik Dasigi, Fumiya Hanamura, Steven Touzard",
     "searchTerms": "Kah Jen Wo Pavel A. Dmitriev Karthik Dasigi Fumiya Hanamura Steven Touzard"
+  },
+  "saglamyurek-2015-er-fiber-entanglement": {
+    "authorsFull": "Erhan Saglamyurek, Jeongwan Jin, Varun B. Verma, Matthew D. Shaw, Francesco Marsili, Sae Woo Nam, Daniel Oblak, Wolfgang Tittel",
+    "searchTerms": "Erhan Saglamyurek Jeongwan Jin Varun B. Verma Matthew D. Shaw Francesco Marsili Sae Woo Nam Daniel Oblak Wolfgang Tittel"
+  },
+  "sabooni-2013-cavity-afc-njp": {
+    "authorsFull": "Mahmood Sabooni, S. Tornibue Kometa, A. Thuresson, Stefan Kröll, Lars Rippe",
+    "searchTerms": "Mahmood Sabooni S. Tornibue Kometa A. Thuresson Stefan Kröll Lars Rippe"
+  },
+  "zhu-2026-metropolitan-node-a": {
+    "authorsFull": "Tian-Xiang Zhu, Chao Zhang, Zhong-Wen Ou, Xiao Liu, Peng-Jun Liang, Xiao-Min Hu, Yun-Feng Huang, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Tian-Xiang Zhu Chao Zhang Zhong-Wen Ou Xiao Liu Peng-Jun Liang Xiao-Min Hu Yun-Feng Huang Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo"
+  },
+  "zhu-2026-metropolitan-node-b": {
+    "authorsFull": "Tian-Xiang Zhu, Chao Zhang, Zhong-Wen Ou, Xiao Liu, Peng-Jun Liang, Xiao-Min Hu, Yun-Feng Huang, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Tian-Xiang Zhu Chao Zhang Zhong-Wen Ou Xiao Liu Peng-Jun Liang Xiao-Min Hu Yun-Feng Huang Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo"
+  },
+  "kaloyeros-2026-er-sic-coherence": {
+    "authorsFull": "Alex Kaloyeros, Natasha Tabassum, Spyros Gallis",
+    "searchTerms": "Alex Kaloyeros Natasha Tabassum Spyros Gallis"
+  },
+  "kolar-2026-er-sic-microring-afc": {
+    "authorsFull": "Alexander Kolar, Ian Chin, Conner Fong, Daniil M. Lukin, Melissa A. Guidry, Milan Palei, Jelena Vučković, Tian Zhong",
+    "searchTerms": "Alexander Kolar Ian Chin Conner Fong Daniil M. Lukin Daniil Lukin Melissa A. Guidry Melissa Guidry Milan Palei Jelena Vučković Jelena Vuckovic Tian Zhong"
+  },
+  "liu-2025-eu-y2o3-ceramic-afc": {
+    "authorsFull": "Shuping Liu, Miaomiao Ren, Wanting Xiao, Jun Wang, Yuting Liu, Diana Serrano, Philippe Goldner, Dingyuan Tang, Xiantong An, Fudong Wang, Manjin Zhong",
+    "searchTerms": "Shuping Liu Miaomiao Ren Wanting Xiao Jun Wang Yuting Liu Diana Serrano Philippe Goldner Dingyuan Tang Xiantong An Fudong Wang Manjin Zhong europium yttrium oxide ceramic"
+  },
+  "akhmedzhanov-2024-nd-ylif4-single-photon": {
+    "authorsFull": "R. A. Akhmedzhanov, L. A. Gushchin, N. A. Nizov, V. A. Nizov, D. A. Sobgayda, I. V. Zelensky",
+    "searchTerms": "R. A. Akhmedzhanov Rinat Akhmedzhanov L. A. Gushchin N. A. Nizov V. A. Nizov D. A. Sobgayda D. A. Sobgaida I. V. Zelensky I. V. Zelenskii"
+  },
+  "akhmedzhanov-2025-nd-ylif4-spdc": {
+    "authorsFull": "R. A. Akhmedzhanov, L. A. Gushchin, I. V. Zelensky, I. Z. Latypov, V. A. Nizov, N. A. Nizov, D. A. Sobgayda",
+    "searchTerms": "R. A. Akhmedzhanov Rinat Akhmedzhanov L. A. Gushchin I. V. Zelensky I. V. Zelenskii I. Z. Latypov V. A. Nizov N. A. Nizov D. A. Sobgayda D. A. Sobgaida"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-250ns": {
+    "authorsFull": "R. A. Akhmedzhanov, L. A. Gushchin, I. V. Zelensky, A. A. Kalachev, I. Z. Latypov, V. A. Nizov, N. A. Nizov, D. A. Sobgayda, D. A. Turaikhanov, N. M. Shafeev, A. V. Shkalikov",
+    "searchTerms": "R. A. Akhmedzhanov Rinat Akhmedzhanov L. A. Gushchin I. V. Zelensky I. V. Zelenskii A. A. Kalachev I. Z. Latypov V. A. Nizov N. A. Nizov D. A. Sobgayda D. A. Sobgaida D. A. Turaikhanov D. A. Turaykhanov N. M. Shafeev A. V. Shkalikov"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-166ns": {
+    "authorsFull": "R. A. Akhmedzhanov, L. A. Gushchin, I. V. Zelensky, A. A. Kalachev, I. Z. Latypov, V. A. Nizov, N. A. Nizov, D. A. Sobgayda, D. A. Turaikhanov, N. M. Shafeev, A. V. Shkalikov",
+    "searchTerms": "R. A. Akhmedzhanov Rinat Akhmedzhanov L. A. Gushchin I. V. Zelensky I. V. Zelenskii A. A. Kalachev I. Z. Latypov V. A. Nizov N. A. Nizov D. A. Sobgayda D. A. Sobgaida D. A. Turaikhanov D. A. Turaykhanov N. M. Shafeev A. V. Shkalikov"
   }
 };

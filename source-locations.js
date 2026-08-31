@@ -538,5 +538,60 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
     "extractionMethod": "direct text + figure cross-check",
     "verifiedDate": "2026-08-13"
+  },
+  "saglamyurek-2015-er-fiber-entanglement": {
+    "locator": "Local Zotero attachment, original PDF, p. 2, Fig. 2(c), caption, and adjacent paragraph",
+    "extractionMethod": "direct text + rendered-figure cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "sabooni-2013-cavity-afc-njp": {
+    "locator": "Local Zotero attachment, original PDF p. 10 (article p. 9), Fig. 5 and adjacent paragraph",
+    "extractionMethod": "direct text + rendered-figure cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "zhu-2026-metropolitan-node-a": {
+    "locator": "Local Zotero attachment (arXiv:2508.17940v2), Supplementary PDF pp. 22-23, Fig. S14 and Table S4",
+    "extractionMethod": "direct text + rendered-figure/table cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "zhu-2026-metropolitan-node-b": {
+    "locator": "Local Zotero attachment (arXiv:2508.17940v2), Supplementary PDF pp. 22-23, Fig. S15 and Table S4",
+    "extractionMethod": "direct text + rendered-figure/table cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "kaloyeros-2026-er-sic-coherence": {
+    "locator": "Local Zotero attachment, arXiv:2601.11879 preprint PDF, p. 8, Fig. 4E discussion",
+    "extractionMethod": "direct text + rendered-page cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "kolar-2026-er-sic-microring-afc": {
+    "locator": "arXiv:2607.01324v2 primary HTML, Results, Fig. 2(c) and paragraph reporting the standalone-memory benchmark",
+    "extractionMethod": "direct original-text extraction + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "liu-2025-eu-y2o3-ceramic-afc": {
+    "locator": "Publisher full-text PDF, p. 4, 'Coherent light storage demonstration,' Fig. 4 and caption",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2024-nd-ylif4-single-photon": {
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' Fig. 4 and the adjacent efficiency paragraph",
+    "extractionMethod": "direct publisher-full-text extraction + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-nd-ylif4-spdc": {
+    "locator": "Publisher full-text HTML, section 2 'EXPERIMENT,' Fig. 4 and adjacent paragraphs",
+    "extractionMethod": "direct publisher-full-text extraction + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-250ns": {
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' Fig. 3 and adjacent efficiency-definition paragraph",
+    "extractionMethod": "direct publisher-full-text extraction + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-166ns": {
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' Fig. 4 and adjacent efficiency-definition paragraph",
+    "extractionMethod": "direct publisher-full-text extraction + figure-caption cross-check",
+    "verifiedDate": "2026-08-14"
   }
 };

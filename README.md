@@ -2,7 +2,7 @@
 
 Static first version of an interactive quantum-storage survey page.
 
-Current local snapshot: 108 result entries, 98 plotted points, 87 distinct paper titles, and 4 review seeds.
+Current local snapshot: 119 result entries, 108 plotted points, 96 distinct paper titles, and 4 review seeds.
 
 ## Open locally
 
@@ -16,34 +16,41 @@ The interactive three-dimensional map is available at `http://127.0.0.1:8765/3d.
 
 The 2D page also provides an `Actions -> Focus on Er3+` subview. It keeps every erbium record in the dataset, including entries whose isotope is not specified, so host/platform coverage is not silently discarded. In this mode, color encodes the detailed protocol class (two-level AFC, spin-wave AFC, Stark/on-demand AFC, CRIB, 4-level RASE, or material coherence), while marker shape encodes the host/platform family. The isotope field remains visible in the table and detail panel, allowing explicitly identified `167Er3+` results to be distinguished from isotope-unspecified Er records.
 
-## Automated literature maintenance
+## Codex CLI and literature maintenance
 
-The macOS LaunchAgent checks every 600 seconds while the user is logged in. A successful run is recorded by local date and the updater exits on later checks that day, so the website is updated at most once per day. A failed run does not advance the success marker and is retried on a later check. A lock prevents concurrent runs.
+This repository is the canonical source and deployment checkout. Codex CLI reads the project rules from
+`AGENTS.md` and the repository defaults from `.codex/config.toml`. Credentials are kept in `CODEX_HOME`
+and are never stored in this repository.
 
-Each run follows this order:
+The macOS LaunchAgent runs `automation/run-daily-update.sh` once per day as a **research-only** task. It
+performs a complete read-only Zotero metadata scan, searches the external discovery channels, and writes
+a dated candidate report under the external automation-state directory. It never edits, commits, or pushes
+the website. A lock and a research-date checkpoint prevent duplicate runs; a failed run does not advance
+the checkpoint.
 
-1. Read this README, the parent project's local `QUANTUM_STORAGE_REVIEW_HANDOFF.md`, the previous daily report, and the current site data.
-2. Require Zotero Desktop's read-only local API and fetch every page of top-level library metadata. Save a complete current snapshot and compare it with the last successfully processed snapshot.
-3. Review Zotero items that are new or modified since the last successful scan first. If no successful Zotero baseline exists—for example, earlier runs could not reach Zotero—review all scope-relevant items so previously unread portions are recovered. Then search the full snapshot again; the automatic relevance list is only a prioritization hint.
-4. Search external discovery channels independently: arXiv, Crossref/OpenAlex, current journal pages, review references, stable author identities and co-author networks, and forward/backward citation links.
-5. Merge candidates and de-duplicate by DOI, then arXiv ID, then normalized title and authors. An older paper newly added to Zotero is still a candidate; the external date window must not hide literature that the user's evolving Zotero library has newly exposed.
-6. Inspect original full text before publishing a result. Prefer a local Zotero PDF, then arXiv, publisher full text/supplement, or an author-hosted manuscript. Title or abstract alone is not enough for a plotted result.
-7. Require storage time and efficiency to come from the same device, protocol, input state, and experimental condition. Never combine the longest time from one trace with the best efficiency from another. Keep total, internal, AFC echo, spin-wave, conditional, RASE rephasing, and material-only quantities explicitly distinguished.
-8. Update `data.js`, `author-index.js`, `source-locations.js`, and `experimental-conditions.js` together. Every result needs a unique ID, full author indexing, a primary-source locator, paired temperature/field evidence (or explicit `Not reported`), and a verification date.
-9. Run the data validator. Only after successful validation are the allowed website files copied to the deployment repository, committed, and pushed to GitHub Pages. The 2D and 3D headers are then dated `Updated to YYYY-MM-DD`.
-10. Write a daily audit report listing the search window, Zotero library version and item counts, Zotero keys reviewed, external sources queried, inclusions/exclusions, evidence blockers, site changes, and validation result.
+Zotero Desktop must be running with **Settings → Advanced → Allow other applications on this computer to
+communicate with Zotero** enabled. If the local API or any pagination page is unavailable, the scan fails
+and retries later. Zotero records are never created, edited, tagged, moved, or deleted.
 
-Zotero access is read-only during automatic maintenance. The updater never adds, edits, tags, moves, or deletes Zotero records. The successful Zotero checkpoint is advanced only after the whole website update succeeds; if research, validation, copying, Git, or deployment fails, the next run scans the full library again and retains the previous successful baseline.
+After reviewing the candidate report and the working-tree diff, publish manually:
 
-Zotero Desktop must be running with **Settings → Advanced → Allow other applications on this computer to communicate with Zotero** enabled. If the local API or any pagination page is unavailable, that day's maintenance run fails and retries later instead of silently skipping Zotero.
+```bash
+./automation/publish-site.sh
+git status --short --branch
+git add <reviewed website files>
+git commit -m "Describe the reviewed change"
+git push origin main
+```
 
-The visible `Updated to` date means that the Zotero scan, external discovery, evidence review, validation, and deployment completed successfully through that local date. It does not necessarily mean a new paper was added.
+The `Updated to` date is changed only as part of a reviewed publication. The visible data counts describe
+the current canonical source; the migration audit outside this repository records any still-unreviewed
+difference from the older deployed snapshot.
 
 ## Data model
 
 Edit `data.js`. Each `results` item is one experimental result or literature record, not necessarily one paper or plotted point. A single paper may contribute multiple points when it reports distinct storage conditions. Important papers without a directly paired storage time and total efficiency remain searchable and visible in the table, but are not plotted.
 
-Verified evidence locators are stored separately in `source-locations.js`, keyed by result ID. Each entry records the original PDF or publisher-full-text location, extraction method, and verification date. The current local snapshot covers all 108 result records; multiple results from one paper retain result-specific locations when the reported conditions differ.
+Verified evidence locators are stored separately in `source-locations.js`, keyed by result ID. Each entry records the original PDF or publisher-full-text location, extraction method, and verification date. The current local snapshot covers all 119 result records; multiple results from one paper retain result-specific locations when the reported conditions differ.
 
 Working temperature and magnetic field are stored separately in `experimental-conditions.js`, also keyed by result ID. Every record includes a condition-specific source location, extraction method, and verification date. When one paper reports several measurements, `conditionNote` states which temperature/field pair belongs to the storage time and efficiency shown in that result; unrelated characterization conditions are explicitly excluded rather than silently merged.
 

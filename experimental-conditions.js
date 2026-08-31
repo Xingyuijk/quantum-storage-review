@@ -862,5 +862,93 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
     "extractionMethod": "direct text + figure cross-check",
     "verifiedDate": "2026-08-13"
+  },
+  "saglamyurek-2015-er-fiber-entanglement": {
+    "temperature": "approximately 1 K",
+    "magneticField": "approximately 600 G",
+    "conditionNote": "These are the operating conditions of the erbium-doped fiber memory used for the paired 5-ns entangled-photon result.",
+    "locator": "Local Zotero attachment, original PDF, p. 2 setup; p. 4 Methods",
+    "extractionMethod": "direct text",
+    "verifiedDate": "2026-08-14"
+  },
+  "sabooni-2013-cavity-afc-njp": {
+    "temperature": "2.1 K",
+    "magneticField": "Not reported",
+    "conditionNote": "No magnetic-field value was identified in the inspected full text.",
+    "locator": "Local Zotero attachment, original PDF p. 6 (article p. 5), experimental setup",
+    "extractionMethod": "direct text; explicit Not reported after full-PDF review",
+    "verifiedDate": "2026-08-14"
+  },
+  "zhu-2026-metropolitan-node-a": {
+    "temperature": "approximately 3 K",
+    "magneticField": "Zero applied magnetic field",
+    "conditionNote": "Node A operated under the same zero-field, approximately 3-K memory conditions as the paired 100-us internal-efficiency measurement.",
+    "locator": "Local Zotero attachment (arXiv:2508.17940v2), Supplementary PDF pp. 20-21, Figs. S11-S12",
+    "extractionMethod": "direct text + rendered-figure cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "zhu-2026-metropolitan-node-b": {
+    "temperature": "approximately 3 K",
+    "magneticField": "Zero applied magnetic field",
+    "conditionNote": "Node B operated under the same zero-field, approximately 3-K memory conditions as the paired 100-us internal-efficiency measurement.",
+    "locator": "Local Zotero attachment (arXiv:2508.17940v2), Supplementary PDF pp. 20-21, Figs. S11-S12",
+    "extractionMethod": "direct text + rendered-figure cross-check",
+    "verifiedDate": "2026-08-14"
+  },
+  "kaloyeros-2026-er-sic-coherence": {
+    "temperature": "Room temperature (ambient conditions)",
+    "magneticField": "Not reported",
+    "conditionNote": "The reported 568-us value is a single-ion optical-coherence measurement, not a storage-efficiency point. No magnetic-field value was identified for this measurement in the inspected full text.",
+    "locator": "Local Zotero attachment, arXiv:2601.11879 preprint PDF, p. 8, Fig. 4E discussion",
+    "extractionMethod": "direct text + rendered-page cross-check; explicit Not reported after full-PDF review",
+    "verifiedDate": "2026-08-14"
+  },
+  "kolar-2026-er-sic-microring-afc": {
+    "temperature": "7 mK refrigerator base temperature",
+    "magneticField": "1.238 T along the crystal D1 axis",
+    "conditionNote": "These are the operating conditions stated for the bonded memory device and all AFC storage experiments in the main text; the 1-us, 7.7% point uses the hyperfine-initialized condition.",
+    "locator": "arXiv:2607.01324v2 primary HTML, Results memory-device paragraph and Methods, 'Quantum memory preparation and characterization'",
+    "extractionMethod": "direct original-text extraction",
+    "verifiedDate": "2026-08-14"
+  },
+  "liu-2025-eu-y2o3-ceramic-afc": {
+    "temperature": "Not reported",
+    "magneticField": "Not reported",
+    "conditionNote": "The accessible publisher full text does not assign an exact temperature or magnetic field to the 0.5-us, 0.11% AFC run. The dilution-fridge base capability and the temperature/field values of separate coherence scans are not treated as memory conditions.",
+    "locator": "Publisher full-text PDF, pp. 4-5, 'Coherent light storage demonstration' and Methods; exact AFC temperature and field are not stated in the accessible main article",
+    "extractionMethod": "direct publisher-PDF review; explicit Not reported without inferring from separate characterization",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2024-nd-ylif4-single-photon": {
+    "temperature": "approximately 4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The publisher full text assigns approximately 4 K to the 143Nd3+:Y7LiF4 crystal used for the paired single-photon-level AFC run; no magnetic-field value is reported.",
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' experimental-setup paragraph and Fig. 1; magnetic-field terms absent from the full article",
+    "extractionMethod": "direct publisher-full-text review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-nd-ylif4-spdc": {
+    "temperature": "approximately 4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The publisher full text assigns approximately 4 K to the 143Nd3+:Y7LiF4 crystal used with the matched SPDC source; no magnetic-field value is reported.",
+    "locator": "Publisher full-text HTML, section 2 'EXPERIMENT,' experimental-setup paragraph and Fig. 1; magnetic-field terms absent from the full article",
+    "extractionMethod": "direct publisher-full-text review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-250ns": {
+    "temperature": "approximately 4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The 0.1-at-% 153Eu3+:Y2SiO5 memory crystal is operated in a nonresonant double-pass geometry. The cavity described in the paper belongs to the photon-pair source, not the memory; no memory magnetic field is reported.",
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' memory-crystal and double-pass setup paragraphs; magnetic-field terms absent from the full article",
+    "extractionMethod": "direct publisher-full-text review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-08-14"
+  },
+  "akhmedzhanov-2025-eu-yso-spdc-166ns": {
+    "temperature": "approximately 4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The 0.1-at-% 153Eu3+:Y2SiO5 memory crystal is operated in a nonresonant double-pass geometry. The cavity described in the paper belongs to the photon-pair source, not the memory; no memory magnetic field is reported.",
+    "locator": "Publisher full-text HTML, 'EXPERIMENT,' memory-crystal and double-pass setup paragraphs; magnetic-field terms absent from the full article",
+    "extractionMethod": "direct publisher-full-text review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-08-14"
   }
 };
