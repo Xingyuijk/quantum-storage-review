@@ -950,5 +950,21 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Publisher full-text HTML, 'EXPERIMENT,' memory-crystal and double-pass setup paragraphs; magnetic-field terms absent from the full article",
     "extractionMethod": "direct publisher-full-text review; explicit Not reported after full-text search",
     "verifiedDate": "2026-08-14"
+  },
+  "rodriguez-2026-yb-entangled-125us": {
+    "temperature": "approximately 3 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The approximately 3-K, four-pass 171Yb3+:Y2SiO5 device is the same memory used for the 125-us entangled-photon storage and the measured efficiency curve. No magnetic-field value is stated in the inspected main paper or Methods.",
+    "locator": "Local Zotero attachment (arXiv:2608.13177v1), PDF p. 2 experimental setup and p. 7 Methods, 'The 171Yb3+:Y2SiO5 quantum memory'",
+    "extractionMethod": "direct text; explicit Not reported after full-PDF magnetic-field search",
+    "verifiedDate": "2026-09-01"
+  },
+  "ulanowski-2026-er-nuclear-spin-coherence": {
+    "temperature": "1.72 +/- 0.01 K",
+    "magneticField": "6.8 T along the crystal b-axis",
+    "conditionNote": "These are the stated operating conditions for the single-ion nuclear-spin lifetime and coherence measurements, including the 64-pulse dynamical-decoupling result.",
+    "locator": "Publisher PDF, p. 2 Results and p. 4 nuclear-spin-qubit-coherence section",
+    "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
+    "verifiedDate": "2026-09-01"
   }
 };

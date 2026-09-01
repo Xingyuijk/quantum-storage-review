@@ -474,5 +474,13 @@ window.QM_AUTHOR_INDEX = {
   "akhmedzhanov-2025-eu-yso-spdc-166ns": {
     "authorsFull": "R. A. Akhmedzhanov, L. A. Gushchin, I. V. Zelensky, A. A. Kalachev, I. Z. Latypov, V. A. Nizov, N. A. Nizov, D. A. Sobgayda, D. A. Turaikhanov, N. M. Shafeev, A. V. Shkalikov",
     "searchTerms": "R. A. Akhmedzhanov Rinat Akhmedzhanov L. A. Gushchin I. V. Zelensky I. V. Zelenskii A. A. Kalachev I. Z. Latypov V. A. Nizov N. A. Nizov D. A. Sobgayda D. A. Sobgaida D. A. Turaikhanov D. A. Turaykhanov N. M. Shafeev A. V. Shkalikov"
+  },
+  "rodriguez-2026-yb-entangled-125us": {
+    "authorsFull": "Angelo Gelmini Rodriguez, Louis Nicolas, Theo Sanchez Mejia, Pavel Sekatski, Nicolas Brunner, Towsif Taher, Rob Thew, Philippe Goldner, Mikael Afzelius",
+    "searchTerms": "Angelo Gelmini Rodriguez Angelo Gelmini Rodríguez Louis Nicolas Theo Sanchez Mejia Théo Sanchez Mejia Pavel Sekatski Nicolas Brunner Towsif Taher Rob Thew Philippe Goldner Mikael Afzelius"
+  },
+  "ulanowski-2026-er-nuclear-spin-coherence": {
+    "authorsFull": "Alexander Ulanowski, Johannes Früh, Fabian Salamon, Adrian Holzäpfel, Andreas Reiserer",
+    "searchTerms": "Alexander Ulanowski Johannes Früh Johannes Fruh Fabian Salamon Adrian Holzäpfel Adrian Holzaepfel Andreas Reiserer"
   }
 };

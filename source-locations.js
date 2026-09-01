@@ -593,5 +593,15 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "Publisher full-text HTML, 'EXPERIMENT,' Fig. 4 and adjacent efficiency-definition paragraph",
     "extractionMethod": "direct publisher-full-text extraction + figure-caption cross-check",
     "verifiedDate": "2026-08-14"
+  },
+  "rodriguez-2026-yb-entangled-125us": {
+    "locator": "Local Zotero attachment (arXiv:2608.13177v1), PDF pp. 2-3, Fig. 1(f) and quantum-memory characterization paragraph; p. 6, Table I",
+    "extractionMethod": "direct text + same-curve fit calculation + rendered figure/table cross-check",
+    "verifiedDate": "2026-09-01"
+  },
+  "ulanowski-2026-er-nuclear-spin-coherence": {
+    "locator": "Publisher PDF, p. 4, Fig. 4(d) and adjacent nuclear-spin-qubit-coherence paragraph",
+    "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
+    "verifiedDate": "2026-09-01"
   }
 };
