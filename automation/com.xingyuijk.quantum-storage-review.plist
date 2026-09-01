@@ -35,7 +35,7 @@
     <key>LC_ALL</key>
     <string>en_US.UTF-8</string>
     <key>QUANTUM_STORAGE_AUTOMATION_STATE</key>
-    <string>/Users/xiangrikui/Library/Application Support/quantum-storage-review-updater</string>
+    <string>/Users/xiangrikui/Library/quantum-storage-review/automation-state</string>
   </dict>
   <key>StandardOutPath</key>
   <string>/Users/xiangrikui/Library/Logs/quantum-storage-review-launchd.log</string>

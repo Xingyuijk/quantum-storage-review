@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_PATH="${0:A}"
 SITE_DIR="${SCRIPT_PATH:h:h}"
 WORKSPACE_DIR="${SITE_DIR:h}"
-STATE_DIR="${QUANTUM_STORAGE_AUTOMATION_STATE:-/Users/xiangrikui/Library/Application Support/quantum-storage-review-updater}"
+STATE_DIR="${QUANTUM_STORAGE_AUTOMATION_STATE:-/Users/xiangrikui/Library/quantum-storage-review/automation-state}"
 NODE_BIN="${NODE_BIN:-/opt/homebrew/bin/node}"
 GIT_BIN="${GIT_BIN:-/usr/bin/git}"
 CODEX_BIN="${CODEX_BIN:-/opt/homebrew/bin/codex}"
@@ -17,15 +17,19 @@ ZOTERO_SCANNER="$AUTOMATION_DIR/scan-zotero-library.mjs"
 TRIAGE_REPORTER="$AUTOMATION_DIR/build-triage-report.mjs"
 DAILY_PROMPT="$AUTOMATION_DIR/daily-update.prompt.md"
 HISTORY_WRITER="$AUTOMATION_DIR/write-research-history.mjs"
+REPORT_DIR="$STATE_DIR/reports"
+LOG_DIR="$STATE_DIR/logs"
+ZOTERO_DIR="$STATE_DIR/zotero"
+CHECKPOINT_DIR="$STATE_DIR/checkpoints"
 LOCK_DIR="$STATE_DIR/run.lock"
-RUN_LOG="$STATE_DIR/runner.log"
-HISTORY_LOG="$STATE_DIR/research-history.log"
-LAST_RESEARCH_DATE="$STATE_DIR/last-research-date"
-BASELINE_SNAPSHOT="$STATE_DIR/zotero/last-research-snapshot.json"
+RUN_LOG="$LOG_DIR/runner.log"
+HISTORY_LOG="$LOG_DIR/research-history.log"
+LAST_RESEARCH_DATE="$CHECKPOINT_DIR/last-research-date"
+BASELINE_SNAPSHOT="$ZOTERO_DIR/last-research-snapshot.json"
 PRE_RUN_DATA="$STATE_DIR/.pre-run-data.$$"
 TODAY=$(/bin/date +%F)
 
-mkdir -p "$STATE_DIR/reports" "$STATE_DIR/zotero"
+mkdir -p "$REPORT_DIR" "$LOG_DIR" "$ZOTERO_DIR" "$CHECKPOINT_DIR"
 
 write_history() {
   local run_status="$1"
@@ -46,6 +50,7 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "auto_push=$AUTO_PUSH"
   print -r -- "cadence=${RESEARCH_INTERVAL_DAYS} calendar days; hourly retry polling"
   print -r -- "zotero_baseline=$BASELINE_SNAPSHOT"
+  print -r -- "reports=$REPORT_DIR"
   print -r -- "history_log=$HISTORY_LOG"
   print -r -- "poll_interval=3600 seconds; successful runs are spaced by ${RESEARCH_INTERVAL_DAYS} calendar days"
   exit 0
@@ -141,11 +146,11 @@ QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
   "$NODE_BIN" "$ZOTERO_SCANNER" "$STATE_DIR"
 
 base_head="$($GIT_BIN -C "$SITE_DIR" rev-parse HEAD)"
-report_tmp="$STATE_DIR/reports/.${TODAY}.$$"
-report_final="$STATE_DIR/reports/${TODAY}.md"
+report_tmp="$REPORT_DIR/.${TODAY}.$$"
+report_final="$REPORT_DIR/${TODAY}.md"
 "$NODE_BIN" "$TRIAGE_REPORTER" "$STATE_DIR" "$SITE_DIR" > "$report_tmp"
 
-codex_report_tmp="$STATE_DIR/reports/.${TODAY}.$$-codex.md"
+codex_report_tmp="$REPORT_DIR/.${TODAY}.$$-codex.md"
 if ! "$CODEX_BIN" exec \
   --model "$CODEX_MODEL" \
   --cd "$SITE_DIR" \
@@ -194,7 +199,7 @@ if [[ -n "$unexpected_status" ]]; then
   exit 1
 fi
 
-report_with_header="$STATE_DIR/reports/.${TODAY}.$$.md"
+report_with_header="$REPORT_DIR/.${TODAY}.$$.md"
 {
   print -r -- "# Quantum-storage-review research scan — $TODAY"
   print -r -- ""
@@ -233,10 +238,10 @@ write_history success "model=$CODEX_MODEL auto_push=$AUTO_PUSH" "$PRE_RUN_DATA"
 
 /bin/rm -f "$report_tmp" "$codex_report_tmp"
 
-snapshot_tmp="$STATE_DIR/zotero/.last-research-snapshot.$$"
-/bin/cp "$STATE_DIR/zotero/current-snapshot.json" "$snapshot_tmp"
+snapshot_tmp="$ZOTERO_DIR/.last-research-snapshot.$$"
+/bin/cp "$ZOTERO_DIR/current-snapshot.json" "$snapshot_tmp"
 /bin/mv -f "$snapshot_tmp" "$BASELINE_SNAPSHOT"
-date_tmp="$STATE_DIR/.last-research-date.$$"
+date_tmp="$CHECKPOINT_DIR/.last-research-date.$$"
 print -r -- "$TODAY" > "$date_tmp"
 /bin/mv -f "$date_tmp" "$LAST_RESEARCH_DATE"
 print -r -- "[$TODAY] updater completed; report=$report_final auto_push=$AUTO_PUSH"

@@ -42,6 +42,8 @@ Zotero snapshot, invokes `gpt-5.6-sol` for full-text/web research, and may updat
 data files. The wrapper validates, commits, and pushes automatically when `AUTO_PUSH=1` (the LaunchAgent
 setting). It never lets the model commit or push. Set `AUTO_PUSH=0` for a manual dry run or recovery, then
 use `automation/publish-site.sh` to validate the working tree.
+Runtime reports and logs are stored under the project root's `automation-state/` directory, separated into
+`reports/`, `logs/`, `zotero/`, and `checkpoints/`.
 Never force-push or amend history.
 
 ## Migration guard

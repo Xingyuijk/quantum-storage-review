@@ -11,7 +11,8 @@ if (!stateDirArg || !siteDirArg || !status || !timestamp) {
 
 const stateDir = path.resolve(stateDirArg);
 const siteDir = path.resolve(siteDirArg);
-const historyPath = path.join(stateDir, "research-history.log");
+const historyDir = path.join(stateDir, "logs");
+const historyPath = path.join(historyDir, "research-history.log");
 
 function clean(value) {
   return String(value ?? "")
@@ -61,6 +62,6 @@ if (status === "success") {
   line = `${timestamp} | ${clean(status)}${reason ? ` | ${clean(reason)}` : ""}`;
 }
 
-fs.mkdirSync(stateDir, { recursive: true });
+fs.mkdirSync(historyDir, { recursive: true });
 fs.appendFileSync(historyPath, `${line}\n`, "utf8");
 console.log(line);

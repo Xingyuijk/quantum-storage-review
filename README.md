@@ -29,8 +29,10 @@ only the four synchronized data files after primary-text evidence review. The wr
 updates the visible date after every successful research cycle, commits, and pushes automatically. A lock, remote fast-forward
 check, and cadence checkpoint prevent duplicate or conflicting runs; a failed run does not advance the
 checkpoint. The dated report is retained outside the repository as the audit trail.
-Each run also appends a concise summary to `~/Library/Application Support/quantum-storage-review-updater/research-history.log`,
-including whether it was skipped, failed, or succeeded and which result IDs/titles were newly added.
+Each run appends a concise summary to `automation-state/logs/research-history.log`, including whether it was
+skipped, failed, or succeeded and which result IDs/titles were newly added. Dated reports are kept in
+`automation-state/reports/`; Zotero snapshots and cadence checkpoints are kept in `automation-state/zotero/`
+and `automation-state/checkpoints/` respectively.
 
 Zotero Desktop must be running with **Settings → Advanced → Allow other applications on this computer to
 communicate with Zotero** enabled. If the local API or any pagination page is unavailable, the scan fails
