@@ -19,8 +19,6 @@ BASELINE_SNAPSHOT="$STATE_DIR/zotero/last-research-snapshot.json"
 TODAY=$(/bin/date +%F)
 
 mkdir -p "$STATE_DIR/reports" "$STATE_DIR/zotero"
-exec >> "$RUN_LOG" 2>&1
-print -r -- "[$(/bin/date '+%Y-%m-%d %H:%M:%S %z')] research-only updater started"
 
 if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "site=$SITE_DIR"
@@ -31,6 +29,15 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "interval=86400 seconds (LaunchAgent may poll more frequently)"
   exit 0
 fi
+
+if [[ -f "$RUN_LOG" ]]; then
+  log_bytes=$(/usr/bin/stat -f %z "$RUN_LOG" 2>/dev/null || print 0)
+  if (( log_bytes > 10 * 1024 * 1024 )); then
+    /bin/mv "$RUN_LOG" "$RUN_LOG.$TODAY"
+  fi
+fi
+exec >> "$RUN_LOG" 2>&1
+print -r -- "[$(/bin/date '+%Y-%m-%d %H:%M:%S %z')] research-only updater started"
 
 if [[ -f "$LAST_RESEARCH_DATE" ]] && [[ "$(<"$LAST_RESEARCH_DATE")" == "$TODAY" ]]; then
   print -r -- "[$TODAY] research report already completed; exiting"
