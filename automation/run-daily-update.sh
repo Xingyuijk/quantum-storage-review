@@ -5,13 +5,12 @@ SCRIPT_PATH="${0:A}"
 SITE_DIR="${SCRIPT_PATH:h:h}"
 WORKSPACE_DIR="${SITE_DIR:h}"
 STATE_DIR="${QUANTUM_STORAGE_AUTOMATION_STATE:-/Users/xiangrikui/Library/Application Support/quantum-storage-review-updater}"
-CODEX_BIN="${CODEX_BIN:-/opt/homebrew/bin/codex}"
 NODE_BIN="${NODE_BIN:-/opt/homebrew/bin/node}"
 GIT_BIN="${GIT_BIN:-/usr/bin/git}"
 
 AUTOMATION_DIR="$SITE_DIR/automation"
-PROMPT_FILE="$AUTOMATION_DIR/daily-update.prompt.md"
 ZOTERO_SCANNER="$AUTOMATION_DIR/scan-zotero-library.mjs"
+TRIAGE_REPORTER="$AUTOMATION_DIR/build-triage-report.mjs"
 LOCK_DIR="$STATE_DIR/run.lock"
 RUN_LOG="$STATE_DIR/runner.log"
 LAST_RESEARCH_DATE="$STATE_DIR/last-research-date"
@@ -66,19 +65,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
-if [[ -z "${CODEX_HOME:-}" ]]; then
-  print -r -- "CODEX_HOME is not set; scheduled Codex identity is undefined"
-  exit 1
-fi
-if [[ ! -x "$CODEX_BIN" || ! -x "$NODE_BIN" ]]; then
-  print -r -- "required Codex or Node executable is missing"
+if [[ ! -x "$NODE_BIN" ]]; then
+  print -r -- "required Node executable is missing"
   exit 1
 fi
 if [[ ! -d "$SITE_DIR/.git" ]]; then
   print -r -- "canonical site Git repository is missing: $SITE_DIR"
   exit 1
 fi
-if [[ ! -r "$PROMPT_FILE" || ! -r "$ZOTERO_SCANNER" ]]; then
+if [[ ! -r "$ZOTERO_SCANNER" || ! -r "$TRIAGE_REPORTER" ]]; then
   print -r -- "research support files are missing or unreadable"
   exit 1
 fi
@@ -95,40 +90,7 @@ QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
 
 report_tmp="$STATE_DIR/reports/.${TODAY}.$$"
 report_final="$STATE_DIR/reports/${TODAY}.md"
-run_codex_with_timeout() {
-  local timeout_seconds="${RESEARCH_TIMEOUT_SECONDS:-300}"
-  local codex_pid
-  local started_at=$SECONDS
-
-  "$CODEX_BIN" exec \
-      --cd "$SITE_DIR" \
-      --sandbox read-only \
-      --ephemeral \
-      --add-dir "$STATE_DIR" \
-      - < "$PROMPT_FILE" > "$report_tmp" &
-  codex_pid=$!
-
-  while /bin/kill -0 "$codex_pid" 2>/dev/null; do
-    if (( SECONDS - started_at >= timeout_seconds )); then
-      print -r -- "Codex research task exceeded ${timeout_seconds}s; terminating it"
-      /usr/bin/pkill -TERM -P "$codex_pid" 2>/dev/null || true
-      /bin/kill -TERM "$codex_pid" 2>/dev/null || true
-      /bin/sleep 2
-      /usr/bin/pkill -KILL -P "$codex_pid" 2>/dev/null || true
-      /bin/kill -KILL "$codex_pid" 2>/dev/null || true
-      wait "$codex_pid" 2>/dev/null || true
-      return 124
-    fi
-    /bin/sleep 2
-  done
-  wait "$codex_pid"
-}
-
-if ! run_codex_with_timeout; then
-  /bin/rm -f "$report_tmp"
-  print -r -- "Codex research task failed; no report checkpoint advanced"
-  exit 1
-fi
+"$NODE_BIN" "$TRIAGE_REPORTER" "$STATE_DIR" "$SITE_DIR" > "$report_tmp"
 
 if [[ ! -s "$report_tmp" ]]; then
   /bin/rm -f "$report_tmp"

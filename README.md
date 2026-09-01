@@ -22,11 +22,11 @@ This repository is the canonical source and deployment checkout. Codex CLI reads
 `AGENTS.md` and the repository defaults from `.codex/config.toml`. Credentials are kept in `CODEX_HOME`
 and are never stored in this repository.
 
-The macOS LaunchAgent runs `automation/run-daily-update.sh` once per day as a **research-only** task. It
-performs a complete read-only Zotero metadata scan, searches the external discovery channels, and writes
-a dated candidate report under the external automation-state directory. It never edits, commits, or pushes
-the website. A lock and a research-date checkpoint prevent duplicate runs; a failed run does not advance
-the checkpoint.
+The macOS LaunchAgent runs `automation/run-daily-update.sh` as a deterministic **research-only triage**
+task. It performs a complete read-only Zotero metadata scan, compares local metadata with the current site,
+and writes a dated candidate report under the external automation-state directory. It does not run the
+model, browse the web, inspect PDFs, edit, commit, or push the website. A lock and a research-date
+checkpoint prevent duplicate runs; a failed run does not advance the checkpoint.
 
 Zotero Desktop must be running with **Settings → Advanced → Allow other applications on this computer to
 communicate with Zotero** enabled. If the local API or any pagination page is unavailable, the scan fails

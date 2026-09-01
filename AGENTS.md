@@ -37,9 +37,10 @@ Start an interactive session from the workspace with:
 codex -C "/absolute/path/to/site" --sandbox workspace-write --ask-for-approval on-request
 ```
 
-The scheduled job in `automation/run-daily-update.sh` is research-only: it may read the site and write
-candidate reports to the external automation state, but it must not edit, commit, or push this repo.
-Use `automation/publish-site.sh` manually after reviewing a candidate report and the working-tree diff.
+The scheduled job in `automation/run-daily-update.sh` is deterministic, research-only triage: it scans
+the local Zotero snapshot and writes candidate reports to the external automation state. It does not run
+the model, edit, commit, or push this repo. Use an interactive Codex CLI session for full-text research,
+then `automation/publish-site.sh` manually after reviewing the candidate report and working-tree diff.
 Never force-push or amend history.
 
 ## Migration guard
@@ -47,4 +48,3 @@ Never force-push or amend history.
 `MIGRATION_AUDIT.md` in the workspace records the unresolved difference between the 108-result deployed
 baseline and the 119-result development snapshot. Review that audit before publishing the pending data
 delta.
-
