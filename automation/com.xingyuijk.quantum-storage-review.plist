@@ -38,8 +38,8 @@
     <string>/Users/xiangrikui/Library/quantum-storage-review/automation-state</string>
   </dict>
   <key>StandardOutPath</key>
-  <string>/Users/xiangrikui/Library/Logs/quantum-storage-review-launchd.log</string>
+  <string>/Users/xiangrikui/Library/quantum-storage-review/automation-state/logs/launchd.stdout.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/xiangrikui/Library/Logs/quantum-storage-review-launchd-error.log</string>
+  <string>/Users/xiangrikui/Library/quantum-storage-review/automation-state/logs/launchd.stderr.log</string>
 </dict>
 </plist>
