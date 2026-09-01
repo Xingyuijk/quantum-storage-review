@@ -26,7 +26,7 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "state=$STATE_DIR"
   print -r -- "mode=research-only; website edits and publication are disabled"
   print -r -- "zotero_baseline=$BASELINE_SNAPSHOT"
-  print -r -- "interval=86400 seconds (LaunchAgent may poll more frequently)"
+  print -r -- "interval=3600 seconds; successful dates still allow at most one report per day"
   exit 0
 fi
 

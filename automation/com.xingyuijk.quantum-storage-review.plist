@@ -9,7 +9,7 @@
     <string>/Users/xiangrikui/Documents/ChatGPT/量子存储网页/2026-07-08/quantum_storage_review/site/automation/run-daily-update.sh</string>
   </array>
   <key>StartInterval</key>
-  <integer>86400</integer>
+  <integer>3600</integer>
   <key>ProcessType</key>
   <string>Background</string>
   <key>LowPriorityIO</key>
