@@ -43,8 +43,8 @@ RESEARCH_INTERVAL_DAYS=0 AUTO_PUSH=0 ./automation/run-daily-update.sh
 ```
 
 The `Updated to` date is changed only as part of a validated publication. The visible data counts describe
-the current canonical source; the migration audit outside this repository records any still-unreviewed
-difference from the older deployed snapshot.
+the current canonical source; the migration audit outside this repository records the one-time reviewed
+difference from the older deployed snapshot until the migration baseline is pushed.
 
 ## Data model
 

@@ -46,6 +46,6 @@ Never force-push or amend history.
 
 ## Migration guard
 
-`MIGRATION_AUDIT.md` in the workspace records the unresolved difference between the 108-result deployed
-baseline and the 119-result development snapshot. Review that audit before publishing the pending data
-delta.
+`MIGRATION_AUDIT.md` and `MIGRATION_EVIDENCE_REVIEW_2026-09-01.md` in the workspace record the one-time
+review accepting the 119-result baseline. The remote branch may temporarily remain at 108 results until
+the reviewed migration commits are pushed; do not reintroduce the older 108-result baseline afterward.
