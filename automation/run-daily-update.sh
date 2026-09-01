@@ -16,13 +16,26 @@ AUTOMATION_DIR="$SITE_DIR/automation"
 ZOTERO_SCANNER="$AUTOMATION_DIR/scan-zotero-library.mjs"
 TRIAGE_REPORTER="$AUTOMATION_DIR/build-triage-report.mjs"
 DAILY_PROMPT="$AUTOMATION_DIR/daily-update.prompt.md"
+HISTORY_WRITER="$AUTOMATION_DIR/write-research-history.mjs"
 LOCK_DIR="$STATE_DIR/run.lock"
 RUN_LOG="$STATE_DIR/runner.log"
+HISTORY_LOG="$STATE_DIR/research-history.log"
 LAST_RESEARCH_DATE="$STATE_DIR/last-research-date"
 BASELINE_SNAPSHOT="$STATE_DIR/zotero/last-research-snapshot.json"
+PRE_RUN_DATA="$STATE_DIR/.pre-run-data.$$"
 TODAY=$(/bin/date +%F)
 
 mkdir -p "$STATE_DIR/reports" "$STATE_DIR/zotero"
+
+write_history() {
+  local run_status="$1"
+  local reason="${2:-}"
+  local before_data="${3:-}"
+  if [[ -x "$NODE_BIN" && -r "$HISTORY_WRITER" ]]; then
+    "$NODE_BIN" "$HISTORY_WRITER" "$STATE_DIR" "$SITE_DIR" "$run_status" \
+      "$(/bin/date '+%Y-%m-%d %H:%M:%S %z')" "$reason" "$before_data" || true
+  fi
+}
 
 if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "site=$SITE_DIR"
@@ -33,6 +46,7 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   print -r -- "auto_push=$AUTO_PUSH"
   print -r -- "cadence=${RESEARCH_INTERVAL_DAYS} calendar days; hourly retry polling"
   print -r -- "zotero_baseline=$BASELINE_SNAPSHOT"
+  print -r -- "history_log=$HISTORY_LOG"
   print -r -- "poll_interval=3600 seconds; successful runs are spaced by ${RESEARCH_INTERVAL_DAYS} calendar days"
   exit 0
 fi
@@ -52,6 +66,8 @@ if [[ -f "$LAST_RESEARCH_DATE" ]]; then
   today_epoch=$(/bin/date -j -f "%Y-%m-%d" "$TODAY" "+%s")
   elapsed_days=$(( (today_epoch - last_epoch) / 86400 ))
   if (( elapsed_days < RESEARCH_INTERVAL_DAYS )); then
+    next_due=$(/bin/date -r $((last_epoch + RESEARCH_INTERVAL_DAYS * 86400)) "+%Y-%m-%d")
+    write_history skipped "reason=waiting_for_${RESEARCH_INTERVAL_DAYS}-day_cadence last_success=$last_date next_due=$next_due"
     print -r -- "[$TODAY] last successful run was $last_date ($elapsed_days days ago); waiting for ${RESEARCH_INTERVAL_DAYS}-day cadence"
     exit 0
   fi
@@ -76,6 +92,7 @@ print -r -- "$$" > "$LOCK_DIR/pid"
 cleanup() {
   [[ -f "$LOCK_DIR/pid" ]] && /bin/rm "$LOCK_DIR/pid"
   /bin/rmdir "$LOCK_DIR" 2>/dev/null || true
+  [[ -f "$PRE_RUN_DATA" ]] && /bin/rm "$PRE_RUN_DATA"
 }
 trap cleanup EXIT
 
@@ -118,6 +135,8 @@ if (( AUTO_PUSH == 1 )); then
   fi
 fi
 
+/bin/cp "$SITE_DIR/data.js" "$PRE_RUN_DATA"
+
 QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
   "$NODE_BIN" "$ZOTERO_SCANNER" "$STATE_DIR"
 
@@ -138,18 +157,21 @@ if ! "$CODEX_BIN" exec \
   --output-last-message "$codex_report_tmp" \
   < "$DAILY_PROMPT"; then
   /bin/rm -f "$report_tmp" "$codex_report_tmp"
+  write_history failed "reason=codex_cli_failed"
   print -r -- "Codex CLI research failed; leaving the date checkpoint unchanged for retry"
   exit 1
 fi
 
 if [[ ! -s "$codex_report_tmp" ]]; then
   /bin/rm -f "$report_tmp" "$codex_report_tmp"
+  write_history failed "reason=empty_codex_report"
   print -r -- "Codex CLI returned an empty research report"
   exit 1
 fi
 
 if [[ "$($GIT_BIN -C "$SITE_DIR" rev-parse HEAD)" != "$base_head" ]]; then
   /bin/rm -f "$report_tmp" "$codex_report_tmp"
+  write_history failed "reason=codex_changed_git_history"
   print -r -- "Codex changed Git history; refusing publication"
   exit 1
 fi
@@ -166,6 +188,7 @@ while IFS= read -r status_line; do
 done <<< "$status_output"
 if [[ -n "$unexpected_status" ]]; then
   /bin/rm -f "$report_tmp" "$codex_report_tmp"
+  write_history failed "reason=codex_changed_file_outside_allowlist"
   print -r -- "Codex changed files outside the automatic data allowlist; refusing publication"
   print -r -- "$unexpected_status"
   exit 1
@@ -205,6 +228,8 @@ if (( AUTO_PUSH == 1 )); then
 else
   print -r -- "automatic publication disabled for this invocation; review the working-tree diff manually"
 fi
+
+write_history success "model=$CODEX_MODEL auto_push=$AUTO_PUSH" "$PRE_RUN_DATA"
 
 /bin/rm -f "$report_tmp" "$codex_report_tmp"
 
