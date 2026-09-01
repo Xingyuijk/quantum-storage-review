@@ -187,18 +187,11 @@ report_with_header="$STATE_DIR/reports/.${TODAY}.$$.md"
 
 "$NODE_BIN" "$AUTOMATION_DIR/validate_site_data.mjs" "$SITE_DIR"
 
-data_changed=0
-for data_file in data.js author-index.js source-locations.js experimental-conditions.js; do
-  if ! "$GIT_BIN" -C "$SITE_DIR" diff --quiet HEAD -- "$data_file"; then
-    data_changed=1
-    break
-  fi
-done
-
-if (( data_changed == 1 )); then
-  "$NODE_BIN" "$AUTOMATION_DIR/update-site-date.mjs" "$TODAY" "$SITE_DIR"
-  "$NODE_BIN" "$AUTOMATION_DIR/validate_site_data.mjs" "$SITE_DIR"
-fi
+# Every successful research run gets a fresh visible date, even when the
+# evidence review finds no new record. This date represents the last completed
+# collection/analysis/publication cycle, not only the last data-file change.
+"$NODE_BIN" "$AUTOMATION_DIR/update-site-date.mjs" "$TODAY" "$SITE_DIR"
+"$NODE_BIN" "$AUTOMATION_DIR/validate_site_data.mjs" "$SITE_DIR"
 
 if (( AUTO_PUSH == 1 )); then
   final_status="$($GIT_BIN -C "$SITE_DIR" status --porcelain --untracked-files=all | /usr/bin/grep -v '^?? \.DS_Store$' || true)"

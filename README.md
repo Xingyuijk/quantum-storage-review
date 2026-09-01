@@ -26,7 +26,7 @@ The macOS LaunchAgent runs `automation/run-daily-update.sh` every hour as a thre
 cycle. It performs a complete read-only Zotero metadata scan, then invokes Codex CLI model
 `gpt-5.6-sol` to inspect the local corpus and current bibliographic/full-text sources. The model may edit
 only the four synchronized data files after primary-text evidence review. The wrapper validates the site,
-updates the visible date when data changed, commits, and pushes automatically. A lock, remote fast-forward
+updates the visible date after every successful research cycle, commits, and pushes automatically. A lock, remote fast-forward
 check, and cadence checkpoint prevent duplicate or conflicting runs; a failed run does not advance the
 checkpoint. The dated report is retained outside the repository as the audit trail.
 

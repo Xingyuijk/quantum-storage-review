@@ -96,8 +96,9 @@ the gate, update all four synchronized data files with the complete evidence and
 validate and publish the change. Record every accepted, rejected, and blocked candidate in the daily
 report. The report is an audit trail; it does not replace the source locators in the site data.
 
-The scheduled task may change only the four data files listed above; the wrapper updates the visible date,
-commits, and pushes after validation. It also writes the report under the automation state directory. Keep
+The scheduled task may change only the four data files listed above; the wrapper updates the visible date after
+every successful research cycle, then commits and pushes after validation. It also writes the report under the
+automation state directory. Keep
 the report concise (preferably under 2,000 words). The validator command is:
 
 `node automation/validate_site_data.mjs .`
