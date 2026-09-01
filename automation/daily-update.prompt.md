@@ -4,10 +4,10 @@ You are maintaining a static research website about rare-earth solid-state quant
 The current working directory is the website source directory. Treat the project handoff document and
 the current JavaScript data files as authoritative for schema, classification, and evidence standards.
 
-This is an unattended Codex CLI triage task, not a publication task. Do not invoke optional `paper-lookup`,
-`pdf`, or other skills. If the runtime suggests a skill path that is unavailable, record that as a blocker
-and continue with the local Zotero snapshot, current site data, and directly available metadata sources.
-Complete paper/full-text evidence review is reserved for a manually reviewed interactive CLI session.
+This is an unattended Codex CLI triage task, not a publication task. Restrict this run to local files:
+the Zotero snapshot/delta, current site data, this README, and the handoff. Do not browse the web,
+download papers, inspect PDFs, or invoke optional research skills. Complete paper/full-text evidence review
+is reserved for a manually reviewed interactive CLI session.
 
 ## Hard safety and quality rules
 
@@ -24,9 +24,8 @@ Complete paper/full-text evidence review is reserved for a manually reviewed int
    `$QUANTUM_STORAGE_AUTOMATION_STATE/zotero/current-delta.json`. Review `unseenRelevantKeys` first,
    including older papers added or modified since the last successful scan, and then search the full
    snapshot for all scope-relevant items. Never create, update, delete, tag, or move Zotero items.
-4. Search for publications that appeared after the previous successful run, using the existing
-   subject scope: rare-earth-ion solid-state optical quantum memories, including AFC, spin-wave AFC,
-   GEM, EIT, CRIB, RASE, integrated memories, and relevant coherence landmarks.
+4. Compare the local Zotero snapshot and delta against the current site data. Identify new, modified,
+   duplicate, and potentially relevant records using DOI, arXiv ID, normalized title, and authors.
 5. This task only triages candidates. Do not publish a candidate or edit website data without original
    paper/full-text inspection in a later manually reviewed session. When metadata suggests a possible
    result, record it as a candidate and state which primary evidence is still missing.
@@ -46,12 +45,11 @@ Complete paper/full-text evidence review is reserved for a manually reviewed int
 
 ## Discovery and verification procedure
 
-Use several independent discovery paths: the mandatory Zotero snapshot and delta, Crossref/OpenAlex
-or arXiv metadata, current journal pages, and cited-by/author follow-up. The external search window
-begins after the previous successful run, but Zotero candidates are not excluded merely because their
-publication date is older: an older item newly added to Zotero may represent literature missed by a
-previous run. De-duplicate by DOI first, arXiv ID second, and normalized title third. Compare candidates
-against existing `data.js` before considering them new.
+Use only the mandatory local Zotero snapshot and delta plus the current site data. The external search
+window and full-text discovery are deferred to a manually reviewed interactive CLI session. Zotero
+candidates are not excluded merely because their publication date is older: an older item newly added
+to Zotero may represent literature missed by a previous run. De-duplicate by DOI first, arXiv ID second,
+and normalized title third. Compare candidates against existing `data.js` before considering them new.
 
 For Zotero specifically:
 
@@ -61,8 +59,8 @@ For Zotero specifically:
   relevance hit, which recovers portions missed by earlier runs when Zotero was unavailable.
 - Also search the complete snapshot using title, abstract, tags, DOI, authors, ion/host synonyms, and
   protocol synonyms; the scanner's relevance heuristic is only a priority hint and may miss items.
-- For relevant items, prefer local Zotero attachments as the full-text source. If an attachment cannot
-  be accessed, record that exact blocker and continue through publisher/arXiv/author-hosted routes.
+- Do not open attachments in this unattended run. Record whether an attachment appears available and
+  defer all full-text inspection to the manual review.
 - Record the Zotero item key and snapshot library version in the daily report. Add `zoteroKey` to a
   website result when the identity match is verified by DOI or normalized title plus authors.
 
@@ -91,7 +89,8 @@ meets it, do not edit website files in this scheduled task. Record the complete 
 daily report so it can be applied in a reviewed interactive CLI session.
 
 The scheduled task must leave the website repository unchanged. It may write its report under the
-automation state directory. The manual publication command runs:
+automation state directory. Keep the report concise (preferably under 2,000 words). The manual
+publication command runs:
 
 `node automation/validate_site_data.mjs .`
 

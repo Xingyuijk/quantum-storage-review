@@ -96,7 +96,7 @@ QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
 report_tmp="$STATE_DIR/reports/.${TODAY}.$$"
 report_final="$STATE_DIR/reports/${TODAY}.md"
 run_codex_with_timeout() {
-  local timeout_seconds="${RESEARCH_TIMEOUT_SECONDS:-900}"
+  local timeout_seconds="${RESEARCH_TIMEOUT_SECONDS:-300}"
   local codex_pid
   local started_at=$SECONDS
 
