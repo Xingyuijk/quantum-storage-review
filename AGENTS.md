@@ -37,10 +37,11 @@ Start an interactive session from the workspace with:
 codex -C "/absolute/path/to/site" --sandbox workspace-write --ask-for-approval on-request
 ```
 
-The scheduled job in `automation/run-daily-update.sh` is deterministic, research-only triage: it scans
-the local Zotero snapshot and writes candidate reports to the external automation state. It does not run
-the model, edit, commit, or push this repo. Use an interactive Codex CLI session for full-text research,
-then `automation/publish-site.sh` manually after reviewing the candidate report and working-tree diff.
+The scheduled job in `automation/run-daily-update.sh` runs every three calendar days. It scans the local
+Zotero snapshot, invokes `gpt-5.6-sol` for full-text/web research, and may update only the four synchronized
+data files. The wrapper validates, commits, and pushes automatically when `AUTO_PUSH=1` (the LaunchAgent
+setting). It never lets the model commit or push. Set `AUTO_PUSH=0` for a manual dry run or recovery, then
+use `automation/publish-site.sh` to validate the working tree.
 Never force-push or amend history.
 
 ## Migration guard

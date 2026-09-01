@@ -9,7 +9,8 @@ if (!process.argv[2]) throw new Error("usage: scan-zotero-library.mjs <automatio
 const zoteroDir = path.join(stateDir, "zotero");
 const pendingPath = path.join(zoteroDir, "current-snapshot.json");
 const deltaPath = path.join(zoteroDir, "current-delta.json");
-const baselinePath = path.join(zoteroDir, "last-success-snapshot.json");
+const baselineFilename = process.env.QUANTUM_ZOTERO_BASELINE_FILENAME || "last-success-snapshot.json";
+const baselinePath = path.join(zoteroDir, baselineFilename);
 const pageSize = 100;
 const baseUrl = "http://127.0.0.1:23119/api/users/0/items/top";
 const headers = {

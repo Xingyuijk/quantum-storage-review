@@ -4,10 +4,11 @@ You are maintaining a static research website about rare-earth solid-state quant
 The current working directory is the website source directory. Treat the project handoff document and
 the current JavaScript data files as authoritative for schema, classification, and evidence standards.
 
-This is an unattended Codex CLI triage task, not a publication task. Restrict this run to local files:
-the Zotero snapshot/delta, current site data, this README, and the handoff. Do not browse the web,
-download papers, inspect PDFs, or invoke optional research skills. Complete paper/full-text evidence review
-is reserved for a manually reviewed interactive CLI session.
+This is an unattended Codex CLI research, analysis, and publication-preparation task. The wrapper invokes
+the `gpt-5.6-sol` model every three calendar days in a writable project sandbox and automatically pushes
+validated website changes. Treat the local Zotero snapshot/delta and the files in `work/` as the starting
+corpus, then use the model's web search for current bibliographic discovery and accessible publisher/arXiv
+full text when needed. The final response is captured as the dated audit report.
 
 ## Hard safety and quality rules
 
@@ -15,9 +16,11 @@ is reserved for a manually reviewed interactive CLI session.
    directory is the canonical `site/` repository, so the handoff is one level above this directory.
    Also read the latest earlier report in `$QUANTUM_STORAGE_AUTOMATION_STATE/reports/` when present,
    so pending candidates and earlier access failures are retried rather than silently forgotten.
-2. This is a research-only scheduled task. Read the canonical `site/` repository and write only to the
-   automation state directory named by `$QUANTUM_STORAGE_AUTOMATION_STATE`. Do not edit, commit, or push
-   the site repository during this task. Website publication is a separate, manually reviewed command.
+2. This is an automated research-and-publication task. Read the canonical `site/` repository and the
+   external `work/` corpus. You may edit only the four synchronized data files needed for accepted records:
+   `data.js`, `author-index.js`, `source-locations.js`, and `experimental-conditions.js`. Do not edit UI,
+   automation, README, handoff, or migration-audit files. The wrapper validates, updates the visible date,
+   commits, and pushes; never run `git commit`, `git push`, `git reset`, or history-rewriting commands.
 3. Zotero is mandatory and read-only for this task. Before Codex starts, the wrapper performs a
    complete paginated scan of Zotero Desktop's top-level library metadata. You must read both
    `$QUANTUM_STORAGE_AUTOMATION_STATE/zotero/current-snapshot.json` and
@@ -26,9 +29,10 @@ is reserved for a manually reviewed interactive CLI session.
    snapshot for all scope-relevant items. Never create, update, delete, tag, or move Zotero items.
 4. Compare the local Zotero snapshot and delta against the current site data. Identify new, modified,
    duplicate, and potentially relevant records using DOI, arXiv ID, normalized title, and authors.
-5. This task only triages candidates. Do not publish a candidate or edit website data without original
-   paper/full-text inspection in a later manually reviewed session. When metadata suggests a possible
-   result, record it as a candidate and state which primary evidence is still missing.
+5. A candidate is eligible for automatic inclusion only after the original paper, publisher full text,
+   or author-hosted full text has been inspected. The storage time and efficiency must be paired to the
+   same device, protocol, input state, and experimental condition. If evidence is incomplete, leave the
+   site data unchanged for that candidate and state exactly which primary evidence is missing.
 6. Preserve the distinction between total efficiency, internal efficiency, AFC echo, conditional
    readout, spin-wave efficiency, RASE rephasing, and material-only coherence. Explain the definition
    in `efficiencyType` and `note`.
@@ -40,16 +44,17 @@ is reserved for a manually reviewed interactive CLI session.
    `data.js`, `author-index.js`, `source-locations.js`, and `experimental-conditions.js`.
 9. Use `apply_patch` for source edits. Do not rewrite the whole data file, delete existing records,
    change the established filter taxonomy, or fabricate page/figure locators.
-10. Do not commit, push, amend, force-push, install launch agents, or change credentials. This scheduled
-    task only produces a candidate report; a human reviews and publishes any website change separately.
+10. Do not commit, push, amend, force-push, install launch agents, or change credentials. The wrapper owns
+    validation, commit, and push after this task exits successfully.
 
 ## Discovery and verification procedure
 
-Use only the mandatory local Zotero snapshot and delta plus the current site data. The external search
-window and full-text discovery are deferred to a manually reviewed interactive CLI session. Zotero
-candidates are not excluded merely because their publication date is older: an older item newly added
-to Zotero may represent literature missed by a previous run. De-duplicate by DOI first, arXiv ID second,
-and normalized title third. Compare candidates against existing `data.js` before considering them new.
+Use the mandatory local Zotero snapshot and delta plus the current site data, then search current
+bibliographic sources and primary full text with the available web-search tool. The search window begins
+after the previous successful report, but Zotero candidates are not excluded merely because their
+publication date is older: an older item newly added to Zotero may represent literature missed by a
+previous run. De-duplicate by DOI first, arXiv ID second, and normalized title third. Compare candidates
+against existing `data.js` before considering them new.
 
 For Zotero specifically:
 
@@ -59,8 +64,9 @@ For Zotero specifically:
   relevance hit, which recovers portions missed by earlier runs when Zotero was unavailable.
 - Also search the complete snapshot using title, abstract, tags, DOI, authors, ion/host synonyms, and
   protocol synonyms; the scanner's relevance heuristic is only a priority hint and may miss items.
-- Do not open attachments in this unattended run. Record whether an attachment appears available and
-  defer all full-text inspection to the manual review.
+- Prefer local Zotero attachments and the existing `work/` PDFs/text as primary full-text sources. If an
+  attachment cannot be accessed, record that exact blocker and continue through publisher/arXiv or
+  author-hosted routes.
 - Record the Zotero item key and snapshot library version in the daily report. Add `zoteroKey` to a
   website result when the identity match is verified by DOI or normalized title plus authors.
 
@@ -68,9 +74,10 @@ For each candidate that survives metadata triage, capture:
 
 - bibliographic identity, DOI or stable URL, and full author list;
 - ion/isotope/host, wavelength, protocol, architecture, cavity, and input state;
-- any metadata-level storage-time/efficiency claims, clearly labelled as unverified;
-- the likely evidence source and the exact missing full-text checks;
-- the verification date in `YYYY-MM-DD` format for the triage, not for an unperformed full-text review.
+- the exact paired storage-time/efficiency values used, with the efficiency definition and uncertainty;
+- original-text locators and extraction methods for both performance and experimental conditions;
+- any metadata-only claims clearly labelled as unverified, plus the exact missing full-text checks;
+- the verification date in `YYYY-MM-DD` format for the completed evidence review.
 
 ## Outputs
 
@@ -84,15 +91,16 @@ also report the Zotero library version, total top-level item count, number of un
 hits, the keys reviewed, and whether attachment full text was inspected. Clearly separate verified
 evidence from inference.
 
-If no candidate meets the evidence gate, make no changes to the website files. Even when a candidate
-meets it, do not edit website files in this scheduled task. Record the complete proposed change in the
-daily report so it can be applied in a reviewed interactive CLI session.
+If no candidate meets the evidence gate, make no changes to the website files. If a candidate does meet
+the gate, update all four synchronized data files with the complete evidence and then let the wrapper
+validate and publish the change. Record every accepted, rejected, and blocked candidate in the daily
+report. The report is an audit trail; it does not replace the source locators in the site data.
 
-The scheduled task must leave the website repository unchanged. It may write its report under the
-automation state directory. Keep the report concise (preferably under 2,000 words). The manual
-publication command runs:
+The scheduled task may change only the four data files listed above; the wrapper updates the visible date,
+commits, and pushes after validation. It also writes the report under the automation state directory. Keep
+the report concise (preferably under 2,000 words). The validator command is:
 
 `node automation/validate_site_data.mjs .`
 
-The command must pass after a human applies a proposed data change. If it fails, repair or revert the
-incomplete edit; do not leave a partially synchronized record.
+The command must pass before publication. If it fails, repair the incomplete synchronized edit and do not
+push a partially updated record.

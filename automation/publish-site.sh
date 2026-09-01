@@ -20,5 +20,4 @@ print -- "Validating canonical site: $SITE_DIR"
 
 print -- "Working-tree status:"
 "$GIT_BIN" -C "$SITE_DIR" status --short --branch
-print -- "Review the status above, then commit and push manually from this directory."
-
+print -- "This is the manual validation/recovery helper. The normal LaunchAgent commits and pushes after its automatic research run passes validation."

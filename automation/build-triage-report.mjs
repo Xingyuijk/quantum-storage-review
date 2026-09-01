@@ -63,7 +63,7 @@ const lines = [
   `- Top-level items: ${snapshot.totalTopLevelItems}`,
   `- Heuristic relevance hits: ${(snapshot.relevantItemKeys || []).length}`,
   `- Unseen/modified relevance keys: ${reviewedKeys.length}`,
-  "- Attachment full text inspected: no (deferred to manual Codex CLI review)",
+  "- Attachment full text inspected by this metadata scanner: no (Codex CLI evidence review follows)",
   "- Website files changed: no",
   "",
   "The table below is metadata triage only. No candidate is publication-ready until a manually reviewed Codex CLI session inspects the original full text and pairs storage time with efficiency under the same conditions.",
@@ -82,4 +82,3 @@ if (!candidates.length) {
 }
 
 console.log(lines.join("\n"));
-

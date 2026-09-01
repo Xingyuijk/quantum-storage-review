@@ -18,6 +18,12 @@
   <dict>
     <key>CODEX_HOME</key>
     <string>/Users/xiangrikui/.codex-cch</string>
+    <key>CODEX_MODEL</key>
+    <string>gpt-5.6-sol</string>
+    <key>AUTO_PUSH</key>
+    <string>1</string>
+    <key>RESEARCH_INTERVAL_DAYS</key>
+    <string>3</string>
     <key>HOME</key>
     <string>/Users/xiangrikui</string>
     <key>PATH</key>

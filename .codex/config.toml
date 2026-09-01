@@ -1,6 +1,6 @@
 # Repository defaults for Codex CLI. Credentials stay in CODEX_HOME and are never committed here.
 project_root_markers = [".git"]
+model = "gpt-5.6-sol"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 web_search = true
-

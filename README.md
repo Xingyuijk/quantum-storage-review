@@ -22,27 +22,27 @@ This repository is the canonical source and deployment checkout. Codex CLI reads
 `AGENTS.md` and the repository defaults from `.codex/config.toml`. Credentials are kept in `CODEX_HOME`
 and are never stored in this repository.
 
-The macOS LaunchAgent runs `automation/run-daily-update.sh` as a deterministic **research-only triage**
-task. It performs a complete read-only Zotero metadata scan, compares local metadata with the current site,
-and writes a dated candidate report under the external automation-state directory. It does not run the
-model, browse the web, inspect PDFs, edit, commit, or push the website. A lock and a research-date
-checkpoint prevent duplicate runs; a failed run does not advance the checkpoint.
+The macOS LaunchAgent runs `automation/run-daily-update.sh` every hour as a three-calendar-day research
+cycle. It performs a complete read-only Zotero metadata scan, then invokes Codex CLI model
+`gpt-5.6-sol` to inspect the local corpus and current bibliographic/full-text sources. The model may edit
+only the four synchronized data files after primary-text evidence review. The wrapper validates the site,
+updates the visible date when data changed, commits, and pushes automatically. A lock, remote fast-forward
+check, and cadence checkpoint prevent duplicate or conflicting runs; a failed run does not advance the
+checkpoint. The dated report is retained outside the repository as the audit trail.
 
 Zotero Desktop must be running with **Settings → Advanced → Allow other applications on this computer to
 communicate with Zotero** enabled. If the local API or any pagination page is unavailable, the scan fails
 and retries later. Zotero records are never created, edited, tagged, moved, or deleted.
 
-After reviewing the candidate report and the working-tree diff, publish manually:
+For a manual one-off run without publication, set `AUTO_PUSH=0`. The normal LaunchAgent has
+`AUTO_PUSH=1`; it publishes only after validation. To inspect or recover a run manually:
 
 ```bash
+AUTO_PUSH=0 ./automation/run-daily-update.sh --dry-run
 ./automation/publish-site.sh
-git status --short --branch
-git add <reviewed website files>
-git commit -m "Describe the reviewed change"
-git push origin main
 ```
 
-The `Updated to` date is changed only as part of a reviewed publication. The visible data counts describe
+The `Updated to` date is changed only as part of a validated publication. The visible data counts describe
 the current canonical source; the migration audit outside this repository records any still-unreviewed
 difference from the older deployed snapshot.
 
