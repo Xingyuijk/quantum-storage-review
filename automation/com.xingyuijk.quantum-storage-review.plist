@@ -6,7 +6,7 @@
   <string>com.xingyuijk.quantum-storage-review</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/xiangrikui/Documents/ChatGPT/量子存储网页/2026-07-08/quantum_storage_review/site/automation/run-daily-update.sh</string>
+    <string>/Users/xiangrikui/Library/quantum-storage-review/site/automation/run-daily-update.sh</string>
   </array>
   <key>StartInterval</key>
   <integer>3600</integer>
@@ -30,6 +30,10 @@
     <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     <key>TZ</key>
     <string>Asia/Shanghai</string>
+    <key>LANG</key>
+    <string>en_US.UTF-8</string>
+    <key>LC_ALL</key>
+    <string>en_US.UTF-8</string>
     <key>QUANTUM_STORAGE_AUTOMATION_STATE</key>
     <string>/Users/xiangrikui/Library/Application Support/quantum-storage-review-updater</string>
   </dict>

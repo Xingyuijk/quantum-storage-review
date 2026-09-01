@@ -19,4 +19,3 @@ fi
 /usr/bin/plutil -lint "$PLIST_TARGET"
 /bin/launchctl bootstrap "gui/$UID_VALUE" "$PLIST_TARGET"
 /bin/launchctl print "gui/$UID_VALUE/$LABEL"
-
