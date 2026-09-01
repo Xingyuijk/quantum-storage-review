@@ -38,7 +38,7 @@ For a manual one-off run without publication, set `AUTO_PUSH=0`. The normal Laun
 `AUTO_PUSH=1`; it publishes only after validation. To inspect or recover a run manually:
 
 ```bash
-AUTO_PUSH=0 ./automation/run-daily-update.sh --dry-run
+RESEARCH_INTERVAL_DAYS=0 AUTO_PUSH=0 ./automation/run-daily-update.sh
 ./automation/publish-site.sh
 ```
 
