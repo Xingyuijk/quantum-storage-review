@@ -88,12 +88,36 @@ QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
 
 report_tmp="$STATE_DIR/reports/.${TODAY}.$$"
 report_final="$STATE_DIR/reports/${TODAY}.md"
-if ! "$CODEX_BIN" exec \
-    --cd "$SITE_DIR" \
-    --sandbox read-only \
-    --ephemeral \
-    --add-dir "$STATE_DIR" \
-    - < "$PROMPT_FILE" > "$report_tmp"; then
+run_codex_with_timeout() {
+  local timeout_seconds="${RESEARCH_TIMEOUT_SECONDS:-900}"
+  local codex_pid
+  local started_at=$SECONDS
+
+  "$CODEX_BIN" exec \
+      --cd "$SITE_DIR" \
+      --sandbox read-only \
+      --ephemeral \
+      --add-dir "$STATE_DIR" \
+      - < "$PROMPT_FILE" > "$report_tmp" &
+  codex_pid=$!
+
+  while /bin/kill -0 "$codex_pid" 2>/dev/null; do
+    if (( SECONDS - started_at >= timeout_seconds )); then
+      print -r -- "Codex research task exceeded ${timeout_seconds}s; terminating it"
+      /usr/bin/pkill -TERM -P "$codex_pid" 2>/dev/null || true
+      /bin/kill -TERM "$codex_pid" 2>/dev/null || true
+      /bin/sleep 2
+      /usr/bin/pkill -KILL -P "$codex_pid" 2>/dev/null || true
+      /bin/kill -KILL "$codex_pid" 2>/dev/null || true
+      wait "$codex_pid" 2>/dev/null || true
+      return 124
+    fi
+    /bin/sleep 2
+  done
+  wait "$codex_pid"
+}
+
+if ! run_codex_with_timeout; then
   /bin/rm -f "$report_tmp"
   print -r -- "Codex research task failed; no report checkpoint advanced"
   exit 1
