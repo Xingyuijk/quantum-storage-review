@@ -3100,6 +3100,31 @@ window.QM_DATA = {
       efficiencyType: "material-only single-ion nuclear-spin coherence landmark; no optical storage efficiency assigned",
       confidence: "high",
       note: "A single 167Er3+ nuclear-spin qubit in a 10.9-um Y2SiO5 membrane inside a fiber-coupled Fabry-Perot microcavity reaches 0.28 +/- 0.08 s coherence after a 64-pulse XY dynamical-decoupling sequence. The same experiment reports 91 +/- 2% single-shot spin-readout fidelity, but that readout fidelity is not treated as memory efficiency. No optical field was stored and retrieved, so this record is intentionally not plotted."
+    },
+    {
+      id: "rodriguez-moldes-2026-pr-xy4-single-photon",
+      title: "Long-lived telecom-heralded single-photon storage in an absorptive spin-rephased quantum memory",
+      authors: "Rodriguez-Moldes et al.",
+      year: 2026,
+      venue: "Physical Review Letters",
+      doi: "10.1103/ftkb-pkvp",
+      url: "https://arxiv.org/abs/2609.02579",
+      zoteroKey: "",
+      ion: "Pr3+",
+      isotope: "",
+      host: "Y2SiO5",
+      wavelengthNm: 606,
+      protocol: "spin-wave AFC",
+      architecture: "bulk/free-space",
+      cavity: "no cavity",
+      inputState: "telecom-heralded single photon",
+      storageTimeS: 100.9e-6,
+      storageTimeLabel: "100.9 us",
+      efficiencyPct: 1.96,
+      efficiencyLabel: "approximately 1.96 +/- 0.12% (figure digitization)",
+      efficiencyType: "heralded-single-photon spin-wave AFC storage efficiency with XY4 spin rephasing; paper labels it storage efficiency but does not further specify the denominator",
+      confidence: "medium",
+      note: "The 100.9-us point is the same low-noise heralded-single-photon measurement shown in Figs. 2(b) and 3: g_si^(2) = 4.6 +/- 0.3 and inferred g_out^(2) = 0.397 +/- 0.026 verify non-classical, single-photon retrieval. The paired storage efficiency and uncertainty were digitized from the vector coordinates and error bar in Fig. 3(c). The separate approximately 3-ms classical-light maximum has no numerically stated same-condition efficiency, and the cited 18% cavity result belongs to Feldmann et al., not this no-cavity memory."
     }
   ]
 };

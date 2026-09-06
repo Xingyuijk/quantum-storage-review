@@ -482,5 +482,9 @@ window.QM_AUTHOR_INDEX = {
   "ulanowski-2026-er-nuclear-spin-coherence": {
     "authorsFull": "Alexander Ulanowski, Johannes Früh, Fabian Salamon, Adrian Holzäpfel, Andreas Reiserer",
     "searchTerms": "Alexander Ulanowski Johannes Früh Johannes Fruh Fabian Salamon Adrian Holzäpfel Adrian Holzaepfel Andreas Reiserer"
+  },
+  "rodriguez-moldes-2026-pr-xy4-single-photon": {
+    "authorsFull": "Alberto E. Rodríguez-Moldes, Félicien Appas, Jonathan Hänni, Jelena V. Rakonjac, Samuele Grandi, Hugues de Riedmatten",
+    "searchTerms": "Alberto E. Rodríguez-Moldes Alberto Rodriguez-Moldes Félicien Appas Felicien Appas Jonathan Hänni Jonathan Hanni Jelena V. Rakonjac Samuele Grandi Hugues de Riedmatten"
   }
 };

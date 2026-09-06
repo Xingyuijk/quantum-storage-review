@@ -966,5 +966,13 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Publisher PDF, p. 2 Results and p. 4 nuclear-spin-qubit-coherence section",
     "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
     "verifiedDate": "2026-09-01"
+  },
+  "rodriguez-moldes-2026-pr-xy4-single-photon": {
+    "temperature": "3 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The Pr3+:Y2SiO5 memory is in a 3-K closed-cycle cryostat and is surrounded by mu-metal shielding. The authors infer a small residual external field from the echo behavior, but they do not report a measured field magnitude; the <1 mT discussion is contextual and is not assigned as the experimental field.",
+    "locator": "arXiv:2609.02579v1 primary PDF, p. 2 experimental-setup paragraph; p. 3 residual-field discussion; p. 7 End Matter A",
+    "extractionMethod": "direct primary-PDF text; explicit Not reported for field after full-text review",
+    "verifiedDate": "2026-09-07"
   }
 };

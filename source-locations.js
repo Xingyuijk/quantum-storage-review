@@ -603,5 +603,10 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "Publisher PDF, p. 4, Fig. 4(d) and adjacent nuclear-spin-qubit-coherence paragraph",
     "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
     "verifiedDate": "2026-09-01"
+  },
+  "rodriguez-moldes-2026-pr-xy4-single-photon": {
+    "locator": "arXiv:2609.02579v1 primary PDF, pp. 3-4, Figs. 2(b) and 3(a-c), plus adjacent single-photon-storage paragraphs",
+    "extractionMethod": "direct primary-PDF text + rendered-page cross-check + vector-coordinate digitization of the Fig. 3(c) efficiency point and error bar",
+    "verifiedDate": "2026-09-07"
   }
 };
