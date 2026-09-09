@@ -608,5 +608,15 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2609.02579v1 primary PDF, pp. 3-4, Figs. 2(b) and 3(a-c), plus adjacent single-photon-storage paragraphs",
     "extractionMethod": "direct primary-PDF text + rendered-page cross-check + vector-coordinate digitization of the Fig. 3(c) efficiency point and error bar",
     "verifiedDate": "2026-09-07"
+  },
+  "sethia-2026-er-cppe-300us": {
+    "locator": "arXiv:2512.17181v2 primary PDF, p. 4, Fig. 2C-D and adjacent paragraph",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-10"
+  },
+  "sethia-2026-er-cppe-1ms": {
+    "locator": "arXiv:2512.17181v2 primary PDF, p. 4, Fig. 2C-D and adjacent paragraph",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-10"
   }
 };

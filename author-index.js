@@ -486,5 +486,13 @@ window.QM_AUTHOR_INDEX = {
   "rodriguez-moldes-2026-pr-xy4-single-photon": {
     "authorsFull": "Alberto E. Rodríguez-Moldes, Félicien Appas, Jonathan Hänni, Jelena V. Rakonjac, Samuele Grandi, Hugues de Riedmatten",
     "searchTerms": "Alberto E. Rodríguez-Moldes Alberto Rodriguez-Moldes Félicien Appas Felicien Appas Jonathan Hänni Jonathan Hanni Jelena V. Rakonjac Samuele Grandi Hugues de Riedmatten"
+  },
+  "sethia-2026-er-cppe-300us": {
+    "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
+    "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal modes telecom CPPE ROSE Erbium Y2SiO5"
+  },
+  "sethia-2026-er-cppe-1ms": {
+    "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
+    "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal modes telecom CPPE ROSE Erbium Y2SiO5"
   }
 };

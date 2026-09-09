@@ -974,5 +974,21 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2609.02579v1 primary PDF, p. 2 experimental-setup paragraph; p. 3 residual-field discussion; p. 7 End Matter A",
     "extractionMethod": "direct primary-PDF text; explicit Not reported for field after full-text review",
     "verifiedDate": "2026-09-07"
+  },
+  "sethia-2026-er-cppe-300us": {
+    "temperature": "approximately 500 mK",
+    "magneticField": "3 T at 135° to the D1 axis in the D1–D2 plane",
+    "conditionNote": "The 5-ppm 167Er3+:Y2SiO5 site-1 crystal, fiber-coupled bulk setup, and CPPE sequence are the same conditions used for the 300-us, 10.36% point.",
+    "locator": "arXiv:2512.17181v2 primary PDF, p. 3, Experiment setup paragraph",
+    "extractionMethod": "direct primary-PDF text",
+    "verifiedDate": "2026-09-10"
+  },
+  "sethia-2026-er-cppe-1ms": {
+    "temperature": "approximately 500 mK",
+    "magneticField": "3 T at 135° to the D1 axis in the D1–D2 plane",
+    "conditionNote": "The 5-ppm 167Er3+:Y2SiO5 site-1 crystal, fiber-coupled bulk setup, and CPPE sequence are the same conditions used for the 1-ms, 1.42% point.",
+    "locator": "arXiv:2512.17181v2 primary PDF, p. 3, Experiment setup paragraph",
+    "extractionMethod": "direct primary-PDF text",
+    "verifiedDate": "2026-09-10"
   }
 };
