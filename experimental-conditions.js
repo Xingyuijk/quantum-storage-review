@@ -990,5 +990,21 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2512.17181v2 primary PDF, p. 3, Experiment setup paragraph",
     "extractionMethod": "direct primary-PDF text",
     "verifiedDate": "2026-09-10"
+  },
+  "ou-2026-eu-random-access-afc-500ns": {
+    "temperature": "Not reported",
+    "magneticField": "Not reported",
+    "conditionNote": "The inspected publisher PDF does not state a numeric operating temperature or magnetic-field value for the 11-channel memory; neither value is inferred from general Eu3+:Y2SiO5 coherence discussion.",
+    "locator": "Publisher full-text PDF, pp. 3-4, experimental setup and 'Multichannel storage of single-photon-level inputs' sections",
+    "extractionMethod": "direct publisher-PDF review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-09-16"
+  },
+  "ou-2026-eu-random-access-afc-1us": {
+    "temperature": "Not reported",
+    "magneticField": "Not reported",
+    "conditionNote": "The inspected publisher PDF does not state a numeric operating temperature or magnetic-field value for the 11-channel memory; neither value is inferred from general Eu3+:Y2SiO5 coherence discussion.",
+    "locator": "Publisher full-text PDF, pp. 3-4, experimental setup and 'Multichannel storage of single-photon-level inputs' sections",
+    "extractionMethod": "direct publisher-PDF review; explicit Not reported after full-text search",
+    "verifiedDate": "2026-09-16"
   }
 };

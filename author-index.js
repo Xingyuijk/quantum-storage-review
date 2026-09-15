@@ -494,5 +494,13 @@ window.QM_AUTHOR_INDEX = {
   "sethia-2026-er-cppe-1ms": {
     "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
     "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal modes telecom CPPE ROSE Erbium Y2SiO5"
+  },
+  "ou-2026-eu-random-access-afc-500ns": {
+    "authorsFull": "Zhong-Wen Ou, Tian-Xiang Zhu, Peng-Jun Liang, Xiao-Min Hu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Zhong-Wen Ou Tian-Xiang Zhu Peng-Jun Liang Xiao-Min Hu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo random access high dimensional integrated quantum memory"
+  },
+  "ou-2026-eu-random-access-afc-1us": {
+    "authorsFull": "Zhong-Wen Ou, Tian-Xiang Zhu, Peng-Jun Liang, Xiao-Min Hu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Zhong-Wen Ou Tian-Xiang Zhu Peng-Jun Liang Xiao-Min Hu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo random access high dimensional integrated quantum memory"
   }
 };

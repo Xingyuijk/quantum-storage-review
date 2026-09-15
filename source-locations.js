@@ -618,5 +618,15 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2512.17181v2 primary PDF, p. 4, Fig. 2C-D and adjacent paragraph",
     "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
     "verifiedDate": "2026-09-10"
+  },
+  "ou-2026-eu-random-access-afc-500ns": {
+    "locator": "Publisher full-text PDF, p. 4, 'Multichannel storage of single-photon-level inputs' paragraph and Fig. 2a",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-16"
+  },
+  "ou-2026-eu-random-access-afc-1us": {
+    "locator": "Publisher full-text PDF, p. 4, 'Multichannel storage of single-photon-level inputs' paragraph and Fig. 2a",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-16"
   }
 };
