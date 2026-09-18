@@ -3233,6 +3233,33 @@ window.QM_DATA = {
       efficiencyType: "average SMAFC second-AFC-echo storage efficiency across 11 channels",
       confidence: "high",
       note: "The 1-us point is the second AFC echo for a 2-MHz comb spacing in the same 11-channel 151Eu3+:Y2SiO5 waveguide-array memory. The reported 31.3 +/- 0.2% is the average storage efficiency across all channels for weak coherent inputs; the first-echo value is recorded as a distinct result."
+    },
+    {
+      id: "sun-2026-eu-cavity-afc-90pct",
+      title: "90%-Efficient Optical Storage in a Rare-Earth Crystal with a Low-Loss Impedance-Matched Cavity",
+      authors: "Sun et al.",
+      authorsFull: "Weiye Sun, Fudong Wang, Mucheng Guo, Xiantong An, Zhenqi Xu, Zhehao Xu, Xingmin He, Matthew J. Sellars, Shuping Liu, Manjin Zhong",
+      searchTerms: "Weiye Sun Fudong Wang Mucheng Guo Xiantong An Zhenqi Xu Zhehao Xu Xingmin He Matthew J. Sellars Matthew Sellars Shuping Liu Manjin Zhong",
+      year: 2026,
+      venue: "arXiv preprint",
+      doi: "10.48550/arXiv.2609.19807",
+      url: "https://arxiv.org/abs/2609.19807",
+      zoteroKey: "",
+      ion: "Eu3+",
+      isotope: "natural abundance",
+      host: "Y2SiO5",
+      wavelengthNm: 580,
+      protocol: "AFC",
+      architecture: "bulk/free-space",
+      cavity: "impedance-matched cavity",
+      inputState: "coherent optical pulse",
+      storageTimeS: 1e-6,
+      storageTimeLabel: "1 us nominal AFC recall",
+      efficiencyPct: 90.1,
+      efficiencyLabel: "90.1 +/- 0.5%",
+      efficiencyType: "calibrated two-level AFC storage efficiency; the manuscript does not further specify an internal or end-to-end denominator",
+      confidence: "high",
+      note: "The directly paired maximum uses a 0.53-us-FWHM Gaussian coherent pulse and a 1-MHz AFC tooth spacing in a 1000-ppm naturally abundant Eu3+:Y2SiO5 crystal inside a 3-K low-loss impedance-matched Fabry-Perot cavity. Figure 2a reports 90.1(5)% at the nominal 1-us AFC recall time; the approximately 0.05-us displacement of the echo center is a cavity group delay and is not added to the storage time. The accessible primary manuscript calls the value calibrated storage efficiency but does not state whether path or detector losses are excluded."
     }
   ]
 };

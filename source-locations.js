@@ -628,5 +628,10 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "Publisher full-text PDF, p. 4, 'Multichannel storage of single-photon-level inputs' paragraph and Fig. 2a",
     "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
     "verifiedDate": "2026-09-16"
+  },
+  "sun-2026-eu-cavity-afc-90pct": {
+    "locator": "arXiv:2609.19807v1 primary PDF, p. 3, Fig. 2(a), caption, and adjacent maximum-efficiency paragraph",
+    "extractionMethod": "direct primary-PDF text + rendered-figure cross-check + arXiv source-TeX cross-check",
+    "verifiedDate": "2026-09-19"
   }
 };

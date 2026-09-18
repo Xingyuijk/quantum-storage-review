@@ -502,5 +502,9 @@ window.QM_AUTHOR_INDEX = {
   "ou-2026-eu-random-access-afc-1us": {
     "authorsFull": "Zhong-Wen Ou, Tian-Xiang Zhu, Peng-Jun Liang, Xiao-Min Hu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Zhong-Wen Ou Tian-Xiang Zhu Peng-Jun Liang Xiao-Min Hu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo random access high dimensional integrated quantum memory"
+  },
+  "sun-2026-eu-cavity-afc-90pct": {
+    "authorsFull": "Weiye Sun, Fudong Wang, Mucheng Guo, Xiantong An, Zhenqi Xu, Zhehao Xu, Xingmin He, Matthew J. Sellars, Shuping Liu, Manjin Zhong",
+    "searchTerms": "Weiye Sun Fudong Wang Mucheng Guo Xiantong An Zhenqi Xu Zhehao Xu Xingmin He Matthew J. Sellars Matthew Sellars Shuping Liu Manjin Zhong"
   }
 };

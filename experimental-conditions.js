@@ -1006,5 +1006,13 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Publisher full-text PDF, pp. 3-4, experimental setup and 'Multichannel storage of single-photon-level inputs' sections",
     "extractionMethod": "direct publisher-PDF review; explicit Not reported after full-text search",
     "verifiedDate": "2026-09-16"
+  },
+  "sun-2026-eu-cavity-afc-90pct": {
+    "temperature": "3 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The naturally abundant 1000-ppm Eu3+:Y2SiO5 crystal and the entire impedance-matched cavity are housed in the 3-K cryostat used for the paired 1-us, 90.1% AFC result. No magnetic-field value is stated in the accessible primary PDF or source package.",
+    "locator": "arXiv:2609.19807v1 primary PDF, p. 1 apparatus paragraph and p. 2 Fig. 1(a); magnetic-field terms absent from the complete PDF and source TeX",
+    "extractionMethod": "direct primary-PDF/source review + rendered-apparatus cross-check; explicit Not reported for field",
+    "verifiedDate": "2026-09-19"
   }
 };
