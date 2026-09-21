@@ -3244,7 +3244,7 @@ window.QM_DATA = {
       venue: "arXiv preprint",
       doi: "10.48550/arXiv.2609.19807",
       url: "https://arxiv.org/abs/2609.19807",
-      zoteroKey: "",
+      zoteroKey: "KUZJCRUL",
       ion: "Eu3+",
       isotope: "natural abundance",
       host: "Y2SiO5",
