@@ -633,5 +633,25 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2609.19807v1 primary PDF, p. 3, Fig. 2(a), caption, and adjacent maximum-efficiency paragraph",
     "extractionMethod": "direct primary-PDF text + rendered-figure cross-check + arXiv source-TeX cross-check",
     "verifiedDate": "2026-09-19"
+  },
+  "lei-2026-eu-hagem-crystal-1echo": {
+    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (crystal first echo)",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-crystal-2echo": {
+    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (crystal second echo)",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-powder-1echo": {
+    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (powder first echo)",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-powder-2echo": {
+    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (powder second echo)",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
+    "verifiedDate": "2026-09-25"
   }
 };

@@ -506,5 +506,21 @@ window.QM_AUTHOR_INDEX = {
   "sun-2026-eu-cavity-afc-90pct": {
     "authorsFull": "Weiye Sun, Fudong Wang, Mucheng Guo, Xiantong An, Zhenqi Xu, Zhehao Xu, Xingmin He, Matthew J. Sellars, Shuping Liu, Manjin Zhong",
     "searchTerms": "Weiye Sun Fudong Wang Mucheng Guo Xiantong An Zhenqi Xu Zhehao Xu Xingmin He Matthew J. Sellars Matthew Sellars Shuping Liu Manjin Zhong"
+  },
+  "lei-2026-eu-hagem-crystal-1echo": {
+    "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
+    "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
+  },
+  "lei-2026-eu-hagem-crystal-2echo": {
+    "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
+    "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
+  },
+  "lei-2026-eu-hagem-powder-1echo": {
+    "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
+    "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
+  },
+  "lei-2026-eu-hagem-powder-2echo": {
+    "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
+    "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
   }
 };

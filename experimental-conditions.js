@@ -1014,5 +1014,37 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2609.19807v1 primary PDF, p. 1 apparatus paragraph and p. 2 Fig. 1(a); magnetic-field terms absent from the complete PDF and source TeX",
     "extractionMethod": "direct primary-PDF/source review + rendered-apparatus cross-check; explicit Not reported for field",
     "verifiedDate": "2026-09-19"
+  },
+  "lei-2026-eu-hagem-crystal-1echo": {
+    "temperature": "1.4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "Bulk crystalline 151Eu3+(TMHD)3(phen) sample used for the 26.9-ns first HAGEM echo and 14.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
+    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
+    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-crystal-2echo": {
+    "temperature": "1.4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "Bulk crystalline 151Eu3+(TMHD)3(phen) sample used for the 53.8-ns second HAGEM echo and 6.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
+    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
+    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-powder-1echo": {
+    "temperature": "1.4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "151Eu3+(TMHD)3(phen) microcrystalline powder slab used for the 26.9-ns first HAGEM echo and 7.2% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
+    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
+    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
+    "verifiedDate": "2026-09-25"
+  },
+  "lei-2026-eu-hagem-powder-2echo": {
+    "temperature": "1.4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "151Eu3+(TMHD)3(phen) microcrystalline powder slab used for the 53.8-ns second HAGEM echo and 1.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
+    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
+    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
+    "verifiedDate": "2026-09-25"
   }
 };
