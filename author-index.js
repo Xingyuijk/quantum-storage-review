@@ -522,5 +522,17 @@ window.QM_AUTHOR_INDEX = {
   "lei-2026-eu-hagem-powder-2echo": {
     "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
     "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
+  },
+  "gohari-kamel-2026-yb-cppe-140us": {
+    "authorsFull": "Nasser Gohari Kamel, Sourabh Kumar, Ujjwal Gautam, Erhan Saglamyurek, Vahid Salari, Daniel Oblak",
+    "searchTerms": "Nasser Gohari Kamel Sourabh Kumar Ujjwal Gautam Erhan Saglamyurek Vahid Salari Daniel Oblak CPPE RAPPI ROSE random access optical memory"
+  },
+  "gohari-kamel-2026-yb-cppe-300us": {
+    "authorsFull": "Nasser Gohari Kamel, Sourabh Kumar, Ujjwal Gautam, Erhan Saglamyurek, Vahid Salari, Daniel Oblak",
+    "searchTerms": "Nasser Gohari Kamel Sourabh Kumar Ujjwal Gautam Erhan Saglamyurek Vahid Salari Daniel Oblak CPPE RAPPI ROSE random access optical memory"
+  },
+  "gohari-kamel-2026-er-fiber-afc-90ns": {
+    "authorsFull": "Nasser Gohari Kamel, Arsalan Mansourzadeh, Ujjwal Gautam, Vinaya Kumar Kavatamane, Ashutosh Singh, Edith Yeung, David B. Northeast, Paul E. Barclay, Philip J. Poole, Dan Dalacu, Daniel Oblak",
+    "searchTerms": "Nasser Gohari Kamel Arsalan Mansourzadeh Ujjwal Gautam Vinaya Kumar Kavatamane Ashutosh Singh Edith Yeung David B. Northeast Paul E. Barclay Philip J. Poole Dan Dalacu Daniel Oblak erbium fibre fiber quantum dot 980 nm"
   }
 };

@@ -1046,5 +1046,29 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
     "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
     "verifiedDate": "2026-09-25"
+  },
+  "gohari-kamel-2026-yb-cppe-140us": {
+    "temperature": "10 mK",
+    "magneticField": "Zero applied magnetic field",
+    "conditionNote": "The 5-ppm isotopically enriched 171Yb3+:Y2SiO5 site-II crystal, zero-field operating point, and single-pass bulk setup are the conditions used for the paired 140-us classical-probe CPPE result.",
+    "locator": "Publisher full-text PDF, 'Experimental Setup, Memory Medium, and Protocol Implementation,' Fig. 2 and caption",
+    "extractionMethod": "direct publisher-PDF text + apparatus/energy-level figure cross-check",
+    "verifiedDate": "2026-09-28"
+  },
+  "gohari-kamel-2026-yb-cppe-300us": {
+    "temperature": "10 mK",
+    "magneticField": "Zero applied magnetic field",
+    "conditionNote": "The 5-ppm isotopically enriched 171Yb3+:Y2SiO5 site-II crystal, zero-field operating point, and single-pass bulk setup are the conditions used for the paired 300-us weak-coherent CPPE result.",
+    "locator": "Publisher full-text PDF, 'Experimental Setup, Memory Medium, and Protocol Implementation,' Fig. 2 and caption",
+    "extractionMethod": "direct publisher-PDF text + apparatus/energy-level figure cross-check",
+    "verifiedDate": "2026-09-28"
+  },
+  "gohari-kamel-2026-er-fiber-afc-90ns": {
+    "temperature": "10 mK",
+    "magneticField": "Not reported",
+    "conditionNote": "The 10-m, 200-ppm natural-abundance Er3+-doped silica fiber is held at 10 mK for the 90-ns multimode AFC run. The supplement compares 0.03-, 0.06-, and 0.09-T performance, and the quantum-dot storage uses 0.06 T, but the main text does not unambiguously assign one field to the paired 90-ns weak-coherent benchmark.",
+    "locator": "Publisher full-text PDF, 'Experimental setup and EDF spectroscopy,' 'Quantum memory implementation,' and Methods; Supplementary Note 1",
+    "extractionMethod": "direct publisher-PDF and supplement review; exact paired magnetic field left Not reported rather than inferred",
+    "verifiedDate": "2026-09-28"
   }
 };

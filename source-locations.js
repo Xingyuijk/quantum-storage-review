@@ -653,5 +653,20 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (powder second echo)",
     "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
     "verifiedDate": "2026-09-25"
+  },
+  "gohari-kamel-2026-yb-cppe-140us": {
+    "locator": "Publisher full-text PDF, 'Experimental realization of memory protocol,' Fig. 3(b-c), caption, and adjacent efficiency paragraph",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-28"
+  },
+  "gohari-kamel-2026-yb-cppe-300us": {
+    "locator": "Publisher full-text PDF, Fig. 4, caption, and adjacent low-photon storage paragraph",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-09-28"
+  },
+  "gohari-kamel-2026-er-fiber-afc-90ns": {
+    "locator": "Publisher full-text PDF, 'Quantum memory implementation,' Fig. 3(d-e), caption, and adjacent efficiency paragraphs",
+    "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
+    "verifiedDate": "2026-09-28"
   }
 };
