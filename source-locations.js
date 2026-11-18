@@ -295,14 +295,19 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "wei-2024-er-fiber-1650-modes": {
-    "locator": "Original PDF, p. 3, Fig. 2 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Publisher PDF, pp. 4–5, Fig. 3(c,d) and the third multimode characterization experiment",
+    "extractionMethod": "direct primary-text and figure-caption cross-check",
+    "verifiedDate": "2026-11-18"
+  },
+  "wei-2024-er-fiber-afc-channel-2-230ns": {
+    "locator": "Publisher Supplementary Information, pp. 6–7, Note 3 and Supplementary Fig. 5(a) at 230 ns",
+    "extractionMethod": "vector-coordinate digitization of measured marker and Poisson error bar, using the logarithmic axis",
+    "verifiedDate": "2026-11-18"
   },
   "zhang-2024-er-spectral-interface": {
-    "locator": "arXiv PDF, p. 4, Fig. 3 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Primary manuscript arXiv:2410.18516v1, p. 7 Discussion and Conclusion, p. 9 Appendix B, and p. 24 Table II",
+    "extractionMethod": "direct primary-text pairing + supplementary table cross-check",
+    "verifiedDate": "2026-11-18"
   },
   "yang-2026-tfln-er": {
     "locator": "arXiv PDF, p. 4, Fig. 2 and adjacent paragraph",
@@ -404,6 +409,11 @@ window.QM_SOURCE_LOCATIONS = {
     "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
     "verifiedDate": "2026-11-17"
   },
+  "lv-2025-eu-nlpe-dd-42s": {
+    "locator": "arXiv:2511.12537v2, p. 3, Fig. 2(d) and caption; pp. 5–6, paragraph discussing the 42-s storage result",
+    "extractionMethod": "direct primary-PDF text + rendered-figure cross-check of the single-photon-level point",
+    "verifiedDate": "2026-11-18"
+  },
   "ma-2021-one-hour-afc-5min": {
     "locator": "arXiv PDF, p. 5, Fig. 4 and adjacent paragraph",
     "extractionMethod": "direct text + figure cross-check",
@@ -415,19 +425,44 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-11-17"
   },
   "hain-2022-pr-eit-10s": {
-    "locator": "Original PDF, pp. 8-9, Figs. 5-6 and adjacent paragraphs",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Publisher PDF, p. 9 Section 3.4 and p. 8 Fig. 5 inset; p. 4 Methods (efficiency reference)",
+    "extractionMethod": "direct primary-text pairing + rendered figure-caption cross-check",
+    "verifiedDate": "2026-11-18"
   },
   "holzaepfel-2020-long-afc": {
-    "locator": "arXiv PDF, pp. 8-9, Figs. 4-5 and adjacent paragraphs",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Primary manuscript arXiv:1910.08009v2, p. 10 Fig. 6(b); p. 3 Section 2.1 and p. 6 Section 2.3 (total delay)",
+    "extractionMethod": "vector-coordinate digitization of measured marker and error bar; reported AFC delay added to spin-storage time",
+    "verifiedDate": "2026-11-18"
+  },
+  "holzaepfel-2020-eu-spin-wave-afc-2ms": {
+    "locator": "Primary manuscript arXiv:1910.08009v2, pp. 7–8 Section 3.1 and Fig. 4; p. 3 Section 2.1 and p. 6 Section 2.3 (total delay)",
+    "extractionMethod": "direct primary-text and figure-caption cross-check; reported AFC delay added to spin-storage time",
+    "verifiedDate": "2026-11-18"
   },
   "longdell-2005-pr-eit-one-second": {
-    "locator": "arXiv PDF, p. 1 abstract; pp. 6-7, Figs. 3-4",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "arXiv:quant-ph/0506233v1, pp. 6–7, Fig. 4, its inset and caption, and efficiency discussion",
+    "extractionMethod": "direct primary-PDF text and figure-caption comparison of long-delay and 100-ms measurements",
+    "verifiedDate": "2026-11-18"
+  },
+  "damon-2011-tm-rose-26us": {
+    "locator": "arXiv:1104.4875v1, Sec. 4, pp. 8–9, Fig. 3(a), caption and adjacent time/efficiency text",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-18"
+  },
+  "damon-2011-er-rose-82us": {
+    "locator": "arXiv:1104.4875v1, Sec. 4, p. 10, Fig. 5, caption and adjacent text",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-18"
+  },
+  "minnegaliev-2022-er-rose-40us": {
+    "locator": "Original Russian publisher PDF, printed p. 775 (PDF p. 7), Fig. 5 and adjacent text; English publisher abstract",
+    "extractionMethod": "direct primary text with photon-count cross-check and conflicting figure caption documented",
+    "verifiedDate": "2026-11-18"
+  },
+  "minnegaliev-2023-er-orthogonal-rose-60us": {
+    "locator": "English publisher PDF, printed pp. 870–871 (PDF pp. 6–7), Fig. 6 caption and adjacent weak-input and recovery-efficiency passages",
+    "extractionMethod": "direct publisher-PDF text + input and retrieved photon-count cross-check",
+    "verifiedDate": "2026-11-18"
   },
   "hetet-2008-pr-gem": {
     "locator": "arXiv PDF, p. 2, Fig. 2 and adjacent paragraph",
@@ -615,9 +650,14 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-09-01"
   },
   "rodriguez-moldes-2026-pr-xy4-single-photon": {
-    "locator": "arXiv:2609.02579v1 primary PDF, pp. 3-4, Figs. 2(b) and 3(a-c), plus adjacent single-photon-storage paragraphs",
-    "extractionMethod": "direct primary-PDF text + rendered-page cross-check + vector-coordinate digitization of the Fig. 3(c) efficiency point and error bar",
-    "verifiedDate": "2026-09-07"
+    "locator": "Publisher PDF, pp. 3–4, Figs. 2(b) and 3(c); author dataset DOI 10.5281/zenodo.21532904, fig3.npz, st = 100 us",
+    "extractionMethod": "author data arrays for Fig. 3(c) checked against the publisher PDF",
+    "verifiedDate": "2026-11-18"
+  },
+  "rodriguez-moldes-2026-pr-xy4-180us": {
+    "locator": "Publisher PDF, p. 4, Fig. 3(a–c); author dataset DOI 10.5281/zenodo.21532904, fig3.npz, st = 180 us",
+    "extractionMethod": "author data arrays for Fig. 3(a,c) checked against the publisher PDF",
+    "verifiedDate": "2026-11-18"
   },
   "sethia-2026-er-cppe-300us": {
     "locator": "Publisher PDF, p. 3, Fig. 2(c,d) and Experiment text",
@@ -678,6 +718,11 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' multimode paragraph and Extended Data Fig. 5(a-c)",
     "extractionMethod": "direct primary full-text extraction + rendered-figure cross-check",
     "verifiedDate": "2026-11-17"
+  },
+  "xu-2026-eu-plmc-6us": {
+    "locator": "Publisher full text, Sec. 2, Fig. 1(c) and timing equation; Sec. 3.2, Eq. (2); Sec. 3.4, Fig. 4 and adjacent efficiency paragraph",
+    "extractionMethod": "direct publisher-full-text extraction; input-to-echo delay calculated as t_e minus t_s",
+    "verifiedDate": "2026-11-18"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "locator": "Publisher full-text PDF, 'Experimental realization of memory protocol,' Fig. 3(b-c), caption, and adjacent efficiency paragraph",

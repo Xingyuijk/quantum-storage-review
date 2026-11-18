@@ -474,18 +474,26 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   "wei-2024-er-fiber-1650-modes": {
     "temperature": "10 mK",
     "magneticField": "2000 G (0.2 T)",
-    "conditionNote": "",
-    "locator": "Original PDF, pp. 2–3, memory setup",
+    "conditionNote": "The 10-m erbium-doped silica fiber is operated at 10 mK and 0.2 T.",
+    "locator": "Publisher PDF, p. 2 Results; p. 3 Fig. 2(a)(I); p. 6 Methods, Erbium-doped silica fibre",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-18"
+  },
+  "wei-2024-er-fiber-afc-channel-2-230ns": {
+    "temperature": "10 mK",
+    "magneticField": "2000 G (0.2 T)",
+    "conditionNote": "Channel 2 of the 10-m erbium-doped silica-fiber AFC is measured at 10 mK and 0.2 T.",
+    "locator": "Publisher PDF, p. 2 Results; p. 3 Fig. 2(a)(I); p. 6 Methods; Supplementary Note 3",
+    "extractionMethod": "direct text",
+    "verifiedDate": "2026-11-18"
   },
   "zhang-2024-er-spectral-interface": {
-    "temperature": "10 mK",
-    "magneticField": "1.35 T",
-    "conditionNote": "The 30 mK and 1 K values describe other device/thermal characterizations.",
-    "locator": "Original PDF, Methods/Supplementary setup, PDF p. 8",
+    "temperature": "30 mK",
+    "magneticField": "1.35 T parallel to the crystal c axis",
+    "conditionNote": "Appendix B gives 30 mK under optical pumping of the five AFC sections. The 10 mK reference is for the lower-power single-section preparation, and the approximately 1 K value is for the detectors.",
+    "locator": "Primary manuscript arXiv:2410.18516v1, p. 8 Appendix B",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-18"
   },
   "yang-2026-tfln-er": {
     "temperature": "260 mK",
@@ -647,6 +655,14 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
     "verifiedDate": "2026-11-17"
   },
+  "lv-2025-eu-nlpe-dd-42s": {
+    "temperature": "1.65 K",
+    "magneticField": "1.2968 +/- 0.0002 T, ZEFOZ; direction [-0.544, 0.601, 0.586] in D1/D2/b coordinates",
+    "conditionNote": "The conditions are for the double-pass 0.01% 151Eu3+:Y2SiO5 memory crystal used for the NLPE-DD experiment. Fig. 2(d) identifies the input regime for the efficiency point.",
+    "locator": "arXiv:2511.12537v2, pp. 1–2, Fig. 1 and setup text; p. 3, Fig. 2(a,b,d)",
+    "extractionMethod": "direct primary-PDF text + figure cross-check",
+    "verifiedDate": "2026-11-18"
+  },
   "ma-2021-one-hour-afc-5min": {
     "temperature": "1.7 K",
     "magneticField": "1.280 T ZEFOZ field",
@@ -665,27 +681,67 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   },
   "hain-2022-pr-eit-10s": {
     "temperature": "<4 K",
-    "magneticField": "Not reported",
-    "conditionNote": "",
-    "locator": "Original PDF, p. 3, experimental setup",
+    "magneticField": "Nominal ZEFOZ field: (-65, 158, 385) G along D1, D2 and b",
+    "conditionNote": "The nominal ZEFOZ setpoint was optimized before measurements. The long-storage run used a double pass and UR64 decoupling.",
+    "locator": "Publisher PDF, p. 3 Methods (temperature), p. 6 Section 3.2 (field), and pp. 8–9 Fig. 5 and Section 3.4 (long-delay settings)",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-18"
   },
   "holzaepfel-2020-long-afc": {
     "temperature": "4 K",
     "magneticField": "15 mT, 65° from D1 in the D1–D2 plane",
-    "conditionNote": "",
-    "locator": "Original PDF, pp. 1 and 4–5, magnetic-field configuration",
+    "conditionNote": "XY8 dynamical decoupling uses a fixed 2.5 ms separation between RF inversion pulses in this measurement.",
+    "locator": "Primary manuscript arXiv:1910.08009v2, pp. 4–6 Section 2.2–2.3 (field and cryostat); p. 10 Fig. 6(b) (sequence)",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-18"
+  },
+  "holzaepfel-2020-eu-spin-wave-afc-2ms": {
+    "temperature": "4 K",
+    "magneticField": "15 mT, 65° from D1 in the D1–D2 plane",
+    "conditionNote": "The 2 ms spin-storage point uses two identical RF rephasing pulses.",
+    "locator": "Primary manuscript arXiv:1910.08009v2, pp. 4–6 Section 2.2–2.3 (field and cryostat); pp. 7–8 Section 3.1 and Fig. 4 (sequence)",
+    "extractionMethod": "direct text",
+    "verifiedDate": "2026-11-18"
   },
   "longdell-2005-pr-eit-one-second": {
-    "temperature": "Liquid-helium bath (~4.2 K); exact value not stated",
+    "temperature": "Liquid-helium bath; numeric temperature not reported",
     "magneticField": "78 mT",
-    "conditionNote": "",
-    "locator": "Original PDF, p. 3, sample/cryostat and ZEFOZ-field paragraphs",
-    "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "conditionNote": "A counterpropagating EIT setup uses 0.05%-doped Pr3+:Y2SiO5 with RF rephasing. The several-second retrieval employs the dynamical decoherence control sequence in Fig. 4(b).",
+    "locator": "arXiv:quant-ph/0506233v1, p. 3, sample and magnetic-field text; p. 6, Fig. 4(b) and caption",
+    "extractionMethod": "direct primary-PDF text + sequence cross-check",
+    "verifiedDate": "2026-11-18"
+  },
+  "damon-2011-tm-rose-26us": {
+    "temperature": "2.8 K",
+    "magneticField": "Not reported for the Tm:YAG experiment",
+    "conditionNote": "The 2.8 K condition is reported for the Tm3+:YAG crystal in a liquid-helium cryostat. The extended cavity belongs to the source laser.",
+    "locator": "arXiv:1104.4875v1, Sec. 4, pp. 7–8, first setup and Fig. 3",
+    "extractionMethod": "direct primary-PDF text + setup review",
+    "verifiedDate": "2026-11-18"
+  },
+  "damon-2011-er-rose-82us": {
+    "temperature": "2 K",
+    "magneticField": "Approximately 2.2 T, perpendicular to b, at 45° to D1 and D2",
+    "conditionNote": "These conditions apply to the erbium crystal and the 82-us ROSE measurement.",
+    "locator": "arXiv:1104.4875v1, Sec. 4, pp. 9–10, second setup and Fig. 5",
+    "extractionMethod": "direct primary-PDF text + setup review",
+    "verifiedDate": "2026-11-18"
+  },
+  "minnegaliev-2022-er-rose-40us": {
+    "temperature": "1.3 K",
+    "magneticField": "0.2 T (2 kG), 140° from D1",
+    "conditionNote": "The 0.005%-doped 167Er3+:Y2SiO5 bulk crystal uses counterpropagating signal and rephasing pulses along b, with the signal polarized along D2.",
+    "locator": "Original Russian publisher PDF, printed pp. 770–771 (PDF pp. 2–3), Fig. 1 and adjacent setup text",
+    "extractionMethod": "direct primary-PDF text and setup cross-check",
+    "verifiedDate": "2026-11-18"
+  },
+  "minnegaliev-2023-er-orthogonal-rose-60us": {
+    "temperature": "1.3 K",
+    "magneticField": "3.39 T along D1",
+    "conditionNote": "The 0.005%-doped 167Er3+:Y2SiO5 bulk crystal uses orthogonal signal and rephasing beams. The weak signal is polarized along D2.",
+    "locator": "English publisher PDF, printed pp. 866–867, Fig. 1 and setup; pp. 870–871, Figs. 5–6 and captions",
+    "extractionMethod": "direct publisher-PDF text and setup cross-check",
+    "verifiedDate": "2026-11-18"
   },
   "hetet-2008-pr-gem": {
     "temperature": "2–4 K",
@@ -986,10 +1042,18 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   "rodriguez-moldes-2026-pr-xy4-single-photon": {
     "temperature": "3 K",
     "magneticField": "Not reported",
-    "conditionNote": "The Pr3+:Y2SiO5 memory is in a 3-K closed-cycle cryostat and is surrounded by mu-metal shielding. The authors infer a small residual external field from the echo behavior, but they do not report a measured field magnitude; the <1 mT discussion is contextual and is not assigned as the experimental field.",
-    "locator": "arXiv:2609.02579v1 primary PDF, p. 2 experimental-setup paragraph; p. 3 residual-field discussion; p. 7 End Matter A",
-    "extractionMethod": "direct primary-PDF text; explicit Not reported for field after full-text review",
-    "verifiedDate": "2026-09-07"
+    "conditionNote": "The 3 K cryostat uses mu-metal shielding. The echo behavior suggests a residual external field whose magnitude is unspecified.",
+    "locator": "Publisher PDF, p. 2 setup; p. 3 residual-field discussion; p. 7 End Matter, Appendix A",
+    "extractionMethod": "direct primary-PDF text; applied field magnitude not reported",
+    "verifiedDate": "2026-11-18"
+  },
+  "rodriguez-moldes-2026-pr-xy4-180us": {
+    "temperature": "3 K",
+    "magneticField": "Not reported",
+    "conditionNote": "The 3 K cryostat uses mu-metal shielding. The echo behavior suggests a residual external field whose magnitude is unspecified.",
+    "locator": "Publisher PDF, p. 2 setup; p. 3 residual-field discussion; p. 7 End Matter, Appendix A",
+    "extractionMethod": "direct primary-PDF text; applied field magnitude not reported",
+    "verifiedDate": "2026-11-18"
   },
   "sethia-2026-er-cppe-300us": {
     "temperature": "approximately 500 mK",
@@ -1086,6 +1150,14 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "arXiv:2609.28271v4 primary HTML, Sections III.1-III.2, Methods Sections VI.2 and VI.4, Extended Data Fig. 5 and Supplementary Section S3.4 Fig. S16",
     "extractionMethod": "direct primary full-text and apparatus-figure review",
     "verifiedDate": "2026-11-17"
+  },
+  "xu-2026-eu-plmc-6us": {
+    "temperature": "1.7 K",
+    "magneticField": "Zero magnetic field (Fig. 1(b))",
+    "conditionNote": "Bulk 0.1%-doped Eu3+:Y2SiO5 is operated on the 151Eu3+ site 1 transition. The Stark control uses an electric field along D1.",
+    "locator": "Publisher full text, Sec. 2 and Fig. 1(a–c); Sec. 3.4 and Fig. 4(a,b)",
+    "extractionMethod": "direct publisher-full-text review and figure-caption cross-check",
+    "verifiedDate": "2026-11-18"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "temperature": "10 mK",

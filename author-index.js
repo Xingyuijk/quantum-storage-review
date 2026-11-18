@@ -239,6 +239,10 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Shi-Hai Wei, Bo Jing, Xue-Ying Zhang, Jin-Yu Liao, Hao Li, Li-Xing You, Zhen Wang, You Wang, Guang-Wei Deng, Hai-Zhi Song, Daniel Oblak, Guang-Can Guo, Qiang Zhou",
     "searchTerms": "Shi-Hai Wei Bo Jing Xue-Ying Zhang Jin-Yu Liao Hao Li Li-Xing You Zhen Wang You Wang Guang-Wei Deng Hai-Zhi Song Daniel Oblak Guang-Can Guo Qiang Zhou"
   },
+  "wei-2024-er-fiber-afc-channel-2-230ns": {
+    "authorsFull": "Shi-Hai Wei, Bo Jing, Xue-Ying Zhang, Jin-Yu Liao, Hao Li, Li-Xing You, Zhen Wang, You Wang, Guang-Wei Deng, Hai-Zhi Song, Daniel Oblak, Guang-Can Guo, Qiang Zhou",
+    "searchTerms": "Shi-Hai Wei Bo Jing Xue-Ying Zhang Jin-Yu Liao Hao Li Li-Xing You Zhen Wang You Wang Guang-Wei Deng Hai-Zhi Song Daniel Oblak Guang-Can Guo Qiang Zhou"
+  },
   "zhang-2024-er-spectral-interface": {
     "authorsFull": "Xueying Zhang, Bin Zhang, Shihai Wei, Hao Li, Jinyu Liao, Tao Zhou, Guangwei Deng, You Wang, Haizhi Song, Lixing You, Boyu Fan, Yunru Fan, Feng Chen, Guangcan Guo, Qiang Zhou",
     "searchTerms": "Xueying Zhang Bin Zhang Shihai Wei Hao Li Jinyu Liao Tao Zhou Guangwei Deng You Wang Haizhi Song Lixing You Boyu Fan Yunru Fan Feng Chen Guangcan Guo Qiang Zhou"
@@ -323,6 +327,10 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "You-Cai Lv, Yu-Jia Zhu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "You-Cai Lv You Cai Lv Youcai Lv Yu-Jia Zhu Yu Jia Zhu Yujia Zhu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo europium 151Eu minute-scale NLPE noiseless photon echo ZEFOZ CHS-UR4"
   },
+  "lv-2025-eu-nlpe-dd-42s": {
+    "authorsFull": "You-Cai Lv, Yu-Jia Zhu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "You-Cai Lv You Cai Lv Youcai Lv Yu-Jia Zhu Yu Jia Zhu Yujia Zhu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo europium 151Eu minute-scale NLPE noiseless photon echo ZEFOZ CHS-UR4"
+  },
   "ma-2021-one-hour-afc-5min": {
     "authorsFull": "Yu Ma, You-Zhi Ma, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Yu Ma You-Zhi Ma You Zhi Ma YouZhi Ma Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Chuan-Feng Li Chuan Feng Li ChuanFeng Li Guang-Can Guo Guang Can Guo GuangCan Guo USTC one hour coherent optical storage AFC ZEFOZ"
@@ -339,9 +347,29 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Adrian Holzäpfel, Jean Etesse, Krzysztof T. Kaczmarek, Alexey Tiranov, Nicolas Gisin, Mikael Afzelius",
     "searchTerms": "Adrian Holzäpfel Jean Etesse Krzysztof T. Kaczmarek Alexey Tiranov Nicolas Gisin Mikael Afzelius"
   },
+  "holzaepfel-2020-eu-spin-wave-afc-2ms": {
+    "authorsFull": "Adrian Holzäpfel, Jean Etesse, Krzysztof T. Kaczmarek, Alexey Tiranov, Nicolas Gisin, Mikael Afzelius",
+    "searchTerms": "Adrian Holzäpfel Jean Etesse Krzysztof T. Kaczmarek Alexey Tiranov Nicolas Gisin Mikael Afzelius"
+  },
   "longdell-2005-pr-eit-one-second": {
     "authorsFull": "Jevon J. Longdell, Emmanuel Fraval, Matthew J. Sellars, Neil B. Manson",
     "searchTerms": "Jevon J. Longdell Emmanuel Fraval Matthew J. Sellars Neil B. Manson"
+  },
+  "damon-2011-tm-rose-26us": {
+    "authorsFull": "V. Damon, M. Bonarota, A. Louchet-Chauvet, T. Chanelière, J.-L. Le Gouët",
+    "searchTerms": "Damon Bonarota Anne Louchet-Chauvet Thierry Chanelière Thierry Chaneliere Jean-Louis Le Gouët Jean-Louis Le Gouet ROSE revival of silenced echo thulium Tm YAG"
+  },
+  "damon-2011-er-rose-82us": {
+    "authorsFull": "V. Damon, M. Bonarota, A. Louchet-Chauvet, T. Chanelière, J.-L. Le Gouët",
+    "searchTerms": "Damon Bonarota Anne Louchet-Chauvet Thierry Chanelière Thierry Chaneliere Jean-Louis Le Gouët Jean-Louis Le Gouet ROSE revival of silenced echo erbium Er YSO"
+  },
+  "minnegaliev-2022-er-rose-40us": {
+    "authorsFull": "M. M. Minnegaliev, K. I. Gerasimov, T. N. Sabirov, R. V. Urmancheev, S. A. Moiseev",
+    "searchTerms": "Minnegaliev Gerasimov Sabirov Urmancheev Moiseev ROSE revival of silenced echo erbium Er YSO telecom"
+  },
+  "minnegaliev-2023-er-orthogonal-rose-60us": {
+    "authorsFull": "M. M. Minnegaliev, K. I. Gerasimov, S. A. Moiseev",
+    "searchTerms": "Minnegaliev Gerasimov Moiseev ROSE revival of silenced echo orthogonal geometry erbium Er YSO telecom"
   },
   "hetet-2008-pr-gem": {
     "authorsFull": "Gabriel Hetet, Jevon J. Longdell, Annabel L. Alexander, Ping Koy Lam, Matthew J. Sellars",
@@ -495,6 +523,10 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Alberto E. Rodríguez-Moldes, Félicien Appas, Jonathan Hänni, Jelena V. Rakonjac, Samuele Grandi, Hugues de Riedmatten",
     "searchTerms": "Alberto E. Rodríguez-Moldes Alberto Rodriguez-Moldes Félicien Appas Felicien Appas Jonathan Hänni Jonathan Hanni Jelena V. Rakonjac Samuele Grandi Hugues de Riedmatten"
   },
+  "rodriguez-moldes-2026-pr-xy4-180us": {
+    "authorsFull": "Alberto E. Rodríguez-Moldes, Félicien Appas, Jonathan Hänni, Jelena V. Rakonjac, Samuele Grandi, Hugues de Riedmatten",
+    "searchTerms": "Alberto E. Rodríguez-Moldes Alberto Rodriguez-Moldes Félicien Appas Felicien Appas Jonathan Hänni Jonathan Hanni Jelena V. Rakonjac Samuele Grandi Hugues de Riedmatten"
+  },
   "sethia-2026-er-cppe-300us": {
     "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
     "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal modes telecom CPPE ROSE Erbium Y2SiO5"
@@ -542,6 +574,10 @@ window.QM_AUTHOR_INDEX = {
   "lei-2026-eu-hagem-crystal-4mode": {
     "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
     "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage four temporal modes multimode"
+  },
+  "xu-2026-eu-plmc-6us": {
+    "authorsFull": "Zhenqi Xu, Mucheng Guo, Zhehao Xu, Weiye Sun, Pengjun Liang, Zongquan Zhou, Shuping Liu, Fudong Wang, Manjin Zhong",
+    "searchTerms": "Zhenqi Xu Mucheng Guo Zhehao Xu Weiye Sun Pengjun Liang Zongquan Zhou Zong-Quan Zhou Shuping Liu Fudong Wang Manjin Zhong PLMC precreated long-lived macroscopic coherence Stark photon echo europium 151Eu YSO"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "authorsFull": "Nasser Gohari Kamel, Sourabh Kumar, Ujjwal Gautam, Erhan Saglamyurek, Vahid Salari, Daniel Oblak",
