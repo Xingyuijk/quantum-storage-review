@@ -136,20 +136,20 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "verifiedDate": "2026-07-15"
   },
   "stuart-2021-er-initialisation": {
-    "temperature": "Model regime: 1.5 K",
-    "magneticField": "Model regime: 7 T along D1",
-    "conditionNote": "Simulation adopts the experimental regime of Rančić et al.; it is not a new storage experiment.",
-    "locator": "Original PDF, p. 2, paragraph beginning ‘We consider 167Er3+:Y2SiO5’",
-    "extractionMethod": "direct text; model condition",
-    "verifiedDate": "2026-07-15"
+    "temperature": "Not reported for the storage run",
+    "magneticField": "7 T along D1",
+    "conditionNote": "The AFC experiment used a helium-bath cryostat with both the applied field and the crystal D1 axis vertical. The 1.5 K figure appears in the discussion of the earlier reference experiment used for the model.",
+    "locator": "Publisher PDF, p. 2, experimental setup paragraph; p. 1, discussion of the reference regime",
+    "extractionMethod": "direct publisher-PDF text",
+    "verifiedDate": "2026-11-17"
   },
   "stuart-2025-four-level-rase": {
     "temperature": "1.5 K",
-    "magneticField": "6 T",
-    "conditionNote": "",
-    "locator": "Original PDF, p. 2, experimental setup; Supplementary Material, PDF p. 13",
-    "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "magneticField": "6 T, approximately 1° off the D1 axis",
+    "conditionNote": "Site 2 of a 0.005% 167Er3+:Y2SiO5 crystal at 1538 nm. Measurements use a free-space double pass through the crystal.",
+    "locator": "Publisher PDF, p. 2, Section II A (Material and spectral preparation)",
+    "extractionMethod": "direct publisher-PDF text",
+    "verifiedDate": "2026-11-17"
   },
   "an-2025-er-teleportation": {
     "temperature": "≈200 mK",
@@ -639,6 +639,14 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "extractionMethod": "direct text",
     "verifiedDate": "2026-07-15"
   },
+  "lv-2025-eu-nlpe-dd-5p6s": {
+    "temperature": "1.65 K",
+    "magneticField": "1.2968 +/- 0.0002 T, ZEFOZ; direction [-0.544, 0.601, 0.586] in D1/D2/b coordinates",
+    "conditionNote": "The temperature and field are for the double-pass 0.01% 151Eu3+:Y2SiO5 memory crystal. The separate filter crystal sits in a different cryostat. The 5.600032-s measurement used CHS-UR4 decoupling with a 1.4-s RF pulse interval.",
+    "locator": "arXiv:2511.12537v2, pp. 1–2, Fig. 1 and setup text; p. 3, Fig. 2(a–b); p. 4, Fig. 3(b) and adjacent text",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
+  },
   "ma-2021-one-hour-afc-5min": {
     "temperature": "1.7 K",
     "magneticField": "1.280 T ZEFOZ field",
@@ -646,6 +654,14 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Original PDF, p. 2, Experimental setup; Fig. 1",
     "extractionMethod": "direct text",
     "verifiedDate": "2026-07-15"
+  },
+  "hain-2025-pr-eit-ur16-1s": {
+    "temperature": "<4 K",
+    "magneticField": "Nominal ZEFOZ field (-86, -160, 379) G along D1/D2/b, with adjustment before each measurement",
+    "conditionNote": "The two frequency ensembles are prepared in a 0.02% Pr3+:Y2SiO5 storage crystal. A single UR16 sequence rephases the spin coherence for the 1-s result. A second Pr3+:Y2SiO5 crystal filters the readout light.",
+    "locator": "Publisher PDF, p. 2, Sec. 2 field discussion; pp. 4–5, Sec. 3 and Fig. 2; pp. 8–9, Sec. 4 and Fig. 4(c)",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "hain-2022-pr-eit-10s": {
     "temperature": "<4 K",
@@ -859,9 +875,9 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "temperature": "75 mK effective spin temperature",
     "magneticField": "0.2 T",
     "conditionNote": "These conditions are paired to the 1.10-ms optical-coherence measurement. The collective cooperativity is reported at zero field, and the 5-s grating-visibility measurement is a separate observable.",
-    "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
+    "locator": "arXiv:2608.08221v2 primary HTML, Section II.1, Fig. 2(c-e) and adjacent paragraphs",
     "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-08-13"
+    "verifiedDate": "2026-11-17"
   },
   "saglamyurek-2015-er-fiber-entanglement": {
     "temperature": "approximately 1 K",
@@ -898,10 +914,10 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   "kaloyeros-2026-er-sic-coherence": {
     "temperature": "Room temperature (ambient conditions)",
     "magneticField": "Not reported",
-    "conditionNote": "The reported 568-us value is a single-ion optical-coherence measurement, not a storage-efficiency point. No magnetic-field value was identified for this measurement in the inspected full text.",
-    "locator": "Local Zotero attachment, arXiv:2601.11879 preprint PDF, p. 8, Fig. 4E discussion",
+    "conditionNote": "The 172-us optical coherence value is from a single Er3+ ion at room temperature with an initial pi pulse. The inspected version does not state an applied magnetic field for this measurement.",
+    "locator": "arXiv:2601.11879v4 primary PDF, p. 9 photon-echo discussion and p. 10 Fig. 3(e-f)",
     "extractionMethod": "direct text + rendered-page cross-check; explicit Not reported after full-PDF review",
-    "verifiedDate": "2026-08-14"
+    "verifiedDate": "2026-11-17"
   },
   "kolar-2026-er-sic-microring-afc": {
     "temperature": "7 mK refrigerator base temperature",
@@ -979,17 +995,25 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "temperature": "approximately 500 mK",
     "magneticField": "3 T at 135° to the D1 axis in the D1–D2 plane",
     "conditionNote": "The 5-ppm 167Er3+:Y2SiO5 site-1 crystal, fiber-coupled bulk setup, and CPPE sequence are the same conditions used for the 300-us, 10.36% point.",
-    "locator": "arXiv:2512.17181v2 primary PDF, p. 3, Experiment setup paragraph",
-    "extractionMethod": "direct primary-PDF text",
-    "verifiedDate": "2026-09-10"
+    "locator": "Publisher PDF, p. 3 Experiment and p. 7 End Matter, first two paragraphs",
+    "extractionMethod": "direct publisher-PDF text",
+    "verifiedDate": "2026-11-17"
   },
   "sethia-2026-er-cppe-1ms": {
     "temperature": "approximately 500 mK",
     "magneticField": "3 T at 135° to the D1 axis in the D1–D2 plane",
     "conditionNote": "The 5-ppm 167Er3+:Y2SiO5 site-1 crystal, fiber-coupled bulk setup, and CPPE sequence are the same conditions used for the 1-ms, 1.42% point.",
-    "locator": "arXiv:2512.17181v2 primary PDF, p. 3, Experiment setup paragraph",
-    "extractionMethod": "direct primary-PDF text",
-    "verifiedDate": "2026-09-10"
+    "locator": "Publisher PDF, p. 3 Experiment and p. 7 End Matter, first two paragraphs",
+    "extractionMethod": "direct publisher-PDF text",
+    "verifiedDate": "2026-11-17"
+  },
+  "sethia-2026-er-cppe-25mode-800us": {
+    "temperature": "approximately 500 mK",
+    "magneticField": "3 T at 135° to the D1 axis in the D1–D2 plane",
+    "conditionNote": "The 25 temporal modes were stored with CPPE in the fiber-coupled 5-ppm 167Er3+:Y2SiO5 site-1 crystal.",
+    "locator": "Publisher PDF, p. 3 Experiment and Multimode capacity; p. 7 End Matter, first two paragraphs",
+    "extractionMethod": "direct publisher-PDF text",
+    "verifiedDate": "2026-11-17"
   },
   "ou-2026-eu-random-access-afc-500ns": {
     "temperature": "Not reported",
@@ -1007,6 +1031,14 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "extractionMethod": "direct publisher-PDF review; explicit Not reported after full-text search",
     "verifiedDate": "2026-09-16"
   },
+  "mneimneh-2026-pr-spin-wave-afc-array-18us": {
+    "temperature": "Not reported",
+    "magneticField": "Not reported",
+    "conditionNote": "The 606-nm memory is a Pr3+:Y2SiO5 bulk crystal addressed by acousto-optic deflectors, with the bow-tie cavity used for the photon-pair source. The authors describe the cryostat cycle but give no numeric temperature or applied field for this run.",
+    "locator": "arXiv:2609.15689v1 primary PDF, pp. 2-4, Sections 1.1-1.2 and Fig. 1; full text and supplement",
+    "extractionMethod": "direct primary-PDF review + layout cross-check",
+    "verifiedDate": "2026-11-17"
+  },
   "sun-2026-eu-cavity-afc-90pct": {
     "temperature": "3 K",
     "magneticField": "Not reported",
@@ -1019,33 +1051,41 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "temperature": "1.4 K",
     "magneticField": "Not reported",
     "conditionNote": "Bulk crystalline 151Eu3+(TMHD)3(phen) sample used for the 26.9-ns first HAGEM echo and 14.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
-    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
-    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage' and Methods Sections VI.2 and VI.4",
+    "extractionMethod": "direct primary full-text review; explicit Not reported for field",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-crystal-2echo": {
     "temperature": "1.4 K",
     "magneticField": "Not reported",
     "conditionNote": "Bulk crystalline 151Eu3+(TMHD)3(phen) sample used for the 53.8-ns second HAGEM echo and 6.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
-    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
-    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage' and Methods Sections VI.2 and VI.4",
+    "extractionMethod": "direct primary full-text review; explicit Not reported for field",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-powder-1echo": {
     "temperature": "1.4 K",
     "magneticField": "Not reported",
     "conditionNote": "151Eu3+(TMHD)3(phen) microcrystalline powder slab used for the 26.9-ns first HAGEM echo and 7.2% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
-    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
-    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage' and Methods Sections VI.2 and VI.4",
+    "extractionMethod": "direct primary full-text review; explicit Not reported for field",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-powder-2echo": {
     "temperature": "1.4 K",
     "magneticField": "Not reported",
     "conditionNote": "151Eu3+(TMHD)3(phen) microcrystalline powder slab used for the 53.8-ns second HAGEM echo and 1.9% efficiency. The primary text states 1.4 K for the optical setup but gives no separate applied-field value for storage; zero-field hyperfine fits in the supplement are not substituted for a storage field.",
-    "locator": "arXiv:2609.28271v1 primary PDF, p. 7 Sec. III-D and p. 10 Methods VI-B; magnetic-field value not stated for storage",
-    "extractionMethod": "direct primary-PDF text; explicit Not reported for field",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage' and Methods Sections VI.2 and VI.4",
+    "extractionMethod": "direct primary full-text review; explicit Not reported for field",
+    "verifiedDate": "2026-11-17"
+  },
+  "lei-2026-eu-hagem-crystal-4mode": {
+    "temperature": "1.4 K (reported storage setup)",
+    "magneticField": "Not reported",
+    "conditionNote": "The paper reports 1.4 K for the optical storage setup. It does not give separate temperature or field values for the four-mode run. Extended Data Fig. 5(c) identifies the crystal sample and Supplementary Fig. S16 shows the free-space optical arrangement.",
+    "locator": "arXiv:2609.28271v4 primary HTML, Sections III.1-III.2, Methods Sections VI.2 and VI.4, Extended Data Fig. 5 and Supplementary Section S3.4 Fig. S16",
+    "extractionMethod": "direct primary full-text and apparatus-figure review",
+    "verifiedDate": "2026-11-17"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "temperature": "10 mK",

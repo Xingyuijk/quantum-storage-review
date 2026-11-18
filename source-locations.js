@@ -85,14 +85,14 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "stuart-2021-er-initialisation": {
-    "locator": "Original PDF, p. 4, Fig. 3B and adjacent paragraph",
-    "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-11"
+    "locator": "Publisher PDF, pp. 3–4, Fig. 3(b) and adjacent paragraph",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "stuart-2025-four-level-rase": {
-    "locator": "arXiv PDF, p. 1 abstract; pp. 5-6, Fig. 6; p. 9 summary",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Publisher PDF, p. 3 Fig. 1 (spin interval); p. 5 Section III A and Fig. 4 caption (peak efficiency and delay convention); p. 6 Fig. 6",
+    "extractionMethod": "direct publisher-PDF text + rendered figure cross-check; input-to-echo delay calculated as 2t_a + t_b",
+    "verifiedDate": "2026-11-17"
   },
   "an-2025-er-teleportation": {
     "locator": "arXiv PDF, Supplementary Material p. 15, Fig. S10; p. 16, Fig. S11",
@@ -399,10 +399,20 @@ window.QM_SOURCE_LOCATIONS = {
     "extractionMethod": "direct text + figure cross-check",
     "verifiedDate": "2026-07-11"
   },
+  "lv-2025-eu-nlpe-dd-5p6s": {
+    "locator": "arXiv:2511.12537v2, p. 4, Fig. 3(b) and adjacent results text; p. 3, Fig. 2(d) caption",
+    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
+  },
   "ma-2021-one-hour-afc-5min": {
     "locator": "arXiv PDF, p. 5, Fig. 4 and adjacent paragraph",
     "extractionMethod": "direct text + figure cross-check",
     "verifiedDate": "2026-07-11"
+  },
+  "hain-2025-pr-eit-ur16-1s": {
+    "locator": "Publisher PDF, pp. 8–9, Fig. 4(c–d) and Sec. 4 weak-coherent storage paragraphs; pp. 3–4, Sec. 2 probe-reference calibration",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "hain-2022-pr-eit-10s": {
     "locator": "Original PDF, pp. 8-9, Figs. 5-6 and adjacent paragraphs",
@@ -535,9 +545,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-08-13"
   },
   "wo-2026-er-cawo4-integrated": {
-    "locator": "arXiv:2608.08221v1 PDF, main text p. 3, Fig. 2(c-e) and adjacent paragraphs",
+    "locator": "arXiv:2608.08221v2 primary HTML, Section II.1, Fig. 2(c-e) and adjacent paragraphs",
     "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-08-13"
+    "verifiedDate": "2026-11-17"
   },
   "saglamyurek-2015-er-fiber-entanglement": {
     "locator": "Local Zotero attachment, original PDF, p. 2, Fig. 2(c), caption, and adjacent paragraph",
@@ -560,9 +570,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-08-14"
   },
   "kaloyeros-2026-er-sic-coherence": {
-    "locator": "Local Zotero attachment, arXiv:2601.11879 preprint PDF, p. 8, Fig. 4E discussion",
+    "locator": "arXiv:2601.11879v4 primary PDF, p. 9 photon-echo discussion and p. 10 Fig. 3(e-f)",
     "extractionMethod": "direct text + rendered-page cross-check",
-    "verifiedDate": "2026-08-14"
+    "verifiedDate": "2026-11-17"
   },
   "kolar-2026-er-sic-microring-afc": {
     "locator": "arXiv:2607.01324v2 primary HTML, Results, Fig. 2(c) and paragraph reporting the standalone-memory benchmark",
@@ -610,14 +620,19 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-09-07"
   },
   "sethia-2026-er-cppe-300us": {
-    "locator": "arXiv:2512.17181v2 primary PDF, p. 4, Fig. 2C-D and adjacent paragraph",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
-    "verifiedDate": "2026-09-10"
+    "locator": "Publisher PDF, p. 3, Fig. 2(c,d) and Experiment text",
+    "extractionMethod": "direct publisher-PDF text + rendered figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "sethia-2026-er-cppe-1ms": {
-    "locator": "arXiv:2512.17181v2 primary PDF, p. 4, Fig. 2C-D and adjacent paragraph",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check",
-    "verifiedDate": "2026-09-10"
+    "locator": "Publisher PDF, p. 3, Fig. 2(c,d) and Experiment text",
+    "extractionMethod": "direct publisher-PDF text + rendered figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
+  },
+  "sethia-2026-er-cppe-25mode-800us": {
+    "locator": "Publisher PDF, p. 3, Multimode capacity paragraph; p. 4, Fig. 3(a) and caption",
+    "extractionMethod": "direct publisher-PDF text + rendered figure-caption cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "ou-2026-eu-random-access-afc-500ns": {
     "locator": "Publisher full-text PDF, p. 4, 'Multichannel storage of single-photon-level inputs' paragraph and Fig. 2a",
@@ -629,30 +644,40 @@ window.QM_SOURCE_LOCATIONS = {
     "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
     "verifiedDate": "2026-09-16"
   },
+  "mneimneh-2026-pr-spin-wave-afc-array-18us": {
+    "locator": "arXiv:2609.15689v1 primary PDF, p. 4, Fig. 2 and Sections 1.2-1.3; p. 5, Fig. 3(c) and adjacent efficiency-definition paragraphs",
+    "extractionMethod": "direct primary-PDF text and tabulated value + rendered-figure cross-check",
+    "verifiedDate": "2026-11-17"
+  },
   "sun-2026-eu-cavity-afc-90pct": {
     "locator": "arXiv:2609.19807v1 primary PDF, p. 3, Fig. 2(a), caption, and adjacent maximum-efficiency paragraph",
     "extractionMethod": "direct primary-PDF text + rendered-figure cross-check + arXiv source-TeX cross-check",
     "verifiedDate": "2026-09-19"
   },
   "lei-2026-eu-hagem-crystal-1echo": {
-    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (crystal first echo)",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' Fig. 3 and adjacent single-mode paragraph (crystal first echo)",
+    "extractionMethod": "direct primary full-text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-crystal-2echo": {
-    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (crystal second echo)",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' Fig. 3 and adjacent single-mode paragraph (crystal second echo)",
+    "extractionMethod": "direct primary full-text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-powder-1echo": {
-    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (powder first echo)",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' Fig. 3 and adjacent single-mode paragraph (powder first echo)",
+    "extractionMethod": "direct primary full-text + figure-caption cross-check; storage time calculated as 1/37.2 MHz",
+    "verifiedDate": "2026-11-17"
   },
   "lei-2026-eu-hagem-powder-2echo": {
-    "locator": "arXiv:2609.28271v1 primary PDF, pp. 6-7, Sec. III-D, Fig. 5 and adjacent paragraph (powder second echo)",
-    "extractionMethod": "direct primary-PDF text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
-    "verifiedDate": "2026-09-25"
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' Fig. 3 and adjacent single-mode paragraph (powder second echo)",
+    "extractionMethod": "direct primary full-text + figure-caption cross-check; storage time calculated as 2/37.2 MHz",
+    "verifiedDate": "2026-11-17"
+  },
+  "lei-2026-eu-hagem-crystal-4mode": {
+    "locator": "arXiv:2609.28271v4 primary HTML, Section III.2 'Broadband quantum storage,' multimode paragraph and Extended Data Fig. 5(a-c)",
+    "extractionMethod": "direct primary full-text extraction + rendered-figure cross-check",
+    "verifiedDate": "2026-11-17"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "locator": "Publisher full-text PDF, 'Experimental realization of memory protocol,' Fig. 3(b-c), caption, and adjacent efficiency paragraph",

@@ -68,12 +68,12 @@ window.QM_AUTHOR_INDEX = {
     "searchTerms": "Miloš Rančić Morgan P. Hedges Rose L. Ahlefeldt Matthew J. Sellars"
   },
   "stuart-2021-er-initialisation": {
-    "authorsFull": "James Stuart, Morgan Hedges, Rose Ahlefeldt, Matthew Sellars",
-    "searchTerms": "James Stuart Morgan Hedges Rose Ahlefeldt Matthew Sellars Matthew Sellars Sellars ANU resolved hyperfine structure initialization initialisation high field 167Er erbium no cavity"
+    "authorsFull": "James S. Stuart, Morgan Hedges, Rose Ahlefeldt, Matthew Sellars",
+    "searchTerms": "James S. Stuart James Stuart Morgan Hedges Rose Ahlefeldt Matthew Sellars ANU resolved hyperfine structure initialization initialisation high field 167Er erbium no cavity"
   },
   "stuart-2025-four-level-rase": {
     "authorsFull": "James Stuart, Kieran Smith, Morgan Hedges, Rose Ahlefeldt, Matthew Sellars",
-    "searchTerms": "James Stuart, Kieran Smith, Morgan Hedges, Rose Ahlefeldt, Matthew Sellars Matthew Sellars Sellars Morgan Hedges Rose Ahlefeldt Kieran Smith 4-level RASE rephased amplified spontaneous emission I4LE Er YSO high efficiency"
+    "searchTerms": "James Stuart Kieran Smith Morgan Hedges Rose Ahlefeldt Matthew Sellars 4-level RASE rephased amplified spontaneous emission I4LE Er YSO arXiv:2409.12503 Progress towards efficient 4-level photon echo memories"
   },
   "an-2025-er-teleportation": {
     "authorsFull": "Yu-Yang An, Qian He, Wenyi Xue, Ming-Hao Jiang, Chengdong Yang, Yan-Qing Lu, Shining Zhu, Xiao-Song Ma",
@@ -319,9 +319,17 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Tian-Xiang Zhu, Ming-Xu Su, Chao Liu, Yu-Ping Liu, Chao-Fan Wang, Pei-Xi Liu, Yong-Jian Han, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Tian-Xiang Zhu Tian Xiang Zhu TianXiang Zhu Ming-Xu Su Ming Xu Su MingXu Su Chao Liu Yu-Ping Liu Yu Ping Liu YuPing Liu Chao-Fan Wang Chao Fan Wang ChaoFan Wang Pei-Xi Liu Pei Xi Liu PeiXi Liu Yong-Jian Han Yong Jian Han YongJian Han Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Chuan-Feng Li Chuan Feng Li ChuanFeng Li Guang-Can Guo Guang Can Guo GuangCan Guo"
   },
+  "lv-2025-eu-nlpe-dd-5p6s": {
+    "authorsFull": "You-Cai Lv, Yu-Jia Zhu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "You-Cai Lv You Cai Lv Youcai Lv Yu-Jia Zhu Yu Jia Zhu Yujia Zhu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo europium 151Eu minute-scale NLPE noiseless photon echo ZEFOZ CHS-UR4"
+  },
   "ma-2021-one-hour-afc-5min": {
     "authorsFull": "Yu Ma, You-Zhi Ma, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Yu Ma You-Zhi Ma You Zhi Ma YouZhi Ma Zong-Quan Zhou Zong Quan Zhou ZongQuan Zhou Chuan-Feng Li Chuan Feng Li ChuanFeng Li Guang-Can Guo Guang Can Guo GuangCan Guo USTC one hour coherent optical storage AFC ZEFOZ"
+  },
+  "hain-2025-pr-eit-ur16-1s": {
+    "authorsFull": "Marcel Hain, Niklas Stewen, Thomas Halfmann",
+    "searchTerms": "Marcel Hain Niklas Stewen Thomas Halfmann praseodymium Pr YSO EIT electromagnetically induced transparency ZEFOZ UR16 multiple frequency ensembles single-photon level"
   },
   "hain-2022-pr-eit-10s": {
     "authorsFull": "Marcel Hain, Markus Stabel, Thomas Halfmann",
@@ -495,6 +503,10 @@ window.QM_AUTHOR_INDEX = {
     "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
     "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal modes telecom CPPE ROSE Erbium Y2SiO5"
   },
+  "sethia-2026-er-cppe-25mode-800us": {
+    "authorsFull": "Anuj Sethia, Nasser Gohari Kamel, Daniel Oblak",
+    "searchTerms": "Anuj Sethia Nasser Gohari Kamel Daniel Oblak on-demand millisecond storage spectro-temporal multimode temporal multiplexing telecom CPPE ROSE Erbium Y2SiO5"
+  },
   "ou-2026-eu-random-access-afc-500ns": {
     "authorsFull": "Zhong-Wen Ou, Tian-Xiang Zhu, Peng-Jun Liang, Xiao-Min Hu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Zhong-Wen Ou Tian-Xiang Zhu Peng-Jun Liang Xiao-Min Hu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo random access high dimensional integrated quantum memory"
@@ -502,6 +514,10 @@ window.QM_AUTHOR_INDEX = {
   "ou-2026-eu-random-access-afc-1us": {
     "authorsFull": "Zhong-Wen Ou, Tian-Xiang Zhu, Peng-Jun Liang, Xiao-Min Hu, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
     "searchTerms": "Zhong-Wen Ou Tian-Xiang Zhu Peng-Jun Liang Xiao-Min Hu Zong-Quan Zhou Chuan-Feng Li Guang-Can Guo random access high dimensional integrated quantum memory"
+  },
+  "mneimneh-2026-pr-spin-wave-afc-array-18us": {
+    "authorsFull": "Aya Mneimneh, Susana Plascencia, Manuel Gundin, Jonathan Hänni, Samuele Grandi, Markus Teller, Hugues de Riedmatten",
+    "searchTerms": "Aya Mneimneh Susana Plascencia Manuel Gundin Manuel Gundín Jonathan Hänni Jonathan Hanni Samuele Grandi Markus Teller Hugues de Riedmatten heralded single photon metropolitan quantum memory array"
   },
   "sun-2026-eu-cavity-afc-90pct": {
     "authorsFull": "Weiye Sun, Fudong Wang, Mucheng Guo, Xiantong An, Zhenqi Xu, Zhehao Xu, Xingmin He, Matthew J. Sellars, Shuping Liu, Manjin Zhong",
@@ -522,6 +538,10 @@ window.QM_AUTHOR_INDEX = {
   "lei-2026-eu-hagem-powder-2echo": {
     "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
     "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage"
+  },
+  "lei-2026-eu-hagem-crystal-4mode": {
+    "authorsFull": "Yisheng Lei, Senthil Kumar Kuppusamy, Idris Tlemsani, Suma Al-Hunaishi, Pengrui Jiao, Olaf Fuhr, Mario Ruben, Philippe Goldner, Diana Serrano",
+    "searchTerms": "Yisheng Lei Senthil Kumar Kuppusamy Idris Tlemsani Suma Al-Hunaishi Pengrui Jiao Olaf Fuhr Mario Ruben Philippe Goldner Diana Serrano HAGEM Eu3 molecular quantum storage four temporal modes multimode"
   },
   "gohari-kamel-2026-yb-cppe-140us": {
     "authorsFull": "Nasser Gohari Kamel, Sourabh Kumar, Ujjwal Gautam, Erhan Saglamyurek, Vahid Salari, Daniel Oblak",
