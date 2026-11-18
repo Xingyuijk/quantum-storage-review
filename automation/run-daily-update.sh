@@ -8,7 +8,7 @@ STATE_DIR="${QUANTUM_STORAGE_AUTOMATION_STATE:-/Users/xiangrikui/Library/quantum
 NODE_BIN="${NODE_BIN:-/opt/homebrew/bin/node}"
 GIT_BIN="${GIT_BIN:-/usr/bin/git}"
 CODEX_BIN="${CODEX_BIN:-/opt/homebrew/bin/codex}"
-CODEX_MODEL="${CODEX_MODEL:-gpt-5.6-sol}"
+CODEX_MODEL="${CODEX_MODEL:-gpt-6.1-sol}"
 AUTO_PUSH="${AUTO_PUSH:-0}"
 RESEARCH_INTERVAL_DAYS="${RESEARCH_INTERVAL_DAYS:-3}"
 
@@ -98,6 +98,10 @@ cleanup() {
   [[ -f "$LOCK_DIR/pid" ]] && /bin/rm "$LOCK_DIR/pid"
   /bin/rmdir "$LOCK_DIR" 2>/dev/null || true
   [[ -f "$PRE_RUN_DATA" ]] && /bin/rm "$PRE_RUN_DATA"
+  for temp_report in "${report_tmp:-}" "${codex_report_tmp:-}" "${report_with_header:-}"; do
+    [[ -n "$temp_report" && -f "$temp_report" ]] && /bin/rm "$temp_report"
+  done
+  return 0
 }
 trap cleanup EXIT
 
@@ -148,6 +152,10 @@ QUANTUM_ZOTERO_BASELINE_FILENAME="last-research-snapshot.json" \
 base_head="$($GIT_BIN -C "$SITE_DIR" rev-parse HEAD)"
 report_tmp="$REPORT_DIR/.${TODAY}.$$"
 report_final="$REPORT_DIR/${TODAY}.md"
+if (( AUTO_PUSH != 1 )); then
+  mkdir -p "$REPORT_DIR/previews"
+  report_final="$REPORT_DIR/previews/${TODAY}.md"
+fi
 "$NODE_BIN" "$TRIAGE_REPORTER" "$STATE_DIR" "$SITE_DIR" > "$report_tmp"
 
 codex_report_tmp="$REPORT_DIR/.${TODAY}.$$-codex.md"
@@ -161,21 +169,18 @@ if ! "$CODEX_BIN" exec \
   --add-dir "$STATE_DIR" \
   --output-last-message "$codex_report_tmp" \
   < "$DAILY_PROMPT"; then
-  /bin/rm -f "$report_tmp" "$codex_report_tmp"
   write_history failed "reason=codex_cli_failed"
   print -r -- "Codex CLI research failed; leaving the date checkpoint unchanged for retry"
   exit 1
 fi
 
 if [[ ! -s "$codex_report_tmp" ]]; then
-  /bin/rm -f "$report_tmp" "$codex_report_tmp"
   write_history failed "reason=empty_codex_report"
   print -r -- "Codex CLI returned an empty research report"
   exit 1
 fi
 
 if [[ "$($GIT_BIN -C "$SITE_DIR" rev-parse HEAD)" != "$base_head" ]]; then
-  /bin/rm -f "$report_tmp" "$codex_report_tmp"
   write_history failed "reason=codex_changed_git_history"
   print -r -- "Codex changed Git history; refusing publication"
   exit 1
@@ -192,7 +197,6 @@ while IFS= read -r status_line; do
   esac
 done <<< "$status_output"
 if [[ -n "$unexpected_status" ]]; then
-  /bin/rm -f "$report_tmp" "$codex_report_tmp"
   write_history failed "reason=codex_changed_file_outside_allowlist"
   print -r -- "Codex changed files outside the automatic data allowlist; refusing publication"
   print -r -- "$unexpected_status"
@@ -211,13 +215,9 @@ report_with_header="$REPORT_DIR/.${TODAY}.$$.md"
   print -r -- ""
   /bin/cat "$codex_report_tmp"
 } > "$report_with_header"
-/bin/mv -f "$report_with_header" "$report_final"
-
 "$NODE_BIN" "$AUTOMATION_DIR/validate_site_data.mjs" "$SITE_DIR"
 
-# Every successful research run gets a fresh visible date, even when the
-# evidence review finds no new record. This date represents the last completed
-# collection/analysis/publication cycle, not only the last data-file change.
+# Prepare the date even when the evidence review finds no new record.
 "$NODE_BIN" "$AUTOMATION_DIR/update-site-date.mjs" "$TODAY" "$SITE_DIR"
 "$NODE_BIN" "$AUTOMATION_DIR/validate_site_data.mjs" "$SITE_DIR"
 
@@ -231,12 +231,15 @@ if (( AUTO_PUSH == 1 )); then
     fi
   fi
 else
+  /bin/mv -f "$report_with_header" "$report_final"
+  write_history preview "model=$CODEX_MODEL auto_push=$AUTO_PUSH"
   print -r -- "automatic publication disabled for this invocation; review the working-tree diff manually"
+  print -r -- "[$TODAY] preview completed; report=$report_final"
+  exit 0
 fi
 
+/bin/mv -f "$report_with_header" "$report_final"
 write_history success "model=$CODEX_MODEL auto_push=$AUTO_PUSH" "$PRE_RUN_DATA"
-
-/bin/rm -f "$report_tmp" "$codex_report_tmp"
 
 snapshot_tmp="$ZOTERO_DIR/.last-research-snapshot.$$"
 /bin/cp "$ZOTERO_DIR/current-snapshot.json" "$snapshot_tmp"

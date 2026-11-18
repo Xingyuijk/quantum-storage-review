@@ -38,10 +38,11 @@ codex -C "/absolute/path/to/site" --sandbox workspace-write --ask-for-approval o
 ```
 
 The scheduled job in `automation/run-daily-update.sh` runs every three calendar days. It scans the local
-Zotero snapshot, invokes `gpt-5.6-sol` for full-text/web research, and may update only the four synchronized
+Zotero snapshot, invokes `gpt-6.1-sol` for full-text/web research, and may update only the four synchronized
 data files. The wrapper validates, commits, and pushes automatically when `AUTO_PUSH=1` (the LaunchAgent
-setting). It never lets the model commit or push. Set `AUTO_PUSH=0` for a manual dry run or recovery, then
-use `automation/publish-site.sh` to validate the working tree.
+setting). It never lets the model commit or push. Set `AUTO_PUSH=0` for a manual preview or recovery, then
+use `automation/publish-site.sh` to validate the working tree. The preview report goes under
+`reports/previews/`, and the publication checkpoint and Zotero baseline advance after publication.
 Runtime reports and logs are stored under the project root's `automation-state/` directory, separated into
 `reports/`, `logs/`, `zotero/`, and `checkpoints/`.
 Never force-push or amend history.

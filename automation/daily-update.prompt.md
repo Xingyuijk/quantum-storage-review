@@ -5,7 +5,7 @@ The current working directory is the website source directory. Treat the project
 the current JavaScript data files as authoritative for schema, classification, and evidence standards.
 
 This is an unattended Codex CLI research, analysis, and publication-preparation task. The wrapper invokes
-the `gpt-5.6-sol` model every three calendar days in a writable project sandbox and automatically pushes
+the `gpt-6.1-sol` model every three calendar days in a writable project sandbox and automatically pushes
 validated website changes. Treat the local Zotero snapshot/delta and the files in `work/` as the starting
 corpus, then use the model's web search for current bibliographic discovery and accessible publisher/arXiv
 full text when needed. The final response is captured as the dated audit report.

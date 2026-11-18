@@ -24,7 +24,7 @@ and are never stored in this repository.
 
 The macOS LaunchAgent runs `automation/run-daily-update.sh` every hour as a three-calendar-day research
 cycle. It performs a complete read-only Zotero metadata scan, then invokes Codex CLI model
-`gpt-5.6-sol` to inspect the local corpus and current bibliographic/full-text sources. The model may edit
+`gpt-6.1-sol` to inspect the local corpus and current bibliographic/full-text sources. The model may edit
 only the four synchronized data files after primary-text evidence review. The wrapper validates the site,
 updates the visible date after every successful research cycle, commits, and pushes automatically. A lock, remote fast-forward
 check, and cadence checkpoint prevent duplicate or conflicting runs; a failed run does not advance the
@@ -38,8 +38,9 @@ Zotero Desktop must be running with **Settings → Advanced → Allow other appl
 communicate with Zotero** enabled. If the local API or any pagination page is unavailable, the scan fails
 and retries later. Zotero records are never created, edited, tagged, moved, or deleted.
 
-For a manual one-off run without publication, set `AUTO_PUSH=0`. The normal LaunchAgent has
-`AUTO_PUSH=1`; it publishes only after validation. To inspect or recover a run manually:
+For a manual one-off run without publication, set `AUTO_PUSH=0`. This writes a preview report under
+`reports/previews/` and leaves the date and Zotero checkpoints at the last publication. The normal
+LaunchAgent has `AUTO_PUSH=1` and publishes only after validation. To inspect or recover a run manually:
 
 ```bash
 RESEARCH_INTERVAL_DAYS=0 AUTO_PUSH=0 ./automation/run-daily-update.sh
