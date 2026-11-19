@@ -314,6 +314,14 @@ h2 { font-size: 19px; line-height: 1.25; }
 
 .metric strong { display: block; font-size: 16px; line-height: 1.2; }
 
+.efficiency-definition {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .tag {

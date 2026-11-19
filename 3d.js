@@ -3,7 +3,10 @@ const all3d = payload3d.results;
 const author3d = window.QM_AUTHOR_INDEX || {};
 const sources3d = window.QM_SOURCE_LOCATIONS || {};
 const conditions3d = window.QM_EXPERIMENTAL_CONDITIONS || {};
-const plotted3d = all3d.filter((d) => Number.isFinite(d.year) && Number.isFinite(d.storageTimeS) && d.storageTimeS > 0 && Number.isFinite(d.efficiencyPct) && d.efficiencyPct > 0);
+const protocolGroup3d = window.QMRecords.protocolGroup;
+const matchesSearch3d = window.QMRecords.createSearch(all3d, author3d);
+const plotted3d = all3d.filter((d) => Number.isFinite(d.year) && window.QMRecords.canPlot(d));
+const plottedIds3d = new Set(plotted3d.map((d) => d.id));
 
 const COLORS3D = {
   "Eu3+": "#1b6d77",
@@ -36,7 +39,8 @@ const wrap3d = document.getElementById("canvasWrap3d");
 const tooltip3d = document.getElementById("tooltip3d");
 const detail3d = document.getElementById("detail3d");
 const visible3d = document.getElementById("visible3d");
-const total3d = document.getElementById("total3d");
+const matchCount3d = document.getElementById("matchCount3d");
+const tableOnlyCount3d = document.getElementById("tableOnlyCount3d");
 const ctx3d = canvas3d.getContext("2d");
 
 const state3d = {
@@ -58,7 +62,9 @@ const state3d = {
 
 let cssWidth3d = 0;
 let cssHeight3d = 0;
+let visibleGroups3d = [];
 let projected3d = [];
+const groupPicker3d = new PlotGroupPicker(document.getElementById("groupBadges3d"), selectResult3d);
 
 function escape3d(value) {
   return String(value ?? "")
@@ -69,36 +75,8 @@ function escape3d(value) {
     .replaceAll("'", "&#039;");
 }
 
-function protocolGroup3d(d) {
-  if (["AFC", "spin-wave AFC", "ZEFOZ spin-wave AFC", "AFC / feed-forward", "AFC / Stark control", "on-demand AFC", "SMAFC"].includes(d.protocol)) return "AFC";
-  if (d.protocol === "NLPE / spin-wave") return "NLPE";
-  return d.protocol || "other";
-}
-
-function normalize3d(value) {
-  return String(value ?? "")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9+]+/g, " ")
-    .trim();
-}
-
-function searchText3d(d) {
-  const meta = author3d[d.id] || {};
-  return normalize3d([
-    d.title, d.authors, d.authorsFull, d.searchTerms, meta.authorsFull, meta.searchTerms,
-    d.year, d.ion, d.isotope, d.host, d.protocol, protocolGroup3d(d), d.architecture,
-    d.cavity, d.inputState, d.note
-  ].join(" "));
-}
-
 function matches3d(d) {
-  if (state3d.search) {
-    const terms = normalize3d(state3d.search).split(/\s+/).filter(Boolean);
-    const haystack = searchText3d(d);
-    if (!terms.every((term) => haystack.includes(term))) return false;
-  }
+  if (!matchesSearch3d(d, state3d.search)) return false;
   if (state3d.ions.size && !state3d.ions.has(d.ion)) return false;
   if (state3d.protocols.size && !state3d.protocols.has(protocolGroup3d(d))) return false;
   if (state3d.erFocus && !(d.isotope === "167Er3+" && /Y2SiO5/i.test(d.host) && protocolGroup3d(d) === "AFC")) return false;
@@ -290,22 +268,47 @@ function drawMark3d(item) {
   ctx3d.restore();
 }
 
+function updateResults3d() {
+  const matching = all3d.filter(matches3d);
+  const visible = matching.filter((d) => plottedIds3d.has(d.id));
+  visibleGroups3d = groupPlotResults(visible, true);
+  if (!visible.some((d) => d.id === state3d.selectedId)) state3d.selectedId = visible[0]?.id || "";
+  state3d.hoverId = "";
+  tooltip3d.hidden = true;
+  matchCount3d.textContent = matching.length;
+  visible3d.textContent = visible.length;
+  tableOnlyCount3d.textContent = matching.length - visible.length;
+  renderDetail3d(matching);
+  render3d();
+}
+
 function render3d() {
   if (!cssWidth3d || !cssHeight3d) return;
   ctx3d.clearRect(0, 0, cssWidth3d, cssHeight3d);
   drawFrame3d();
-  const visible = plotted3d.filter(matches3d);
-  if (visible.length && !visible.some((d) => d.id === state3d.selectedId)) state3d.selectedId = visible[0].id;
-  projected3d = visible.map((d) => ({ d, p: project3d(world3d(d)) })).sort((a, b) => a.p.depth - b.p.depth);
+  projected3d = visibleGroups3d.map((group) => {
+    const d = group.records.find((record) => record.id === state3d.selectedId) || group.records[0];
+    return { ...group, d, p: project3d(world3d(d)) };
+  }).sort((a, b) => a.p.depth - b.p.depth);
   projected3d.forEach(drawMark3d);
-  visible3d.textContent = visible.length;
-  total3d.textContent = plotted3d.length;
-  renderDetail3d();
+  groupPicker3d.update(projected3d, (d) => project3d(world3d(d)), true);
 }
 
-function renderDetail3d() {
-  const d = all3d.find((item) => item.id === state3d.selectedId) || plotted3d[0];
-  if (!d) return;
+function renderDetail3d(matching) {
+  const d = all3d.find((item) => item.id === state3d.selectedId);
+  if (!d) {
+    if (!matching.length) {
+      detail3d.innerHTML = "<h2>No matching records</h2><p>Try another search or clear your filters.</p>";
+      return;
+    }
+    const links = matching.map((record) => {
+      const href = `index.html?result=${encodeURIComponent(record.id)}#resultsTable`;
+      const label = `${record.authors} (${record.year}) · ${record.title}`;
+      return `<a class="detail-link" href="${escape3d(href)}">${escape3d(label)}</a>`;
+    });
+    detail3d.innerHTML = `<h2>Table-only records</h2><p>These records have no paired storage time and efficiency to plot. Open a record in the 2D table for details.</p><div class="detail-meta">${links.join("")}</div>`;
+    return;
+  }
   const meta = author3d[d.id] || {};
   const source = sources3d[d.id] || {};
   const conditions = conditions3d[d.id] || {};
@@ -319,7 +322,7 @@ function renderDetail3d() {
     <div class="detail-grid">
       <div class="metric"><span>Publication year</span><strong>${escape3d(d.year)}</strong></div>
       <div class="metric"><span>Storage time</span><strong>${escape3d(d.storageTimeLabel)}</strong></div>
-      <div class="metric"><span>Efficiency</span><strong>${escape3d(d.efficiencyLabel)}</strong></div>
+      <div class="metric"><span>Efficiency</span><strong>${escape3d(d.efficiencyLabel)}</strong><small class="efficiency-definition">${escape3d(d.efficiencyType)}</small></div>
       <div class="metric"><span>Working temperature</span><strong>${escape3d(conditions.temperature || "Not verified")}</strong></div>
       <div class="metric"><span>Magnetic field</span><strong>${escape3d(conditions.magneticField || "Not verified")}</strong></div>
       <div class="metric"><span>Protocol family</span><strong>${escape3d(protocolGroup3d(d))}</strong></div>
@@ -329,7 +332,6 @@ function renderDetail3d() {
     ${conditions.conditionNote ? `<p class="detail-note"><strong>Condition pairing:</strong> ${escape3d(conditions.conditionNote)}</p>` : ""}
     <div class="detail-meta">
       <span><strong>Authors:</strong> ${escape3d(meta.authorsFull || d.authorsFull || d.authors)}</span>
-      <span><strong>Efficiency definition:</strong> ${escape3d(d.efficiencyType)}</span>
       ${source.locator ? `<span><strong>Storage time / efficiency source:</strong> ${escape3d(source.locator)}</span>` : ""}
       ${source.extractionMethod ? `<span><strong>Performance extraction:</strong> ${escape3d(source.extractionMethod)}</span>` : ""}
       ${source.verifiedDate ? `<span><strong>Performance verified:</strong> ${escape3d(source.verifiedDate)}</span>` : ""}
@@ -339,6 +341,18 @@ function renderDetail3d() {
       <a class="detail-link" href="${escape3d(d.url)}" target="_blank" rel="noreferrer">Open DOI / source page</a>
     </div>
   `;
+}
+
+function selectResult3d(id) {
+  state3d.selectedId = id;
+  window.location.hash = encodeURIComponent(id);
+  updateResults3d();
+  if (window.matchMedia("(max-width: 1120px)").matches) {
+    const heading = detail3d.querySelector("h2");
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+    detail3d.scrollIntoView({ block: "start" });
+  }
 }
 
 function nearest3d(x, y) {
@@ -355,14 +369,14 @@ function nearest3d(x, y) {
 }
 
 function showTooltip3d(item) {
-  if (!item) {
+  if (!item || item.records.length > 1) {
     tooltip3d.hidden = true;
     state3d.hoverId = "";
     render3d();
     return;
   }
   state3d.hoverId = item.d.id;
-  tooltip3d.innerHTML = `<strong>${escape3d(item.d.authors)} ${escape3d(item.d.year)}</strong><br>${escape3d(item.d.isotope || item.d.ion)} / ${escape3d(item.d.host)}<br>${escape3d(item.d.storageTimeLabel)} · ${escape3d(item.d.efficiencyLabel)}`;
+  tooltip3d.innerHTML = `<strong>${escape3d(item.d.authors)} ${escape3d(item.d.year)}</strong><br>${escape3d(item.d.isotope || item.d.ion)} / ${escape3d(item.d.host)}<br>${escape3d(item.d.storageTimeLabel)} · ${escape3d(item.d.efficiencyLabel)}<span class="efficiency-definition">${escape3d(item.d.efficiencyType)}</span>`;
   tooltip3d.hidden = false;
   const width = tooltip3d.offsetWidth;
   const height = tooltip3d.offsetHeight;
@@ -411,9 +425,8 @@ canvas3d.addEventListener("pointerup", (event) => {
   if (!state3d.moved) {
     const item = nearest3d(pos.x, pos.y);
     if (item) {
-      state3d.selectedId = item.d.id;
-      window.location.hash = encodeURIComponent(item.d.id);
-      render3d();
+      if (item.records.length > 1) groupPicker3d.open(item.key);
+      else selectResult3d(item.d.id);
     }
   }
   state3d.dragging = false;
@@ -443,7 +456,7 @@ function buildChips3d(containerId, values, stateSet) {
     button.addEventListener("click", () => {
       if (stateSet.has(value)) stateSet.delete(value); else stateSet.add(value);
       button.setAttribute("aria-pressed", String(stateSet.has(value)));
-      render3d();
+      updateResults3d();
     });
     container.appendChild(button);
   });
@@ -462,12 +475,12 @@ function init3d() {
   buildChips3d("protocolFilters3d", PROTOCOLS3D, state3d.protocols);
   document.getElementById("search3d").addEventListener("input", (event) => {
     state3d.search = event.target.value.trim();
-    render3d();
+    updateResults3d();
   });
   document.getElementById("focusEr3d").addEventListener("click", (event) => {
     state3d.erFocus = !state3d.erFocus;
     event.currentTarget.setAttribute("aria-pressed", String(state3d.erFocus));
-    render3d();
+    updateResults3d();
   });
   document.getElementById("reset3d").addEventListener("click", () => {
     state3d.search = "";
@@ -476,7 +489,7 @@ function init3d() {
     state3d.erFocus = false;
     document.getElementById("search3d").value = "";
     document.querySelectorAll("#ionFilters3d button, #protocolFilters3d button, #focusEr3d").forEach((button) => button.setAttribute("aria-pressed", "false"));
-    render3d();
+    updateResults3d();
   });
   document.getElementById("resetCamera3d").addEventListener("click", resetCamera3d);
   document.querySelectorAll("[data-camera]").forEach((button) => {
@@ -495,6 +508,7 @@ function init3d() {
   const hashId = decodeURIComponent(window.location.hash.slice(1));
   if (hashId && all3d.some((d) => d.id === hashId)) state3d.selectedId = hashId;
   window.addEventListener("resize", resize3d);
+  updateResults3d();
   resize3d();
 }
 

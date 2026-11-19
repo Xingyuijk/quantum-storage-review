@@ -1,0 +1,71 @@
+.point-group-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.point-group-badge {
+  position: absolute;
+  transform: translate(3px, calc(-100% - 2px));
+  pointer-events: auto;
+  padding: 2px 4px;
+  min-width: 22px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background: #264b51;
+  color: white;
+  font: bold 11px/1.1 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.point-group-badge:focus-visible, .point-group-option:focus-visible, .point-group-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.point-group-dialog {
+  width: min(440px, calc(100% - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.point-group-dialog::backdrop { background: rgba(15, 25, 29, .34); }
+.point-group-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.point-group-close {
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink);
+  background: var(--panel);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.point-group-options, .point-group-option { display: grid; gap: 7px; }
+.point-group-option {
+  width: 100%;
+  padding: 11px 12px;
+  text-align: left;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: #fbfcfa;
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.point-group-option:hover { border-color: var(--accent); }
+.point-group-option strong { color: var(--ink); font-size: 14px; }
+
+@media (pointer: coarse) {
+  .point-group-badge { min-width: 25px; min-height: 24px; }
+  .point-group-close { min-width: 36px; min-height: 36px; }
+}

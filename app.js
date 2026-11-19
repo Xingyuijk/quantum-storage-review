@@ -1,7 +1,9 @@
 const payload = window.QM_DATA;
 const allResults = payload.results;
-const plottedResults = allResults.filter((d) => Number.isFinite(d.storageTimeS) && Number.isFinite(d.efficiencyPct) && d.efficiencyPct > 0);
+const { canPlot, protocolGroup, implementationGroup, cavityGroup } = window.QMRecords;
+const plottedResults = allResults.filter(canPlot);
 const authorIndex = window.QM_AUTHOR_INDEX || {};
+const matchesSearch = window.QMRecords.createSearch(allResults, authorIndex);
 const sourceIndex = window.QM_SOURCE_LOCATIONS || {};
 const conditionIndex = window.QM_EXPERIMENTAL_CONDITIONS || {};
 
@@ -75,16 +77,33 @@ const tableBody = document.getElementById("resultsTable");
 const detailContent = document.getElementById("detailContent");
 const emptyDetail = document.getElementById("emptyDetail");
 const visibleCount = document.getElementById("visibleCount");
-const totalCount = document.getElementById("totalCount");
+const matchCount = document.getElementById("matchCount");
+const tableOnlyCount = document.getElementById("tableOnlyCount");
 const chartTitle = document.getElementById("chartTitle");
 const chartDescription = document.getElementById("chartDescription");
 const readingMapText = document.getElementById("readingMapText");
 
-const W = 1020;
-const H = 600;
+const mobileLayout = window.matchMedia("(max-width: 800px)");
+let W = 1020;
+let H = 600;
 const margin = { top: 34, right: 28, bottom: 70, left: 76 };
-const plotW = W - margin.left - margin.right;
-const plotH = H - margin.top - margin.bottom;
+let plotW = W - margin.left - margin.right;
+let plotH = H - margin.top - margin.bottom;
+
+function fitChartToScreen() {
+  const narrow = mobileLayout.matches;
+  const width = narrow ? svg.parentElement.clientWidth : 1020;
+  const height = narrow ? svg.parentElement.clientHeight : 600;
+  if (width === W && height === H) return;
+  W = width;
+  H = height;
+  Object.assign(margin, narrow
+    ? { top: 22, right: 20, bottom: 48, left: 56 }
+    : { top: 34, right: 28, bottom: 70, left: 76 });
+  plotW = W - margin.left - margin.right;
+  plotH = H - margin.top - margin.bottom;
+  render();
+}
 const xMin = 1e-9;
 const xMax = 4000;
 const yMin = 0.01;
@@ -142,12 +161,6 @@ function uniq(key) {
   return [...new Set(allResults.map((d) => d[key]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b)));
 }
 
-function protocolGroup(d) {
-  if (["AFC", "spin-wave AFC", "ZEFOZ spin-wave AFC", "AFC / feed-forward", "AFC / Stark control", "on-demand AFC", "SMAFC"].includes(d.protocol)) return "AFC";
-  if (d.protocol === "NLPE / spin-wave") return "NLPE";
-  return d.protocol || "other";
-}
-
 function erProtocolClass(d) {
   const protocol = String(d.protocol || "");
   const normalized = protocol.toLowerCase();
@@ -167,22 +180,6 @@ function erHostGroup(d) {
   if (value.includes("fiber") || value.includes("fibre") || value.includes("silica")) return "Silica fiber";
   if (value.includes("tio2") || value.includes("sin")) return "TiO2 / SiN";
   return d.host || "Other host";
-}
-
-function implementationGroup(d) {
-  return ["integrated chip", "integrated membrane", "integrated waveguide", "nanophotonic resonator", "nanophotonic waveguide"].includes(d.architecture) ? "chip" : "bulk";
-}
-
-function cavityGroup(d) {
-  const value = String(d.cavity || "").toLowerCase();
-  if (value === "no cavity") return "no cavity";
-  if (value.includes("fiber microcavity")) return "fiber microcavity";
-  if (value.includes("impedance-matched")) return "bulk cavity";
-  if (value.includes("multi-pass")) return "multi-pass";
-  if (value.includes("nanobeam") || value.includes("nanocavity")) return "nanobeam cavity";
-  if (value.includes("on-chip")) return "on-chip resonator";
-  if (value.includes("waveguide cavity")) return "waveguide cavity";
-  return d.cavity || "other";
 }
 
 function filterValue(d, key) {
@@ -206,15 +203,6 @@ function chartProtocolLabel(d) {
   if (!state.erFocus) return protocolLabel(d);
   const group = erProtocolClass(d);
   return group === d.protocol ? group : `${group} (${d.protocol})`;
-}
-
-function normalizeSearch(value) {
-  return String(value ?? "")
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9+]+/g, " ")
-    .trim();
 }
 
 function timeLabel(value) {
@@ -248,36 +236,6 @@ function conditionMeta(d) {
   return conditionIndex[d.id] || {};
 }
 
-function authorSearchText(d) {
-  const meta = authorMeta(d);
-  return normalizeSearch([d.authors, d.authorsFull, d.searchTerms, meta.authorsFull, meta.searchTerms].join(" "));
-}
-
-function hostAliases(d) {
-  const text = normalizeSearch([d.host, d.title, d.note].join(" "));
-  const aliases = [];
-  if (text.includes("y2sio5")) aliases.push("YSO yttrium orthosilicate Y2SiO5");
-  if (text.includes("linbo3") || text.includes("lithium niobate")) aliases.push("LN LiNbO3 lithium niobate");
-  return aliases.join(" ");
-}
-
-function generalSearchText(d) {
-  return normalizeSearch([d.title, d.year, d.venue, d.ion, d.isotope, d.host, hostAliases(d), protocolGroup(d), d.protocol, implementationGroup(d), d.architecture, cavityGroup(d), d.cavity, d.inputState, d.note].join(" "));
-}
-
-function hasToken(text, token) {
-  return text.split(/\s+/).includes(token);
-}
-
-function hasPhrase(text, phrase) {
-  const needle = normalizeSearch(phrase);
-  return Boolean(needle) && ` ${text} `.includes(` ${needle} `);
-}
-
-function hasCompactToken(text, token) {
-  return token.length >= 4 && text.replace(/\s+/g, "").includes(token);
-}
-
 function markerShape(d) {
   if (state.erFocus) return ER_HOST_MARKERS[erHostGroup(d)] || "hexagon";
   return ION_MARKERS[d.ion] || "circle";
@@ -302,26 +260,6 @@ function markerPath(shape, x, y, r = 7) {
   return "";
 }
 
-function matchesSearch(d, query) {
-  const terms = normalizeSearch(query).split(/\s+/).filter(Boolean);
-  if (!terms.length) return true;
-
-  const authorText = authorSearchText(d);
-  const generalText = generalSearchText(d);
-  const combinedText = `${authorText} ${generalText}`.trim();
-
-  if (terms.length === 1) {
-    const [term] = terms;
-    return hasToken(combinedText, term) || hasCompactToken(combinedText, term);
-  }
-
-  const phrase = terms.join(" ");
-  const reversedPhrase = terms.length === 2 ? `${terms[1]} ${terms[0]}` : "";
-  if (hasPhrase(authorText, phrase) || (reversedPhrase && hasPhrase(authorText, reversedPhrase))) return true;
-  if (hasPhrase(generalText, phrase)) return true;
-  return terms.every((term) => hasToken(generalText, term) || hasCompactToken(generalText, term));
-}
-
 function passesFilters(d) {
   if (state.erFocus && d.ion !== "Er3+") return false;
   if (state.recentOnly && d.year < 2024) return false;
@@ -339,12 +277,13 @@ function buildFilter(containerId, key, values) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "chip";
+    button.setAttribute("aria-pressed", "false");
     button.textContent = value;
     button.addEventListener("click", () => {
       const set = state.filters[key];
       if (set.has(value)) set.delete(value);
       else set.add(value);
-      button.classList.toggle("active", set.has(value));
+      button.setAttribute("aria-pressed", String(set.has(value)));
       render();
     });
     container.appendChild(button);
@@ -368,14 +307,13 @@ function initFilters() {
     state.erFocus = false;
     Object.values(state.filters).forEach((set) => set.clear());
     document.getElementById("searchInput").value = "";
-    document.querySelectorAll(".chip, .button-row button").forEach((b) => b.classList.remove("active"));
-    document.getElementById("focusEr").setAttribute("aria-pressed", "false");
+    document.querySelectorAll(".control-panel [aria-pressed]").forEach((b) => b.setAttribute("aria-pressed", "false"));
     render();
   });
 
   document.getElementById("recentOnly").addEventListener("click", (event) => {
     state.recentOnly = !state.recentOnly;
-    event.currentTarget.classList.toggle("active", state.recentOnly);
+    event.currentTarget.setAttribute("aria-pressed", String(state.recentOnly));
     render();
   });
 
@@ -385,8 +323,7 @@ function initFilters() {
     state.recentOnly = false;
     Object.values(state.filters).forEach((set) => set.clear());
     document.getElementById("searchInput").value = "";
-    document.querySelectorAll(".chip, #recentOnly").forEach((b) => b.classList.remove("active"));
-    event.currentTarget.classList.toggle("active", state.erFocus);
+    document.querySelectorAll(".chip, #recentOnly").forEach((b) => b.setAttribute("aria-pressed", "false"));
     event.currentTarget.setAttribute("aria-pressed", String(state.erFocus));
     state.selectedId = (state.erFocus ? plottedResults.find((d) => d.ion === "Er3+") : plottedResults[0])?.id || "";
     render();
@@ -397,24 +334,29 @@ function drawAxes() {
   h("line", { x1: margin.left, y1: margin.top + plotH, x2: margin.left + plotW, y2: margin.top + plotH, class: "axis-line" });
   h("line", { x1: margin.left, y1: margin.top, x2: margin.left, y2: margin.top + plotH, class: "axis-line" });
 
-  xTicks.forEach((tick) => {
+  const axisXTicks = mobileLayout.matches ? [1e-9, 1e-6, 1e-3, 1, 3600] : xTicks;
+  axisXTicks.forEach((tick) => {
     const x = sx(tick);
     h("line", { x1: x, y1: margin.top, x2: x, y2: margin.top + plotH, class: "grid-line" });
     h("text", { x, y: margin.top + plotH + 24, "text-anchor": "middle", class: "tick-label", text: timeLabel(tick) });
   });
 
   const yTicks = state.yScale === "log" ? yLogTicks : yLinearTicks;
-  yTicks.forEach((tick) => {
+  const axisYTicks = mobileLayout.matches
+    ? (state.yScale === "log" ? [0.01, 0.1, 1, 10, 100] : [0, 25, 50, 75, 100])
+    : yTicks;
+  axisYTicks.forEach((tick) => {
     const y = sy(tick);
     h("line", { x1: margin.left, y1: y, x2: margin.left + plotW, y2: y, class: "grid-line" });
     h("text", { x: margin.left - 10, y: y + 4, "text-anchor": "end", class: "tick-label", text: `${tick}%` });
   });
 
-  h("text", { x: margin.left + plotW / 2, y: H - 18, "text-anchor": "middle", class: "axis-label", text: "Storage time (log scale)" });
+  h("text", { x: margin.left + plotW / 2, y: H - (mobileLayout.matches ? 7 : 18), "text-anchor": "middle", class: "axis-label", text: "Storage time (log scale)" });
+  const axisLabelX = mobileLayout.matches ? 12 : 20;
   const yLabel = h("text", {
-    x: 20,
+    x: axisLabelX,
     y: margin.top + plotH / 2,
-    transform: `rotate(-90 20 ${margin.top + plotH / 2})`,
+    transform: `rotate(-90 ${axisLabelX} ${margin.top + plotH / 2})`,
     "text-anchor": "middle",
     class: "axis-label axis-toggle",
     role: "button",
@@ -435,6 +377,8 @@ function clamp(value, min, max) {
 }
 
 function drawCategoryAnnotations(data) {
+  const labelBoxes = [];
+  const labeledProtocols = new Set();
   data
     .filter((d) => state.erFocus ? erProtocolClass(d) !== "Two-level AFC" : protocolGroup(d) !== "AFC")
     .forEach((d) => {
@@ -450,7 +394,14 @@ function drawCategoryAnnotations(data) {
       const lineX = offset.dx < 0 ? labelX + labelWidth : labelX;
       const lineY = labelY + labelHeight / 2;
 
-      h("circle", { cx: x, cy: y, r: 11, class: "non-afc-ring", stroke: color });
+      h("circle", { cx: x, cy: y, r: mobileLayout.matches ? 7 : 11, class: "non-afc-ring", stroke: color });
+      if (mobileLayout.matches) {
+        const overlaps = labelBoxes.some((box) => labelX < box.right && labelX + labelWidth > box.left
+          && labelY < box.bottom && labelY + labelHeight > box.top);
+        if (overlaps || labeledProtocols.has(label)) return;
+        labeledProtocols.add(label);
+        labelBoxes.push({ left: labelX - 4, right: labelX + labelWidth + 4, top: labelY - 4, bottom: labelY + labelHeight + 4 });
+      }
       h("line", { x1: x, y1: y, x2: lineX, y2: lineY, class: "non-afc-leader", stroke: color });
       h("rect", { x: labelX, y: labelY, width: labelWidth, height: labelHeight, rx: 5, class: "non-afc-label-bg", stroke: color });
       h("text", { x: labelX + 7, y: labelY + 14, class: "non-afc-label", text: label });
@@ -458,7 +409,7 @@ function drawCategoryAnnotations(data) {
 }
 
 function showTooltip(event, d) {
-  tooltip.innerHTML = `<strong>${escapeHtml(d.authors)} ${d.year}</strong><br>${escapeHtml(chartProtocolLabel(d))} | ${escapeHtml(d.ion)}:${escapeHtml(d.host)}<br>${escapeHtml(d.storageTimeLabel)} / ${escapeHtml(d.efficiencyLabel)}`;
+  tooltip.innerHTML = `<strong>${escapeHtml(d.authors)} ${d.year}</strong><br>${escapeHtml(chartProtocolLabel(d))} | ${escapeHtml(d.ion)}:${escapeHtml(d.host)}<br>${escapeHtml(d.storageTimeLabel)} · ${escapeHtml(d.efficiencyLabel)}<span class="efficiency-definition">${escapeHtml(d.efficiencyType)}</span>`;
   const box = svg.parentElement.getBoundingClientRect();
   tooltip.hidden = false;
   tooltip.style.left = "0px";
@@ -480,9 +431,48 @@ function hideTooltip() {
   tooltip.hidden = true;
 }
 
-function selectResult(id) {
+const detailSheet = document.getElementById("detailSheet");
+const sheetContent = document.getElementById("sheetContent");
+let sheetReturnSelector = "";
+
+function showMobileDetail(id, trigger) {
+  if (!mobileLayout.matches || detailContent.hidden) return;
+  const key = CSS.escape(trigger?.dataset.id || id);
+  if (trigger?.matches(".point-group-badge")) sheetReturnSelector = `.point-group-badge[data-id="${key}"]`;
+  else if (trigger instanceof SVGElement) sheetReturnSelector = `.point[data-id="${key}"]`;
+  else sheetReturnSelector = `#resultsTable tr[data-id="${CSS.escape(id)}"] .result-ref`;
+  sheetContent.append(detailContent);
+  detailSheet.showModal();
+  sheetContent.scrollTop = 0;
+}
+
+const filterToggle = document.getElementById("filterToggle");
+filterToggle.addEventListener("click", () => {
+  filterToggle.setAttribute("aria-expanded", String(filterToggle.getAttribute("aria-expanded") !== "true"));
+});
+document.getElementById("closeDetailSheet").addEventListener("click", () => detailSheet.close());
+detailSheet.addEventListener("click", (event) => {
+  if (event.target === detailSheet && event.clientY < detailSheet.getBoundingClientRect().top) detailSheet.close();
+});
+detailSheet.addEventListener("close", () => {
+  document.getElementById("desktopDetail").append(detailContent);
+  const target = document.querySelector(sheetReturnSelector) || document.getElementById("searchInput");
+  if (!target.hasAttribute("tabindex") && target instanceof SVGElement) target.setAttribute("tabindex", "-1");
+  target.focus({ preventScroll: true });
+});
+mobileLayout.addEventListener("change", () => {
+  if (!mobileLayout.matches && detailSheet.open) detailSheet.close();
+  fitChartToScreen();
+});
+
+function selectResult(id, trigger = document.activeElement) {
   state.selectedId = id;
-  render();
+  hideTooltip();
+  drawPlot();
+  tableBody.querySelector(".selected")?.classList.remove("selected");
+  tableBody.querySelector(`tr[data-id="${CSS.escape(id)}"]`)?.classList.add("selected");
+  renderDetail();
+  showMobileDetail(id, trigger);
 }
 
 function toggleYScale() {
@@ -491,22 +481,41 @@ function toggleYScale() {
   render();
 }
 
-function drawPoint(d) {
+const groupPicker = new PlotGroupPicker(document.getElementById("groupBadges"), selectResult);
+let visibleGroups = [];
+
+function positionGroupBadges() {
+  const transform = svg.getScreenCTM();
+  if (!transform) return;
+  const layer = groupPicker.layer.getBoundingClientRect();
+  groupPicker.update(visibleGroups, (d) => {
+    const point = new DOMPoint(sx(d.storageTimeS), sy(d.efficiencyPct)).matrixTransform(transform);
+    return { x: point.x - layer.left, y: point.y - layer.top };
+  });
+}
+
+function drawPoint(group) {
+  const d = group.records.find((record) => record.id === state.selectedId) || group.records[0];
   const x = sx(d.storageTimeS);
   const y = sy(d.efficiencyPct);
   const fill = colorFor(d);
   let el;
-  const path = markerPath(markerShape(d), x, y);
+  const radius = mobileLayout.matches ? 4.5 : 7;
+  const path = markerPath(markerShape(d), x, y, radius);
   if (path) {
     el = h("path", { d: path, fill, stroke: "#fff", "stroke-width": 1.4, class: "point", "data-id": d.id });
   } else {
-    el = h("circle", { cx: x, cy: y, r: 7, fill, stroke: "#fff", "stroke-width": 1.4, class: "point", "data-id": d.id });
+    el = h("circle", { cx: x, cy: y, r: radius, fill, stroke: "#fff", "stroke-width": 1.4, class: "point", "data-id": d.id });
   }
   if (d.id === state.selectedId) el.classList.add("selected");
   if (d.confidence === "low") el.setAttribute("opacity", "0.62");
-  el.addEventListener("mousemove", (event) => showTooltip(event, d));
+  if (group.records.length === 1) el.addEventListener("mousemove", (event) => showTooltip(event, d));
   el.addEventListener("mouseleave", hideTooltip);
-  el.addEventListener("click", () => selectResult(d.id));
+  el.addEventListener("click", () => {
+    hideTooltip();
+    if (group.records.length > 1) groupPicker.open(group.key);
+    else selectResult(d.id, el);
+  });
 }
 
 function legendMarkerSvg(ion) {
@@ -579,29 +588,34 @@ function renderReviews() {
 
 function renderTable(data) {
   tableBody.innerHTML = "";
-  const rows = data.concat(allResults.filter((d) => !Number.isFinite(d.efficiencyPct) && passesFilters(d)));
-  rows.sort((a, b) => b.year - a.year || String(a.ion).localeCompare(String(b.ion)));
+  const rows = [...data];
+  rows.sort((a, b) => b.year - a.year || String(a.ion).localeCompare(String(b.ion)) || Number(canPlot(b)) - Number(canPlot(a)));
   rows.forEach((d) => {
     const tr = document.createElement("tr");
+    tr.dataset.id = d.id;
     if (d.id === state.selectedId) tr.classList.add("selected");
-    if (!Number.isFinite(d.efficiencyPct)) tr.classList.add("missing-row");
+    if (!canPlot(d)) tr.classList.add("missing-row");
     tr.innerHTML = `
-      <td>${escapeHtml(d.year)}</td>
+      <td><button type="button" class="result-ref" aria-label="${escapeHtml([d.authors, d.year, d.title, d.storageTimeLabel, d.efficiencyLabel].join(", "))}">${escapeHtml(d.authors)} ${escapeHtml(d.year)}</button>${!canPlot(d) ? '<small class="table-only-label">Table only</small>' : ""}</td>
+      <td>${escapeHtml(d.storageTimeLabel)}</td>
+      <td><strong>${escapeHtml(d.efficiencyLabel)}</strong><span class="efficiency-definition">${escapeHtml(d.efficiencyType)}</span></td>
       <td>${escapeHtml(d.isotope || d.ion)} / ${escapeHtml(d.host)}</td>
       <td>${escapeHtml(state.erFocus ? erProtocolClass(d) : protocolGroup(d))}</td>
-      <td>${escapeHtml(d.storageTimeLabel)}</td>
-      <td>${escapeHtml(d.efficiencyLabel)}</td>
       <td>${escapeHtml(cavityGroup(d))}</td>
-      <td>${escapeHtml(d.authors)}</td>
     `;
-    tr.addEventListener("click", () => selectResult(d.id));
+    tr.addEventListener("click", () => selectResult(d.id, tr));
     tableBody.appendChild(tr);
   });
 }
 
 function renderDetail() {
-  const d = allResults.find((item) => item.id === state.selectedId) || allResults[0];
-  if (!d) return;
+  const d = allResults.find((item) => item.id === state.selectedId);
+  if (!d) {
+    detailContent.replaceChildren();
+    detailContent.hidden = true;
+    emptyDetail.hidden = false;
+    return;
+  }
   const meta = authorMeta(d);
   const source = sourceMeta(d);
   const conditions = conditionMeta(d);
@@ -626,7 +640,7 @@ function renderDetail() {
     </div>
     <div class="detail-grid">
       <div class="metric"><span>Storage time</span><strong>${escapeHtml(d.storageTimeLabel)}</strong></div>
-      <div class="metric"><span>Efficiency</span><strong>${escapeHtml(d.efficiencyLabel)}</strong></div>
+      <div class="metric"><span>Efficiency</span><strong>${escapeHtml(d.efficiencyLabel)}</strong><small class="efficiency-definition">${escapeHtml(d.efficiencyType)}</small></div>
       <div class="metric"><span>Working temperature</span><strong>${escapeHtml(conditions.temperature || "Not verified")}</strong></div>
       <div class="metric"><span>Magnetic field</span><strong>${escapeHtml(conditions.magneticField || "Not verified")}</strong></div>
       <div class="metric"><span>Ion / host</span><strong>${escapeHtml(d.isotope || d.ion)} / ${escapeHtml(d.host)}</strong></div>
@@ -642,7 +656,6 @@ function renderDetail() {
       <a href="${escapeHtml(d.url)}" target="_blank" rel="noreferrer">Open DOI / source page</a>
       <span>DOI: ${escapeHtml(d.doi || "n/a")}</span>
       <span>Zotero key: ${escapeHtml(d.zoteroKey || "not in local library yet")}</span>
-      <span>Efficiency definition: ${escapeHtml(d.efficiencyType)}</span>
       ${source.locator ? `<span><strong>Storage time / efficiency source:</strong> ${escapeHtml(source.locator)}</span>` : ""}
       ${source.extractionMethod ? `<span><strong>Performance extraction:</strong> ${escapeHtml(source.extractionMethod)}</span>` : ""}
       ${source.verifiedDate ? `<span><strong>Performance verified:</strong> ${escapeHtml(source.verifiedDate)}</span>` : ""}
@@ -656,18 +669,26 @@ function renderDetail() {
 function render() {
   hideTooltip();
   const filteredAll = allResults.filter(passesFilters);
-  const visible = plottedResults.filter(passesFilters);
-  if (filteredAll.length && !filteredAll.some((d) => d.id === state.selectedId)) {
-    state.selectedId = visible[0]?.id || filteredAll[0].id;
+  const visible = filteredAll.filter(canPlot);
+  if (!filteredAll.some((d) => d.id === state.selectedId)) {
+    state.selectedId = visible[0]?.id || filteredAll[0]?.id || "";
   }
-  const focusTotal = state.erFocus ? plottedResults.filter((d) => d.ion === "Er3+").length : plottedResults.length;
-  totalCount.textContent = focusTotal;
+  matchCount.textContent = filteredAll.length;
   visibleCount.textContent = visible.length;
+  tableOnlyCount.textContent = filteredAll.length - visible.length;
+  const activeCount = Object.values(state.filters).reduce((n, values) => n + values.size, 0)
+    + Number(state.erFocus) + Number(state.recentOnly);
+  filterToggle.textContent = activeCount ? `Filters (${activeCount})` : "Filters";
 
   chartTitle.textContent = state.erFocus ? "Er3+ quantum-memory subview" : "Storage time vs efficiency";
   chartDescription.textContent = state.erFocus
     ? "All erbium hosts and protocols in the dataset. Color encodes protocol class; marker shape encodes host platform."
     : "Click any point or table row to open the paper details and source note.";
+  if (!visible.length) {
+    chartDescription.textContent = filteredAll.length
+      ? "The matching records have no paired storage time and efficiency to plot. See the results table below."
+      : "No matching records. Try another search or clear your filters.";
+  }
   readingMapText.textContent = state.erFocus
     ? "Er3+ focus: color separates two-level AFC, spin-wave AFC, Stark/on-demand control, photon-echo variants, and material coherence; marker shape separates host platforms."
     : "Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.";
@@ -675,16 +696,31 @@ function render() {
     ? "Erbium quantum-memory map with protocol-class colors and host-platform marker shapes"
     : "Log-log map of storage time and efficiency");
 
-  svg.innerHTML = "";
-  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-  drawAxes();
-  visible.forEach(drawPoint);
-  drawCategoryAnnotations(visible.filter((d) => d.confidence !== "low"));
+  visibleGroups = groupPlotResults(visible);
+  drawPlot();
   renderLegend();
-  renderTable(visible);
+  renderTable(filteredAll);
   renderDetail();
 }
 
+function drawPlot() {
+  svg.replaceChildren();
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  drawAxes();
+  visibleGroups.forEach(drawPoint);
+  positionGroupBadges();
+  drawCategoryAnnotations(visibleGroups.flatMap((group) => group.records).filter((d) => d.confidence !== "low"));
+}
+
 initFilters();
+const linkedResultId = new URLSearchParams(window.location.search).get("result");
+if (linkedResultId && allResults.some((d) => d.id === linkedResultId)) {
+  state.search = linkedResultId;
+  state.selectedId = linkedResultId;
+  document.getElementById("searchInput").value = linkedResultId;
+}
 renderReviews();
 render();
+new ResizeObserver(fitChartToScreen).observe(svg.parentElement);
+new ResizeObserver(positionGroupBadges).observe(svg);
+if (linkedResultId && linkedResultId === state.selectedId) showMobileDetail(linkedResultId);

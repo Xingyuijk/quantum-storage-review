@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>3D Literature Map | Rare-earth Quantum Memories</title>
-  <link rel="stylesheet" href="3d.css?v=20260715a">
+  <link rel="stylesheet" href="point-groups.css?v=20261119a">
+  <link rel="stylesheet" href="3d.css?v=20261119a">
 </head>
 <body>
   <main class="three-d-shell">
@@ -21,7 +22,7 @@
     <section class="control-strip" aria-label="Three-dimensional map filters">
       <label class="search-control">
         <span>Search</span>
-        <input id="search3d" type="search" placeholder="paper, author, ion, host, protocol, year">
+        <input id="search3d" type="search" placeholder="Author, year, DOI, host, protocol…">
       </label>
       <div class="control-group">
         <span class="control-label">Ion</span>
@@ -41,7 +42,7 @@
     <section class="map-layout">
       <div class="plot-card">
         <div class="plot-toolbar">
-          <p><strong id="visible3d">0</strong> of <span id="total3d">0</span> plotted results</p>
+          <p id="resultCounts3d" role="status"><strong id="matchCount3d">0</strong> matched · <span id="visible3d">0</span> plotted · <span id="tableOnlyCount3d">0</span> table only</p>
           <div class="axis-key" aria-label="Axis mapping">
             <span><b>X</b> year (new → old)</span>
             <span><b>Y</b> efficiency (log)</span>
@@ -50,6 +51,7 @@
         </div>
         <div class="canvas-wrap" id="canvasWrap3d">
           <canvas id="plot3d" role="img" aria-label="Interactive three-dimensional scatter plot of publication year, storage efficiency, and storage time"></canvas>
+          <div id="groupBadges3d" class="point-group-layer"></div>
           <div id="tooltip3d" class="plot-tooltip" hidden></div>
           <div class="camera-pad" aria-label="Rotate the three-dimensional view">
             <button type="button" data-camera="up" aria-label="Rotate view upward">↑</button>
@@ -72,6 +74,8 @@
   <script src="author-index.js?v=20261118b"></script>
   <script src="source-locations.js?v=20261118b"></script>
   <script src="experimental-conditions.js?v=20261118b"></script>
-  <script src="3d.js?v=20260715a"></script>
+  <script src="result-search.js?v=20261119a"></script>
+  <script src="point-groups.js?v=20261119a"></script>
+  <script src="3d.js?v=20261119a"></script>
 </body>
 </html>

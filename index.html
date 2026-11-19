@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rare-earth Quantum Memories for Light</title>
-  <link rel="stylesheet" href="styles.css?v=20260715a">
+  <link rel="stylesheet" href="point-groups.css?v=20261119a">
+  <link rel="stylesheet" href="styles.css?v=20261119a">
 </head>
 <body>
   <main class="app-shell">
@@ -12,55 +13,58 @@
       <div class="brand-block">
         <p class="eyebrow">Quantum storage survey</p>
         <h1>Rare-earth quantum memories</h1>
-        <p class="meta-line"><span id="visibleCount">0</span> of <span id="totalCount">0</span> plotted results</p>
+        <p class="meta-line" id="resultCounts" role="status"><span id="matchCount">0</span> matched · <span id="visibleCount">0</span> plotted · <span id="tableOnlyCount">0</span> table only</p>
         <p class="updated-line">Updated to <time id="updatedDate" datetime="2026-11-18">2026-11-18</time></p>
       </div>
 
       <label class="search-box">
         <span>Search</span>
-        <input id="searchInput" type="search" placeholder="paper, author, ion, host, YSO/LN, protocol, year">
+        <input id="searchInput" type="search" placeholder="Author, year, DOI…">
       </label>
+      <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterGroups">Filters</button>
 
-      <section class="action-group">
-        <div class="filter-title">Actions</div>
-        <div class="button-row">
-          <button id="resetFilters" type="button">Reset</button>
-          <button id="recentOnly" type="button">2024-2026</button>
-          <button id="focusEr" type="button" aria-pressed="false">Focus on Er3+</button>
-        </div>
-        <a class="action-link" href="3d.html" aria-label="Open the interactive three-dimensional literature map">Explore 3D map</a>
-        <div class="focus-legend" id="focusLegend" hidden></div>
-      </section>
+      <div class="filter-groups" id="filterGroups">
+        <section class="action-group">
+          <div class="filter-title">Actions</div>
+          <div class="button-row">
+            <button id="resetFilters" type="button">Reset</button>
+            <button id="recentOnly" type="button" aria-pressed="false">2024-2026</button>
+            <button id="focusEr" type="button" aria-pressed="false">Focus on Er3+</button>
+          </div>
+          <a class="action-link" href="3d.html" aria-label="Open the interactive three-dimensional literature map">Explore 3D map</a>
+          <div class="focus-legend" id="focusLegend" hidden></div>
+        </section>
 
-      <section class="filter-group">
-        <div class="filter-title">Protocol</div>
-        <div class="chip-grid" id="protocolFilters"></div>
-      </section>
+        <section class="filter-group">
+          <div class="filter-title">Protocol</div>
+          <div class="chip-grid" id="protocolFilters"></div>
+        </section>
 
-      <section class="filter-group">
-        <div class="filter-title">Ion</div>
-        <div class="chip-grid" id="ionFilters"></div>
-      </section>
+        <section class="filter-group">
+          <div class="filter-title">Ion</div>
+          <div class="chip-grid" id="ionFilters"></div>
+        </section>
 
-      <section class="filter-group">
-        <div class="filter-title">Implementation</div>
-        <div class="chip-grid" id="architectureFilters"></div>
-      </section>
+        <section class="filter-group">
+          <div class="filter-title">Implementation</div>
+          <div class="chip-grid" id="architectureFilters"></div>
+        </section>
 
-      <section class="filter-group">
-        <div class="filter-title">Cavity</div>
-        <div class="chip-grid" id="cavityFilters"></div>
-      </section>
+        <section class="filter-group">
+          <div class="filter-title">Cavity</div>
+          <div class="chip-grid" id="cavityFilters"></div>
+        </section>
 
-      <section class="notes-block">
-        <div class="filter-title">Reading map</div>
-        <p id="readingMapText">Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.</p>
-      </section>
+        <section class="notes-block">
+          <div class="filter-title">Reading map</div>
+          <p id="readingMapText">Color and marker shape both encode ion species. Non-AFC points are labeled directly on the chart.</p>
+        </section>
 
-      <section class="notes-block">
-        <div class="filter-title">Review trail</div>
-        <div class="review-list" id="reviewList"></div>
-      </section>
+        <section class="notes-block">
+          <div class="filter-title">Review trail</div>
+          <div class="review-list" id="reviewList"></div>
+        </section>
+      </div>
     </aside>
 
     <section class="chart-panel" aria-label="Interactive memory map">
@@ -74,20 +78,24 @@
 
       <div class="chart-wrap">
         <svg id="memorySvg" role="img" aria-label="Log-log map of storage time and efficiency"></svg>
+        <div id="groupBadges" class="point-group-layer"></div>
         <div id="tooltip" class="tooltip" hidden></div>
       </div>
 
       <div class="table-wrap">
         <table>
+          <colgroup>
+            <col class="reference-col"><col class="time-col"><col class="efficiency-col">
+            <col class="host-col"><col class="protocol-col"><col class="cavity-col">
+          </colgroup>
           <thead>
             <tr>
-              <th>Year</th>
-              <th>Ion / host</th>
-              <th>Protocol</th>
-              <th>Time</th>
-              <th>Efficiency</th>
-              <th>Cavity</th>
-              <th>Reference</th>
+              <th scope="col">Reference</th>
+              <th scope="col">Storage time</th>
+              <th scope="col">Efficiency</th>
+              <th scope="col">Ion / host</th>
+              <th scope="col">Protocol</th>
+              <th scope="col">Cavity</th>
             </tr>
           </thead>
           <tbody id="resultsTable"></tbody>
@@ -95,20 +103,28 @@
       </div>
     </section>
 
-    <aside class="detail-panel" aria-label="Paper details">
+    <aside class="detail-panel" id="desktopDetail" aria-label="Paper details">
       <div class="detail-empty" id="emptyDetail">
-        <p class="eyebrow">Selected result</p>
-        <h2>Pick a point</h2>
-        <p>The panel will show storage time, efficiency, working temperature, magnetic field, protocol, ion, host, and separate source locations for performance and experimental conditions.</p>
+        <h2>No matching records</h2>
+        <p>Try another search or clear your filters.</p>
       </div>
       <article id="detailContent" class="detail-content" hidden></article>
     </aside>
   </main>
+  <dialog class="detail-sheet" id="detailSheet" aria-labelledby="detailSheetTitle">
+    <div class="sheet-header">
+      <h2 id="detailSheetTitle">Result details</h2>
+      <button type="button" id="closeDetailSheet" autofocus>Close</button>
+    </div>
+    <div class="sheet-content" id="sheetContent"></div>
+  </dialog>
 
   <script src="data.js?v=20261118b"></script>
   <script src="author-index.js?v=20261118b"></script>
   <script src="source-locations.js?v=20261118b"></script>
   <script src="experimental-conditions.js?v=20261118b"></script>
-  <script src="app.js?v=20260715a"></script>
+  <script src="result-search.js?v=20261119a"></script>
+  <script src="point-groups.js?v=20261119a"></script>
+  <script src="app.js?v=20261119a"></script>
 </body>
 </html>
