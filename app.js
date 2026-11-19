@@ -639,7 +639,7 @@ function renderDetail() {
       <p>${escapeHtml(d.venue)}</p>
     </div>
     <div class="detail-grid">
-      <div class="metric"><span>Storage time</span><strong>${escapeHtml(d.storageTimeLabel)}</strong></div>
+      <div class="metric"><span>${canPlot(d) ? "Storage time" : "Reported time"}</span><strong>${escapeHtml(d.storageTimeLabel)}</strong></div>
       <div class="metric"><span>Efficiency</span><strong>${escapeHtml(d.efficiencyLabel)}</strong><small class="efficiency-definition">${escapeHtml(d.efficiencyType)}</small></div>
       <div class="metric"><span>Working temperature</span><strong>${escapeHtml(conditions.temperature || "Not verified")}</strong></div>
       <div class="metric"><span>Magnetic field</span><strong>${escapeHtml(conditions.magneticField || "Not verified")}</strong></div>
@@ -664,6 +664,7 @@ function renderDetail() {
       ${conditions.verifiedDate ? `<span><strong>Conditions verified:</strong> ${escapeHtml(conditions.verifiedDate)}</span>` : ""}
     </div>
   `;
+  window.QMPaperReading.addToDetail(detailContent, d);
 }
 
 function render() {
@@ -720,6 +721,7 @@ if (linkedResultId && allResults.some((d) => d.id === linkedResultId)) {
   document.getElementById("searchInput").value = linkedResultId;
 }
 renderReviews();
+window.QMPaperReading.addIndex(document.getElementById("paperReadingIndex"));
 render();
 new ResizeObserver(fitChartToScreen).observe(svg.parentElement);
 new ResizeObserver(positionGroupBadges).observe(svg);

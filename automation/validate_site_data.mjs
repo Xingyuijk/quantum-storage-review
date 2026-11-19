@@ -101,6 +101,41 @@ checkExactCoverage("QM_AUTHOR_INDEX", authorIndex);
 checkExactCoverage("QM_SOURCE_LOCATIONS", sourceLocations);
 checkExactCoverage("QM_EXPERIMENTAL_CONDITIONS", experimentalConditions);
 
+const scriptObjectPrototype = vm.runInContext("Object.prototype", context);
+function isPlainDataObject(value) {
+  if (!value || typeof value !== "object") return false;
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === scriptObjectPrototype || prototype === null;
+}
+
+const paperReadings = data?.paperReadings;
+if (paperReadings !== undefined) {
+  if (!isPlainDataObject(paperReadings)) {
+    fail("QM_DATA.paperReadings must be an object keyed by lowercase DOI");
+  } else {
+    const resultDois = new Set(results.filter(result => typeof result?.doi === "string")
+      .map(result => result.doi.trim().toLowerCase()).filter(Boolean));
+    const seen = new Set();
+    for (const [doi, reading] of Object.entries(paperReadings)) {
+      const key = doi.trim().toLowerCase();
+      if (!key || key !== doi) fail(`paperReadings: use the lowercase DOI without surrounding whitespace: ${doi}`);
+      if (!resultDois.has(key)) fail(`paperReadings: no result has DOI ${doi}`);
+      if (seen.has(key)) fail(`paperReadings: duplicate DOI ${doi}`);
+      seen.add(key);
+      if (!isPlainDataObject(reading)) {
+        fail(`paperReadings[${doi}] must be an object`);
+        continue;
+      }
+      for (const field of ["question", "finding", "interpretation", "locator"]) {
+        if (typeof reading[field] !== "string" || !reading[field].trim()) fail(`paperReadings[${doi}] needs ${field}`);
+      }
+      if (typeof reading.url !== "string" || !/^https?:\/\//i.test(reading.url) || !URL.canParse(reading.url)) {
+        fail(`paperReadings[${doi}] needs a valid http(s) source URL`);
+      }
+    }
+  }
+}
+
 for (const id of resultIds) {
   const author = authorIndex?.[id];
   if (!author || typeof author.authorsFull !== "string" || !author.authorsFull.trim() ||

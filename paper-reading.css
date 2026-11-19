@@ -1,0 +1,39 @@
+.paper-reading {
+  display: grid;
+  gap: 7px;
+  border-left: 3px solid var(--accent);
+  padding-left: 11px;
+  color: var(--ink);
+}
+
+.paper-reading h3 { margin: 0; font-size: 15px; line-height: 1.35; }
+.paper-reading p { margin: 0; font-size: 13px; line-height: 1.5; }
+.paper-reading a, .paper-comparison a, .paper-index a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+.paper-reading a { font-size: 12px; line-height: 1.4; }
+.paper-index summary, .paper-comparison summary {
+  padding: 5px 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.paper-index ul, .paper-comparison ul {
+  display: grid;
+  list-style: none;
+  padding: 0;
+  margin: 3px 0 0;
+}
+.paper-index li + li, .paper-comparison li + li { border-top: 1px solid var(--line); }
+.paper-index a { display: grid; gap: 3px; padding: 7px 0; font-size: 12px; line-height: 1.4; }
+.paper-index strong { color: var(--ink); }
+.paper-comparison li { display: grid; gap: 3px; padding: 8px; font-size: 12px; line-height: 1.4; }
+.paper-comparison li[aria-current] { background: var(--soft); }
+.paper-comparison p { margin: 0; }
+.paper-measure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 8px; }
+.paper-measure strong { font-size: 13px; }
+.paper-measure small { color: var(--ink); font-size: 11px; }
+.paper-setting, .paper-source { color: var(--muted); }

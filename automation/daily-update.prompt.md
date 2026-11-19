@@ -79,6 +79,14 @@ For each candidate that survives metadata triage, capture:
 - any metadata-only claims clearly labelled as unverified, plus the exact missing full-text checks;
 - the verification date in `YYYY-MM-DD` format for the completed evidence review.
 
+When a paper needs interpretation across experiments, you may add or revise one entry in
+`QM_DATA.paperReadings` in `data.js`. Key it by the lowercase DOI shared with the paper's result
+records. Write a concrete `question`, a measured `finding`, and an `interpretation` that explains
+what that evidence establishes. For example, identify which input and reference produced an efficiency,
+or which other trace tested fidelity. Keep proposed performance distinct from measured results. Supply
+a `locator` identifying the figures, pages or sections behind those claims and a primary full-text
+`url` for that version. Omit a guide when the full text does not support a useful distinction.
+
 ## Outputs
 
 Let `today` be the local date in `$TZ` or the machine's local timezone. Write a concise report to:
@@ -91,10 +99,11 @@ also report the Zotero library version, total top-level item count, number of un
 hits, the keys reviewed, and whether attachment full text was inspected. Clearly separate verified
 evidence from inference.
 
-If no candidate meets the evidence gate, make no changes to the website files. If a candidate does meet
-the gate, update all four synchronized data files with the complete evidence and then let the wrapper
-validate and publish the change. Record every accepted, rejected, and blocked candidate in the daily
-report. The report is an audit trail; it does not replace the source locators in the site data.
+The same evidence gate applies to new results, corrections and guides for existing papers. If nothing
+qualifies, make no changes to the website files. For a new result, update all four synchronized data
+files. For an existing paper, change only the affected entries and record the source of the change in
+the report. Let the wrapper validate and publish. Record every accepted, rejected, and blocked
+candidate in the daily report. Keep the source locators in the site data as well.
 
 The scheduled task may change only the four data files listed above; the wrapper updates the visible date after
 every successful research cycle, then commits and pushes after validation. It also writes the report under the

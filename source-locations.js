@@ -1,8 +1,8 @@
 window.QM_SOURCE_LOCATIONS = {
   "hedges-2010-gem": {
-    "locator": "Original PDF, p. 2, Fig. 2 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Published article, p. 1053, efficiencies for 1.3 and 2.6 µs. Fig. 2(a) and its reference calibration are on p. 1054. The separate quadrature measurements are discussed on p. 1054 and shown in Fig. 3.",
+    "extractionMethod": "published text and figure captions",
+    "verifiedDate": "2026-11-19"
   },
   "sabooni-2013-cavity-afc": {
     "locator": "Original PDF, p. 4, Fig. 3 and adjacent efficiency paragraph",
@@ -10,14 +10,14 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "jobez-2014-afc-echo": {
-    "locator": "Original PDF, p. 1 abstract (53% at 2 us)",
-    "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-11"
+    "locator": "Published article, Fig. 3(a), printed p. 10 (local PDF p. 11). Caption reports 53 ± 1% at 2 µs.",
+    "extractionMethod": "direct text + figure cross-check",
+    "verifiedDate": "2026-11-19"
   },
   "jobez-2014-spin-wave": {
-    "locator": "Original PDF, p. 12, Fig. 4 and adjacent paragraph",
+    "locator": "Published article, Fig. 4 and inset, §4.2, printed p. 11 (local PDF p. 12). The main trace gives 12% and the optical-only reference gives 28%.",
     "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "verifiedDate": "2026-11-19"
   },
   "duranti-2024-afc": {
     "locator": "Original PDF, p. 5, Fig. 2 and adjacent paragraph",
@@ -85,9 +85,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "stuart-2021-er-initialisation": {
-    "locator": "Publisher PDF, pp. 3–4, Fig. 3(b) and adjacent paragraph",
+    "locator": "Publisher PDF, pp. 3–4, Fig. 3(a,b) and adjacent text (probe and echo efficiency). P. 4, Fig. 4 (weak-input noise test).",
     "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
-    "verifiedDate": "2026-11-17"
+    "verifiedDate": "2026-11-19"
   },
   "stuart-2025-four-level-rase": {
     "locator": "Publisher PDF, p. 3 Fig. 1 (spin interval); p. 5 Section III A and Fig. 4 caption (peak efficiency and delay convention); p. 6 Fig. 6",
@@ -130,24 +130,24 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "meng-2026-wgc": {
-    "locator": "Nature Photonics 20, journal p. 438, Fig. 2(a) and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Journal p. 438, Memory performance, and p. 439, Fig. 2a–b. Supplementary PDF p. 8 describes the input reference.",
+    "extractionMethod": "published text, figure and supplementary calibration",
+    "verifiedDate": "2026-11-19"
   },
   "meng-2026-fbc-single": {
-    "locator": "Nature Photonics 20, Fig. 4(b) and paragraph reporting 69.8(1.6)% at 2 us",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Journal p. 441, Fig. 4a–b and Storage of single photons. Supplementary PDF p. 12 describes the coincidence measurement.",
+    "extractionMethod": "published text, figure and supplementary measurement description",
+    "verifiedDate": "2026-11-19"
   },
   "meng-2026-fbc-weak": {
-    "locator": "Nature Photonics 20, Fig. 3(a) and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Journal p. 438, Memory performance, and p. 440, Fig. 3a. Supplementary PDF p. 11 describes the input reference and lower bound.",
+    "extractionMethod": "published text, figure and supplementary calibration",
+    "verifiedDate": "2026-11-19"
   },
   "meng-2026-fbc-multimode": {
-    "locator": "Nature Photonics 20, Fig. 3(c) and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Journal p. 439, Memory performance, and p. 440, Fig. 3c and inset (interference visibility).",
+    "extractionMethod": "published text and figure cross-check",
+    "verifiedDate": "2026-11-19"
   },
   "horvath-2021-on-demand-afc": {
     "locator": "Original PDF, p. 1 abstract",
@@ -160,14 +160,14 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "afzelius-2010-afc-echo": {
-    "locator": "arXiv PDF, p. 2, Fig. 2 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "arXiv:0908.2309v2 PDF p. 2 defines the echo-area ratio. See p. 3, Fig. 3 inset and the total-efficiency paragraph for 4–5% at 4 µs.",
+    "extractionMethod": "reported range and figure cross-check",
+    "verifiedDate": "2026-11-19"
   },
   "afzelius-2010-spinwave": {
-    "locator": "arXiv PDF, p. 3, Figs. 3-4 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "arXiv:0908.2309v2 PDF p. 3, total storage time and zero-spin-time extrapolation. Fig. 4 on p. 4 gives the spin intervals and relative intensities.",
+    "extractionMethod": "measured duration and extrapolated efficiency checked separately",
+    "verifiedDate": "2026-11-19"
   },
   "lauritzen-2010-er-crib": {
     "locator": "arXiv PDF, p. 3, Fig. 3; p. 4, first full paragraph",
@@ -350,9 +350,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-07-11"
   },
   "saglamyurek-2011-tm-waveguide": {
-    "locator": "Original PDF, p. 4, Figs. 2-3 and adjacent paragraph",
+    "locator": "arXiv:1009.0490, p. 4, comb preparation paragraph (7 ns, ~2% memory and ~0.2% system efficiency). Fig. 2(c) on p. 9 shows the comb spacing.",
     "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "verifiedDate": "2026-11-19"
   },
   "sinclair-2014-tm-spectral-mux": {
     "locator": "arXiv PDF, p. 10, Figs. 3-4 and efficiency appendix",
@@ -415,9 +415,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-11-18"
   },
   "ma-2021-one-hour-afc-5min": {
-    "locator": "arXiv PDF, p. 5, Fig. 4 and adjacent paragraph",
-    "extractionMethod": "direct text + figure cross-check",
-    "verifiedDate": "2026-07-11"
+    "locator": "Author manuscript, p. 5, efficiency analysis after Eq. (1), comparing CPMG and KDD at five minutes. Fig. 4 and its caption give interference visibility at five, thirty and sixty minutes.",
+    "extractionMethod": "author manuscript text and figure caption checked against publisher results",
+    "verifiedDate": "2026-11-19"
   },
   "hain-2025-pr-eit-ur16-1s": {
     "locator": "Publisher PDF, pp. 8–9, Fig. 4(c–d) and Sec. 4 weak-coherent storage paragraphs; pp. 3–4, Sec. 2 probe-reference calibration",
@@ -645,9 +645,9 @@ window.QM_SOURCE_LOCATIONS = {
     "verifiedDate": "2026-09-01"
   },
   "ulanowski-2026-er-nuclear-spin-coherence": {
-    "locator": "Publisher PDF, p. 4, Fig. 4(d) and adjacent nuclear-spin-qubit-coherence paragraph",
-    "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
-    "verifiedDate": "2026-09-01"
+    "locator": "Publisher PDF, p. 4, Fig. 3(a,b) (spin readout) and Nuclear-spin qubit coherence. P. 5, Fig. 4(d) (dynamical decoupling).",
+    "extractionMethod": "direct publisher-PDF text + figure-caption cross-check",
+    "verifiedDate": "2026-11-19"
   },
   "rodriguez-moldes-2026-pr-xy4-single-photon": {
     "locator": "Publisher PDF, pp. 3–4, Figs. 2(b) and 3(c); author dataset DOI 10.5281/zenodo.21532904, fig3.npz, st = 100 us",

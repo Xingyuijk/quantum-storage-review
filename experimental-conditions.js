@@ -19,17 +19,17 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "temperature": "3 K",
     "magneticField": "Not reported",
     "conditionNote": "The 4 K statement in the introduction is a general material regime; the experiment section specifies 3 K.",
-    "locator": "Original PDF, p. 9, experimental setup",
+    "locator": "Published article, Fig. 2 caption, printed p. 8 (local PDF p. 9).",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-19"
   },
   "jobez-2014-spin-wave": {
     "temperature": "3 K",
     "magneticField": "Not reported",
     "conditionNote": "The 4 K statement in the introduction is a general material regime; the experiment section specifies 3 K.",
-    "locator": "Original PDF, p. 9, experimental setup",
+    "locator": "Published article, Fig. 2 caption, printed p. 8 (local PDF p. 9).",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-19"
   },
   "duranti-2024-afc": {
     "temperature": "3.2 K",
@@ -257,19 +257,19 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   },
   "afzelius-2010-afc-echo": {
     "temperature": "2.1 K",
-    "magneticField": "Zero applied magnetic field",
-    "conditionNote": "",
-    "locator": "Original PDF, p. 3, Fig. 2 caption and adjacent text",
+    "magneticField": "Level scheme assumes zero applied field",
+    "conditionNote": "Control pulses off for the optical AFC echo in Fig. 3 (inset).",
+    "locator": "arXiv:0908.2309v2 PDF p. 2, material description, and p. 3, Figs. 2–3 and captions",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-19"
   },
   "afzelius-2010-spinwave": {
     "temperature": "2.1 K",
-    "magneticField": "Zero applied magnetic field",
-    "conditionNote": "",
-    "locator": "Original PDF, p. 3, Fig. 2 caption and adjacent text",
+    "magneticField": "Level scheme assumes zero applied field",
+    "conditionNote": "Two control pulses set the spin interval. The 4 µs of optical evolution is included in the total delay.",
+    "locator": "arXiv:0908.2309v2 PDF pp. 2–3, material description and Figs. 2–3, and p. 4, Fig. 4",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-19"
   },
   "lauritzen-2010-er-crib": {
     "temperature": "2.6 K",
@@ -562,10 +562,10 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
   "saglamyurek-2011-tm-waveguide": {
     "temperature": "3 K",
     "magneticField": "570 G",
-    "conditionNote": "",
-    "locator": "Original PDF, Methods/Supplementary setup, PDF p. 8",
+    "conditionNote": "The applied field was aligned with the crystal’s C3 axis.",
+    "locator": "arXiv:1009.0490, Fig. 1(b) caption, p. 8.",
     "extractionMethod": "direct text",
-    "verifiedDate": "2026-07-15"
+    "verifiedDate": "2026-11-19"
   },
   "sinclair-2014-tm-spectral-mux": {
     "temperature": "3 K",

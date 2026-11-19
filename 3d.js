@@ -341,6 +341,7 @@ function renderDetail3d(matching) {
       <a class="detail-link" href="${escape3d(d.url)}" target="_blank" rel="noreferrer">Open DOI / source page</a>
     </div>
   `;
+  window.QMPaperReading.addToDetail(detail3d, d);
 }
 
 function selectResult3d(id) {

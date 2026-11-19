@@ -46,6 +46,71 @@ window.QM_DATA = {
       note: "Review seed linking quantum-memory performance to entanglement-distribution applications."
     }
   ],
+  paperReadings: {
+    "10.1038/nature09081": {
+      question: "Can a crystal recall a pulse on demand and preserve its quantum fluctuations?",
+      finding: "Hedges and colleagues reversed an electric-field gradient in a praseodymium crystal. This brought the ions back into phase and released an echo. The echo carried 69 ± 2% of the input pulse energy after 1.3 µs and 45 ± 2% after 2.6 µs.",
+      interpretation: "The authors tested added noise in a separate run at 1.6 µs. For coherent inputs averaging 4 and 30 photons, the measured noise fell below the classical and no-cloning benchmarks at every measured phase. This test addresses what the energy measurement alone cannot tell us about the retrieved light.",
+      locator: "Nature, pp. 1053–1055, Figs. 2–3",
+      url: "https://www.nature.com/articles/nature09081"
+    },
+    "10.1103/physrevlett.104.040503": {
+      question: "Can a pair of control pulses choose when a frequency comb releases light?",
+      finding: "A comb in praseodymium produced an optical echo after a fixed 4 µs delay. The first control pulse moved the excitation into a spin wave. Varying when the second pulse returned it to the optical transition shifted the echo, with recall visible out to about 20 µs in total.",
+      interpretation: "The optical-only echo returned 4–5% at 4 µs. For spin-wave recall, the authors estimated 0.5–1% by extrapolating to zero time in the spin state. The paper gives no measured efficiency at its longest recall time, so that observation appears only in the table.",
+      locator: "Author manuscript, pp. 2–4, Figs. 3–4",
+      url: "https://arxiv.org/pdf/0908.2309v2#page=3"
+    },
+    "10.1038/nature09719": {
+      question: "Can one photon of an entangled pair pass through a broadband memory and keep its entanglement?",
+      finding: "A 5 GHz frequency comb in a thulium waveguide stored the 795 nm photon for 7 ns. Its 1,532 nm partner travelled directly to the analyser. Measurements on detected pairs before and after storage gave a fidelity of 95.4 ± 2.9% between the two reconstructed states.",
+      interpretation: "That fidelity describes the state of the pairs the detectors registered. The chance of recovering the stored photon also depends on loss. The authors report about 2% efficiency inside the waveguide and about 0.2% including coupling into and out of it.",
+      locator: "Published article, Table 1 and memory efficiency discussion",
+      url: "https://www.nature.com/articles/nature09719"
+    },
+    "10.1088/1367-2630/16/8/083005": {
+      question: "How much light survives transfer into a spin wave and back?",
+      finding: "Jobez and colleagues placed a weakly absorbing europium crystal in a cavity. The strongest optical-only echo returned 53 ± 1% at a preset delay of 2 µs. For on-demand recall, they used a comb set to 10 µs and added 5.3 µs in the spin state.",
+      interpretation: "With that 10 µs comb, the optical-only reference returned 28%. Adding both control pulses and spin storage gave 12% after 15.3 µs. The 28% reference uses the same comb and makes the extra loss in the spin-wave sequence interpretable.",
+      locator: "Author manuscript, §4.1–4.2, Figs. 3–4",
+      url: "https://arxiv.org/pdf/1404.3489#page=12"
+    },
+    "10.1038/s41467-021-22706-y": {
+      question: "What survived an hour of storage in the europium crystal?",
+      finding: "Ma and colleagues stored the light as a spin wave and used radio-frequency pulses to protect its phase. After one hour, echoes from two coherent input pulses still interfered with 92.9 ± 4.9% visibility. The contrast of the interference fringe shows that readout preserved their relative phase.",
+      interpretation: "The plotted 0.052% measures the fraction of light recovered after five minutes with the KDD sequence. The one-hour interference test used the CPMG sequence. Its visibility and the five-minute energy recovery answer different experimental questions.",
+      locator: "Author manuscript, p. 5, efficiency analysis and Fig. 4",
+      url: "https://arxiv.org/pdf/2012.14605#page=5"
+    },
+    "10.1103/physrevresearch.3.l032054": {
+      question: "Can selected erbium ions produce an efficient echo with little added noise?",
+      finding: "A spectral peak prepared in one hyperfine state persisted for 188 ± 8 s. To store light, Stuart and colleagues prepared five peaks spaced 1.5 MHz apart. That spacing set the 660 ns wait between the incoming pulse and its echo.",
+      interpretation: "A strong 200 ns probe gave the 22 ± 1% echo efficiency. A separate test with weak pulses averaging 0.8 photons at the crystal bounded the added quadrature noise below 0.1 vacuum-noise units at 95% confidence.",
+      locator: "Author manuscript, pp. 3–4, Figs. 2–4",
+      url: "https://arxiv.org/pdf/2103.04581#page=4"
+    },
+    "10.1038/s41566-026-01845-y": {
+      question: "How efficiently can a compact europium memory return a heralded photon?",
+      finding: "Meng and colleagues used two cavities to strengthen light absorption. A waveguide cavity returned 80.3% at 1 µs for weak laser pulses. In the fibre microcavity, a weak pulse and a heralded single photon gave 75.2% and 69.8%, respectively, at the same 2 µs delay.",
+      interpretation: "The memory stored the 580 nm photon. Its 1,537 nm partner signalled its arrival, and the two retained nonclassical correlations after readout. A separate test of capacity gave a mean efficiency of 51.3% across 20 weak-pulse time slots at 10 µs.",
+      locator: "Nature Photonics, pp. 438–441, Figs. 2–4",
+      url: "https://www.nature.com/articles/s41566-026-01845-y#Fig4"
+    },
+    "10.1038/s41467-026-77060-8": {
+      question: "Can one erbium nuclear spin retain phase and still be read optically?",
+      finding: "Ulanowski and colleagues used a cavity to make fluorescence from one spin state easier to detect. Counting the light assigned the prepared spin state with 91 ± 2% fidelity. In a separate test, 64 refocusing pulses extended the nuclear-spin coherence time to 0.28 ± 0.08 s.",
+      interpretation: "Here the light probes a spin that already holds information. An optical-memory efficiency would require sending in light to store and measuring how much came back. This paper characterizes the spin and its readout, so its record appears only in the table.",
+      locator: "Published article, pp. 4–5, Figs. 3–4",
+      url: "https://www.nature.com/articles/s41467-026-77060-8#Fig3"
+    },
+    "10.1038/s41534-026-01316-w": {
+      question: "Which experiment showed that the fibre memory could recall photons from a quantum dot?",
+      finding: "Gohari Kamel and colleagues observed echoes of 980 nm quantum-dot photons at five preset delays. They calibrated the memory efficiency with a train of 59 weak laser pulses. At 90 ns the train gave 1% total recovery, including fibre losses.",
+      interpretation: "The authors measured antibunching of the incoming dot photons directly. For the recalled photons, they used the measured signal-to-noise ratio to estimate a zero-delay intensity autocorrelation of 0.656. The output value is a model estimate, and the 1% point belongs to the weak-pulse calibration.",
+      locator: "Published article, Figs. 3–5 and Eq. (2)",
+      url: "https://www.nature.com/articles/s41534-026-01316-w#Fig5"
+    }
+  },
   results: [
     {
       id: "hedges-2010-gem",
@@ -63,14 +128,14 @@ window.QM_DATA = {
       protocol: "GEM",
       architecture: "bulk/free-space",
       cavity: "no cavity",
-      inputState: "weak coherent",
+      inputState: "coherent optical pulse (Fig. 2 energy measurement)",
       storageTimeS: 1.3e-6,
       storageTimeLabel: "1.3 us",
       efficiencyPct: 69,
-      efficiencyLabel: "69%",
-      efficiencyType: "total storage and recall",
+      efficiencyLabel: "69 ± 2%",
+      efficiencyType: "gradient-echo energy relative to the transmitted reference pulse",
       confidence: "high",
-      note: "Gradient echo memory in Pr:Y2SiO5; text reports 69 +/- 2% after 1.3 us and 45 +/- 2% after 2.6 us."
+      note: "The input reference was measured with the crystal prepared to transmit the pulse. Reversing the field gradient later reduced the recovered energy to 45 ± 2% at 2.6 µs. Figure 3 used a separate 1.6 µs setting for noise measurements."
     },
     {
       id: "sabooni-2013-cavity-afc",
@@ -117,10 +182,10 @@ window.QM_DATA = {
       storageTimeS: 2e-6,
       storageTimeLabel: "2 us",
       efficiencyPct: 53,
-      efficiencyLabel: "53%",
+      efficiencyLabel: "53 ± 1%",
       efficiencyType: "two-level AFC echo",
       confidence: "high",
-      note: "Two-level cavity-enhanced AFC echo; same paper also demonstrates spin-wave storage."
+      note: "With the excitation stored optically, the comb produced an echo after a preset 2 µs. Its time-integrated intensity was 53 ± 1% of the input reference."
     },
     {
       id: "jobez-2014-spin-wave",
@@ -145,7 +210,7 @@ window.QM_DATA = {
       efficiencyLabel: "12%",
       efficiencyType: "spin-wave AFC memory",
       confidence: "high",
-      note: "AFC delay 10 us plus 5.3 us spin-wave interval; reported spin-wave memory efficiency 12%."
+      note: "For the same 10 µs comb delay, the optical-only reference gave 28%. Two control pulses added 5.3 µs of spin storage. After 15.3 µs in total, the retrieved pulse had 12% of the input reference’s time-integrated intensity."
     },
     {
       id: "duranti-2024-afc",
@@ -502,14 +567,14 @@ window.QM_DATA = {
       protocol: "AFC",
       architecture: "bulk/free-space",
       cavity: "no cavity",
-      inputState: "weak coherent",
+      inputState: "strong optical probe pulse",
       storageTimeS: 660e-9,
       storageTimeLabel: "660 ns",
       efficiencyPct: 22,
       efficiencyLabel: "22 +/- 1%",
-      efficiencyType: "AFC storage after resolved-hyperfine initialisation",
+      efficiencyType: "AFC echo intensity relative to the input reference",
       confidence: "high",
-      note: "Found from local Zotero. The paper prepares isolated 167Er3+:Y2SiO5 absorption features without cavity enhancement; the AFC echo at 660 ns has 22 +/- 1% efficiency. The 200 ns value in the abstract is the input pulse width."
+      note: "The strong probe was 200 ns wide. The comb spacing of 1.5 MHz set the 660 ns delay between the probe and its echo. Figure 3(b) gives 22 +/- 1% efficiency by comparing the echo intensity with the reference pulse sent through the ensemble before comb preparation. Figure 4 uses separate weak coherent pulses averaging 0.8 photons at the crystal to measure added noise."
     },
     {
       id: "stuart-2025-four-level-rase",
@@ -746,9 +811,9 @@ window.QM_DATA = {
       storageTimeLabel: "1 us",
       efficiencyPct: 80.3,
       efficiencyLabel: "80.3 +/- 0.7%",
-      efficiencyType: "integrated cavity AFC",
+      efficiencyType: "first AFC echo / calibrated input",
       confidence: "high",
-      note: "Waveguide cavity architecture; PDF reports 80.3% first AFC echo efficiency for weak coherent pulses."
+      note: "A weak laser pulse produced the first echo after 1 µs in the waveguide cavity. The authors calibrated the input reference using the reflectivity of the front mirror. They tested electrically delayed readout separately in Fig. 2b."
     },
     {
       id: "meng-2026-fbc-single",
@@ -771,9 +836,9 @@ window.QM_DATA = {
       storageTimeLabel: "2 us",
       efficiencyPct: 69.8,
       efficiencyLabel: "69.8 +/- 1.6%",
-      efficiencyType: "telecom-heralded single-photon storage",
+      efficiencyType: "heralded single-photon AFC retrieval",
       confidence: "high",
-      note: "Fiber microcavity membrane system; PDF reports 69.8% at 2 us for telecom-heralded single photons."
+      note: "The membrane stored the 580 nm photon. Detecting its 1,537 nm partner heralded its arrival. After retrieval, their cross-correlation was 16.4 ± 0.2 in a 123 ns window, providing a separate check of nonclassical correlations."
     },
     {
       id: "meng-2026-fbc-weak",
@@ -796,9 +861,9 @@ window.QM_DATA = {
       storageTimeLabel: "2 us",
       efficiencyPct: 75.2,
       efficiencyLabel: "75.2 +/- 0.5%",
-      efficiencyType: "fiber microcavity AFC",
+      efficiencyType: "AFC echo / calibrated input",
       confidence: "high",
-      note: "Fiber-based microcavity result for weak coherent inputs; PDF reports 75.2% at 2 us."
+      note: "The authors compared the echo of a weak coherent pulse with a reference measured by detuning the cavity. They identify this efficiency as a lower bound because the reference can overestimate the incident light."
     },
     {
       id: "meng-2026-fbc-multimode",
@@ -821,9 +886,9 @@ window.QM_DATA = {
       storageTimeLabel: "10 us",
       efficiencyPct: 51.3,
       efficiencyLabel: "51.3 +/- 0.2%",
-      efficiencyType: "20 temporal modes, average AFC efficiency",
+      efficiencyType: "mean AFC retrieval across 20 temporal modes",
       confidence: "high",
-      note: "Twenty temporal modes stored in the fiber microcavity architecture with average efficiency above 50%."
+      note: "A train of 20 weak coherent pulses was retrieved after 10 µs. The efficiency is the average across those time slots. Interference with reference pulses gave a mean visibility of 0.94 ± 0.01."
     },
     {
       id: "horvath-2021-on-demand-afc",
@@ -891,14 +956,14 @@ window.QM_DATA = {
       protocol: "AFC",
       architecture: "bulk/free-space",
       cavity: "no cavity",
-      inputState: "weak coherent",
+      inputState: "weak laser pulse (photon number unreported)",
       storageTimeS: 4e-6,
-      storageTimeLabel: "4 us",
+      storageTimeLabel: "4 µs optical echo delay",
       efficiencyPct: 4.5,
-      efficiencyLabel: "4-5%",
-      efficiencyType: "two-level AFC echo",
+      efficiencyLabel: "4–5% (reported range)",
+      efficiencyType: "two-level AFC echo area / incident pulse area",
       confidence: "high",
-      note: "APS title matched to arXiv; paper reports AFC echo efficiency of 4-5% for 1/Delta = 4 us before applying spin-wave control pulses."
+      note: "With the control pulses off, the 250 kHz comb produced an optical echo after 4 µs. The plotted 4.5% is the midpoint of the authors’ 4–5% range."
     },
     {
       id: "afzelius-2010-spinwave",
@@ -916,14 +981,14 @@ window.QM_DATA = {
       protocol: "spin-wave AFC",
       architecture: "bulk/free-space",
       cavity: "no cavity",
-      inputState: "weak coherent",
+      inputState: "weak laser pulse (photon number unreported)",
       storageTimeS: 20e-6,
-      storageTimeLabel: "up to 20 us",
-      efficiencyPct: 0.75,
-      efficiencyLabel: "0.5-1% (spin-wave)",
-      efficiencyType: "spin-wave AFC storage",
+      storageTimeLabel: "up to about 20 µs total",
+      efficiencyPct: null,
+      efficiencyLabel: "Unreported at the longest delay",
+      efficiencyType: "spin-wave AFC storage and retrieval",
       confidence: "medium",
-      note: "Paper reports visible spin-wave storage up to 20 us; total efficiency was estimated as 0.5-1% when extrapolated to vanishing spin dephasing."
+      note: "An echo was visible with 15.6 µs in the spin state plus 4 µs of optical evolution. The authors obtained 0.5–1% total efficiency by extrapolating to zero time in the spin state. Fig. 4 shows the delayed signals in arbitrary units."
     },
     {
       id: "lauritzen-2010-er-crib",
@@ -1856,9 +1921,9 @@ window.QM_DATA = {
       storageTimeLabel: "7 ns",
       efficiencyPct: 2,
       efficiencyLabel: "~2% internal",
-      efficiencyType: "broadband AFC storage",
+      efficiencyType: "internal AFC memory efficiency",
       confidence: "high",
-      note: "ArXiv text reports 7-ns storage, about 2% experimental memory efficiency and about 0.2% system efficiency."
+      note: "The 143 MHz spacing between comb teeth set the 7 ns recall time for the 795 nm photon. The waveguide memory returned about 2% internally. Including input and output coupling to fibre gave about 0.2% system efficiency."
     },
     {
       id: "sinclair-2014-tm-spectral-mux",
@@ -2182,9 +2247,9 @@ window.QM_DATA = {
       storageTimeLabel: "5 min",
       efficiencyPct: 0.052,
       efficiencyLabel: "0.052%",
-      efficiencyType: "long-lived coherent spin-wave AFC storage",
+      efficiencyType: "total spin-wave AFC storage and retrieval with KDD decoupling",
       confidence: "high",
-      note: "ArXiv/Nature Communications text reports 0.052% total efficiency for 5-minute KDD storage; coherence is verified to 1 hour."
+      note: "At a radio-frequency pulse spacing of 100 ms, the five-minute total efficiencies were 0.052% with KDD and 0.035% with CPMG. The plotted value uses KDD. Figure 4 tests phase preservation using interference between two retrieved pulses."
     },
     {
       id: "hain-2025-pr-eit-ur16-1s",
@@ -3333,9 +3398,9 @@ window.QM_DATA = {
       storageTimeLabel: "0.28 +/- 0.08 s nuclear-spin coherence",
       efficiencyPct: null,
       efficiencyLabel: "Not a memory-efficiency result",
-      efficiencyType: "material-only single-ion nuclear-spin coherence landmark; no optical storage efficiency assigned",
+      efficiencyType: "single-ion nuclear-spin coherence",
       confidence: "high",
-      note: "A single 167Er3+ nuclear-spin qubit in a 10.9-um Y2SiO5 membrane inside a fiber-coupled Fabry-Perot microcavity reaches 0.28 +/- 0.08 s coherence after a 64-pulse XY dynamical-decoupling sequence. The same experiment reports 91 +/- 2% single-shot spin-readout fidelity, but that readout fidelity is not treated as memory efficiency. No optical field was stored and retrieved, so this record is intentionally not plotted."
+      note: "The team coupled a single erbium ion in a 10.9-um Y2SiO5 membrane to a fiber microcavity. In Fig. 3, fluorescence counts after 110 readout pulses identify the prepared nuclear-spin state with 91 +/- 2% fidelity. In Fig. 4(d), 64 refocusing pulses extend the coherence time of a spin superposition to 0.28 +/- 0.08 s. Optical retrieval efficiency was not measured."
     },
     {
       id: "rodriguez-moldes-2026-pr-xy4-single-photon",

@@ -2,7 +2,7 @@
 
 Static first version of an interactive quantum-storage survey page.
 
-Current local snapshot: 119 result entries, 108 plotted points, 96 distinct paper titles, and 4 review seeds.
+The November 19, 2026 snapshot contains 148 records from 112 papers. Of these records, 136 have paired measurements on the plots and 12 appear only in the table. The site also includes 5 review seeds.
 
 ## Open locally
 
@@ -55,7 +55,9 @@ difference from the older deployed snapshot until the migration baseline is push
 
 Edit `data.js`. Each `results` item is one experimental result or literature record, not necessarily one paper or plotted point. A single paper may contribute multiple points when it reports distinct storage conditions. Important papers without a directly paired storage time and total efficiency remain searchable and visible in the table, but are not plotted.
 
-Verified evidence locators are stored separately in `source-locations.js`, keyed by result ID. Each entry records the original PDF or publisher-full-text location, extraction method, and verification date. The current local snapshot covers all 119 result records; multiple results from one paper retain result-specific locations when the reported conditions differ.
+The 2D sidebar lists the nine papers with reading guides under **Reading map**. Both maps display a guide with the selected record. The optional `paperReadings` entries in `data.js` use lowercase DOI keys and identify the experiment's question, finding, interpretation and primary source. For papers with multiple records, the detail panel compares the input, conditions, time, efficiency definition and source of each record from that paper.
+
+Verified evidence locators are stored in `source-locations.js`, keyed by result ID. Every record has its own primary-source location, extraction method, and verification date.
 
 Working temperature and magnetic field are stored separately in `experimental-conditions.js`, also keyed by result ID. Every record includes a condition-specific source location, extraction method, and verification date. When one paper reports several measurements, `conditionNote` states which temperature/field pair belongs to the storage time and efficiency shown in that result; unrelated characterization conditions are explicitly excluded rather than silently merged.
 
