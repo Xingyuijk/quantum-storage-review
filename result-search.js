@@ -70,9 +70,21 @@ window.QMRecords = (() => {
       dois.push(doi.toLowerCase().replace(/[.,;]+$/, ""));
       return " ";
     });
-    const terms = normalize(words).split(" ").filter(Boolean);
+    const terms = [];
+    const citationNames = [];
+    for (const word of normalize(words).split(" ").filter(Boolean)) {
+      const citation = /^(\p{L}+)((?:19|20)\d{2})$/u.exec(word);
+      if (citation) {
+        // A compact citation names an author. A substring of a title or another surname is insufficient.
+        citationNames.push(citation[1]);
+        terms.push(citation[1], citation[2]);
+      } else {
+        terms.push(word);
+      }
+    }
     return (d, entry) => {
       if (!dois.every((doi) => doi === d.doi?.toLowerCase())) return false;
+      if (!citationNames.every((name) => entry.authors.phrase.includes(` ${name} `))) return false;
       if (!terms.length) return dois.length > 0;
       const name = [];
       for (const term of terms) {
