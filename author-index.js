@@ -590,5 +590,17 @@ window.QM_AUTHOR_INDEX = {
   "gohari-kamel-2026-er-fiber-afc-90ns": {
     "authorsFull": "Nasser Gohari Kamel, Arsalan Mansourzadeh, Ujjwal Gautam, Vinaya Kumar Kavatamane, Ashutosh Singh, Edith Yeung, David B. Northeast, Paul E. Barclay, Philip J. Poole, Dan Dalacu, Daniel Oblak",
     "searchTerms": "Nasser Gohari Kamel Arsalan Mansourzadeh Ujjwal Gautam Vinaya Kumar Kavatamane Ashutosh Singh Edith Yeung David B. Northeast Paul E. Barclay Philip J. Poole Dan Dalacu Daniel Oblak erbium fibre fiber quantum dot 980 nm"
+  },
+  "zhu-2020-eu-ridge-afc": {
+    "authorsFull": "Tian-Xiang Zhu, Chao Liu, Liang Zheng, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Tian-Xiang Zhu Tian Xiang Zhu Chao Liu Liang Zheng Zong-Quan Zhou Zong Quan Zhou Chuan-Feng Li Chuan Feng Li Guang-Can Guo Guang Can Guo"
+  },
+  "zhu-2020-eu-ridge-spinwave": {
+    "authorsFull": "Tian-Xiang Zhu, Chao Liu, Liang Zheng, Zong-Quan Zhou, Chuan-Feng Li, Guang-Can Guo",
+    "searchTerms": "Tian-Xiang Zhu Tian Xiang Zhu Chao Liu Liang Zheng Zong-Quan Zhou Zong Quan Zhou Chuan-Feng Li Chuan Feng Li Guang-Can Guo Guang Can Guo"
+  },
+  "jobez-2015-eu-spinwave-xy4-1ms": {
+    "authorsFull": "Pierre Jobez, Cyril Laplane, Nuala Timoney, Nicolas Gisin, Alban Ferrier, Philippe Goldner, Mikael Afzelius",
+    "searchTerms": "Pierre Jobez Cyril Laplane Nuala Timoney Nicolas Gisin Alban Ferrier Philippe Goldner Mikael Afzelius XY-4 spin echo"
   }
 };

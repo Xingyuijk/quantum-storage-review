@@ -1182,5 +1182,29 @@ window.QM_EXPERIMENTAL_CONDITIONS = {
     "locator": "Publisher full-text PDF, 'Experimental setup and EDF spectroscopy,' 'Quantum memory implementation,' and Methods; Supplementary Note 1",
     "extractionMethod": "direct publisher-PDF and supplement review; exact paired magnetic field left Not reported rather than inferred",
     "verifiedDate": "2026-09-28"
+  },
+  "zhu-2020-eu-ridge-afc": {
+    "temperature": "3.2 K cryostat base (sample may be slightly warmer)",
+    "magneticField": "Zero-field level scheme (Fig. 3(a)); no nonzero bias reported",
+    "conditionNote": "The 0.1%-doped natural-abundance Eu crystal is addressed on 151Eu3+ transitions in the type-IV surface waveguide. Section IV.A warns that loose thermal contact can make the sample warmer than the cryostat base. The laser-locking Fabry-Perot cavity is external to the memory.",
+    "locator": "arXiv:2008.12901v2, PDF p. 1, Section II (sample); p. 2, Fig. 1 caption and Section III (cryostat); p. 3, Section IV.A (thermal-contact caveat); p. 4, Fig. 3(a) and Section IV.B (storage scheme).",
+    "extractionMethod": "direct setup text + energy-level caption; base and sample temperature distinguished",
+    "verifiedDate": "2026-11-21"
+  },
+  "zhu-2020-eu-ridge-spinwave": {
+    "temperature": "3.2 K cryostat base (sample may be slightly warmer)",
+    "magneticField": "Zero-field level scheme (Fig. 3(a)); no nonzero bias reported",
+    "conditionNote": "Same type-IV waveguide and 2-MHz AFC as the optical reference; two 2.5-us control pulses have 58 mW peak power before the cryostat. The paired 10.5-us result uses a 5.8-mW classical input, not the 1.8-mW probe used for the separate coherence-time characterization.",
+    "locator": "arXiv:2008.12901v2, PDF p. 2, Fig. 1 caption and Section III; p. 3, Section IV.A (sample temperature caveat); p. 4, Figs. 3-4 and Section IV.B (input and control powers); p. 5 (tau_s = 2.5 us).",
+    "extractionMethod": "direct setup and storage text + rendered timing-diagram cross-check",
+    "verifiedDate": "2026-11-21"
+  },
+  "jobez-2015-eu-spinwave-xy4-1ms": {
+    "temperature": "approximately 4 K",
+    "magneticField": "Not reported",
+    "conditionNote": "A 1-cm, isotopically enriched 151Eu3+:Y2SiO5 crystal (1000 ppm) with nonresonant input double pass and a 2-MHz AFC is used for the single-mode XY-4 sequence. Main text gives no numerical applied magnetic field; the field-biased six-hour coherence experiment cited in the conclusion is a different paper.",
+    "locator": "arXiv:1501.03981v2, PDF p. 2, Fig. 1(a)-(c), caption and sample/preparation paragraphs; p. 4, Table I caption and XY-4 discussion.",
+    "extractionMethod": "direct primary setup text + rendered figure/table cross-check; applied field not inferred",
+    "verifiedDate": "2026-11-21"
   }
 };

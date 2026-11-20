@@ -738,5 +738,20 @@ window.QM_SOURCE_LOCATIONS = {
     "locator": "Publisher full-text PDF, 'Quantum memory implementation,' Fig. 3(d-e), caption, and adjacent efficiency paragraphs",
     "extractionMethod": "direct publisher-PDF text + rendered-figure cross-check",
     "verifiedDate": "2026-09-28"
+  },
+  "zhu-2020-eu-ridge-afc": {
+    "locator": "arXiv:2008.12901v2, PDF p. 4, Section IV.B, Fig. 4(a)-(b) and the measured internal-efficiency paragraph; 8 us and 2.4% are explicitly paired.",
+    "extractionMethod": "direct primary text + rendered figure cross-check",
+    "verifiedDate": "2026-11-21"
+  },
+  "zhu-2020-eu-ridge-spinwave": {
+    "locator": "arXiv:2008.12901v2, PDF p. 4, Section IV.B, right-column opening sentence and Figs. 3(b), 4(a); PDF p. 5, interference test at tau_s = 2.5 us and Fig. 5.",
+    "extractionMethod": "direct primary text + rendered figure cross-check; total delay explicitly reported as 10.5 us",
+    "verifiedDate": "2026-11-21"
+  },
+  "jobez-2015-eu-spinwave-xy4-1ms": {
+    "locator": "arXiv:1501.03981v2, PDF p. 4, Table I, T_S = 1 ms row and caption; PDF p. 2, Fig. 1(b) and caption distinguish spin interval from total delay; PDF p. 3, Fig. 2 caption identifies the input and single-mode experiment.",
+    "extractionMethod": "direct table extraction + rendered table and pulse-sequence cross-check; spin interval retained without inventing total delay",
+    "verifiedDate": "2026-11-21"
   }
 };
